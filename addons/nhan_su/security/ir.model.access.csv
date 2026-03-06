@@ -9,4 +9,5 @@ access_cham_cong,cham_cong.cham_cong,model_cham_cong,base.group_user,1,1,1,1
 access_tinh_luong,tinh_luong.tinh_luong,model_tinh_luong,base.group_user,1,1,1,1
 
 
-
+access_phong_ban,phong_ban.phong_ban,model_phong_ban,base.group_user,1,1,1,1
+access_hop_dong_lao_dong,hop_dong_lao_dong.hop_dong_lao_dong,model_hop_dong_lao_dong,base.group_user,1,1,1,1

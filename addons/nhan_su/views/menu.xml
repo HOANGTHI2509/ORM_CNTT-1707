@@ -37,10 +37,28 @@
             sequence="3"
             action="action_chung_chi_bang_cap"
         />
+        <menuitem name="Danh mục phòng ban" 
+            id="menu_phong_ban" 
+            parent="menu_danh_muc_chung" 
+            sequence="4"
+            action="action_phong_ban"
+        />
+        <menuitem name="Danh sách Cán bộ theo phòng ban" 
+            id="menu_danh_sach_phong_ban" 
+            parent="menu_root" 
+            sequence="3"
+            action="action_phong_ban"
+        />
+        <menuitem name="Hợp đồng lao động" 
+            id="menu_hop_dong_lao_dong" 
+            parent="menu_root" 
+            sequence="4"
+            action="action_hop_dong_lao_dong"
+        />
         <menuitem name="Lịch sử công tác" 
             id="menu_lich_su_cong_tac" 
             parent="menu_root" 
-            sequence="4"
+            sequence="5"
             action="action_lich_su_cong_tac"
         />
         <menuitem name="Danh sách chứng chỉ, bằng cấp" 

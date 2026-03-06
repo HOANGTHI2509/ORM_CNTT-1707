@@ -29,11 +29,16 @@ class NhanVien(models.Model):
         "danh_sach_chung_chi_bang_cap", 
         inverse_name="nhan_vien_id", 
         string = "Danh sách chứng chỉ bằng cấp")
+    phong_ban_id = fields.Many2one("phong_ban", string="Phòng ban", help="Phòng ban nhân viên trực thuộc")
+    hop_dong_lao_dong_ids = fields.One2many(
+        "hop_dong_lao_dong",
+        inverse_name="nhan_vien_id",
+        string="Hợp đồng lao động"
+    )
     so_nguoi_bang_tuoi = fields.Integer("Số người bằng tuổi", 
                                         compute="_compute_so_nguoi_bang_tuoi",
                                         store=True
                                         )
-    
 
     
     @api.depends("tuoi")

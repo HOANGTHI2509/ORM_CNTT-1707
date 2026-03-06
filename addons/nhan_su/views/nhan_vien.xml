@@ -13,6 +13,7 @@
                             <field name="ten"/>
                             <field name="ho_va_ten"/>
                             <field name="ma_dinh_danh"/>
+                            <field name="phong_ban_id"/>
                             <field name="ngay_sinh"/>
                             <field name="tuoi"/>
                             <field name="so_nguoi_bang_tuoi"/>
@@ -28,6 +29,9 @@
                                 <field name="danh_sach_chung_chi_bang_cap_ids"/>
                             </page>
 
+                            <page string="Hợp đồng lao động">
+                                <field name="hop_dong_lao_dong_ids"/>
+                            </page>
                         </notebook>
                     </sheet>
                     

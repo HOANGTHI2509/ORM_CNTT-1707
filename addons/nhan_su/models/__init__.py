@@ -1,5 +1,7 @@
 from . import nhan_vien
 from . import tinh_luong
+from . import phong_ban
+from . import hop_dong_lao_dong
 from . import cham_cong
 from . import chuc_vu
 from . import don_vi
