@@ -17,6 +17,7 @@ class DatPhong(models.Model):
     thoi_gian_tra_du_kien = fields.Datetime(string="Thời gian trả dự kiến", required=True)
 
     thoi_gian_tra_thuc_te = fields.Datetime(string="Thời gian trả thực tế")
+    so_luong = fields.Integer(string="Số lượng", default=1)
 
     # Liên kết với tài sản (Shared Resource)
     tai_san_ids = fields.Many2many(
@@ -301,12 +302,31 @@ class DatPhong(models.Model):
             if record.trang_thai != "đang_sử_dụng":
                 raise exceptions.UserError("Chỉ có thể trả phòng đang ở trạng thái 'Đang sử dụng'.")
             current_time = datetime.now()
+            thoi_gian_muon = record.thoi_gian_muon_thuc_te or current_time
             record.write({
                 "trang_thai": "đã_trả",
                 "thoi_gian_tra_thuc_te": current_time,
-                "thoi_gian_muon_thuc_te": record.thoi_gian_muon_thuc_te or current_time
+                "thoi_gian_muon_thuc_te": thoi_gian_muon
             })
             self.lich_su(record)
+            
+            # PHASE 3: Tính số giờ mượn và cộng dồn cho tài sản đi kèm
+            delta = current_time - thoi_gian_muon
+            hours = delta.total_seconds() / 3600.0
+            if hours > 0 and record.tai_san_ids:
+                for asset in record.tai_san_ids:
+                    asset.sudo().write({'so_gio_su_dung': asset.so_gio_su_dung + hours})
+                    gio_gioi_han = asset.loai_tai_san_id.gio_gioi_han_bao_tri
+                    if gio_gioi_han > 0 and asset.so_gio_su_dung >= gio_gioi_han:
+                        import datetime as dt # Dùng alias để tránh đụng độ
+                        self.env['phieu_bao_tri'].sudo().create({
+                            'tai_san_id': asset.id,
+                            'ngay_bao_tri': fields.Datetime.now(),
+                            'ngay_tra': fields.Datetime.now() + dt.timedelta(days=1),
+                            'chi_phi': 0,
+                            'ghi_chu': f"Hệ thống tự động phát hiện vượt mức hoạt động: {asset.so_gio_su_dung:.1f}/{gio_gioi_han} giờ (Sau khi dùng phòng {record.phong_id.name}).",
+                            'state': 'draft'
+                        })
         
         self.env["lich_su_muon_tra"].update_lich_su_muon_tra()
 

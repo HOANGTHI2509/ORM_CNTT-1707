@@ -5,6 +5,7 @@ class QuanLyPhongHop(models.Model):
     _description = "Quản lý phòng họp, hội trường"
 
     name = fields.Char(string="Tên phòng họp", required=True)
+    hinh_anh = fields.Image(string="Hình ảnh phòng")
 
     suc_chua = fields.Integer(string="Sức chứa")
     

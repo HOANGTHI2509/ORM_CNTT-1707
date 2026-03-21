@@ -50,6 +50,9 @@
                                     <field name="ngay_mua" widget="datetime" placeholder="Ngày mua"/>
                                     <field name="trang_thai_kiem_ke" placeholder="Trạng thái kiểm kê"/>
                                     <field name="ngay_het_han_bao_hanh" widget="date" placeholder="Ngày hết bảo hành"/>
+                                    <field name="ngay_bao_tri_tiep_theo" widget="date" decoration-danger="is_qua_han_bao_tri" decoration-bf="is_qua_han_bao_tri"/>
+                                    <field name="is_qua_han_bao_tri" invisible="1"/>
+                                    <field name="so_gio_su_dung"/>
                                     <field name="gia_tien_mua" widget="monetary"
                                            options="{'currency_field': 'currency_id'}"/>
                                     <field name="gia_tri_hien_tai" widget="monetary"
@@ -115,21 +118,24 @@
             <field name="arch" type="xml">
                 <tree string="Danh sách tài sản"
                       decoration-info="trang_thai=='Muon'"
-                      decoration-danger="trang_thai=='Hong'"
+                      decoration-danger="is_qua_han_bao_tri or trang_thai=='Hong'"
                       decoration-muted="trang_thai=='ThanhLy'"
                       class="o_list_full_width">
-                    <field name="ma_tai_san" class="oe_inline"/>
+                    <field name="is_qua_han_bao_tri" invisible="1"/>
+                    <field name="ma_tai_san" class="oe_inline" decoration-bf="1"/>
                     <field name="ten_tai_san" class="oe_bold"/>
-                    <field name="so_serial"/>
                     <field name="loai_tai_san_id" widget="selection"/>
-                    <field name="vi_tri_hien_tai_id" widget="selection"/>
-                    <field name="nha_cung_cap_id" widget="selection"/>
-                    <field name="quan_ly_id" widget="selection"/>
-                    <field name="nguoi_dang_dung_id" widget="selection"/>
-                    <field name="ngay_mua" widget="datetime"/>
-                    <field name="gia_tien_mua" widget="monetary"/>
-                    <field name="gia_tri_hien_tai" widget="monetary"/>
-                    <field name="trang_thai_kiem_ke" placeholder="Trạng thái kiểm kê"/>
+                    <field name="so_serial" optional="show"/>
+                    <field name="vi_tri_hien_tai_id" widget="selection" optional="show"/>
+                    <field name="nguoi_dang_dung_id" widget="selection" optional="show"/>
+                    <field name="quan_ly_id" widget="selection" optional="hide"/>
+                    <field name="nha_cung_cap_id" widget="selection" optional="hide"/>
+                    <field name="ngay_mua" widget="date" optional="show"/>
+                    <field name="ngay_het_han_bao_hanh" widget="date" optional="show"/>
+                    <field name="gia_tien_mua" widget="monetary" optional="show"/>
+                    <field name="gia_tri_hien_tai" widget="monetary" optional="show"/>
+                    <field name="ngay_bao_tri_tiep_theo" widget="date" decoration-danger="is_qua_han_bao_tri" decoration-bf="is_qua_han_bao_tri" optional="show"/>
+                    <field name="trang_thai_kiem_ke" placeholder="Trạng thái kiểm kê" optional="hide"/>
                     <field name="trang_thai" widget="badge"
                            options="{'clickable': True, 'class_mapping': {'Muon': 'info', 'Hong': 'danger', 'LuuTru': 'success'}}"/>
                 </tree>

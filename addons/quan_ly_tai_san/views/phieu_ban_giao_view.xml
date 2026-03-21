@@ -22,6 +22,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
+                        <button name="%(quan_ly_tai_san.action_report_ban_giao_tai_san)d" type="action" string="In Biên Bản" icon="fa-print" class="oe_highlight" attrs="{'invisible': [('trang_thai', '==', 'nhap')]}"/>
                         <button name="action_hoan_thanh" type="object" string="Xác nhận" class="oe_highlight" attrs="{'invisible': [('trang_thai', '!=', 'nhap')]}"/>
                         <button name="action_huy" type="object" string="Hủy" attrs="{'invisible': [('trang_thai', '!=', 'nhap')]}"/>
                         <field name="trang_thai" widget="statusbar" statusbar_visible="nhap,hoan_thanh,huy"/>

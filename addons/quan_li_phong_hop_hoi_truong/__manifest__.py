@@ -20,12 +20,13 @@
     'version': '0.1',
     'license': 'LGPL-3',
     # any module necessary for this one to work correctly
-    'depends': ['base', 'nhan_su', 'quan_ly_tai_san', 'mail'],
+    'depends': ['base', 'nhan_su', 'quan_ly_tai_san', 'mail', 'board'],
 
     # always loaded
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'reports/report_dat_phong.xml',
         'views/quan_ly_phong_hop.xml',
         'views/dat_phong.xml',
         'views/lich_su_thay_doi.xml',
@@ -33,6 +34,7 @@
         'views/thiet_bi.xml',
         'views/dich_vu.xml',
         'views/dat_phong_dashboard.xml',
+        'views/dashboard_tong_hop.xml',
         'views/nhan_vien_view.xml',
         'views/menu.xml',
         'data/demo_phong_hop.xml',

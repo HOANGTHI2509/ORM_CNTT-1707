@@ -23,6 +23,7 @@
     'data': [
         'security/ir.model.access.csv',
         'sequences.xml',
+        'reports/report_ban_giao.xml',
         'views/tai_san.xml',
         'views/phieu_muon.xml',
         'views/phieu_bao_tri.xml',

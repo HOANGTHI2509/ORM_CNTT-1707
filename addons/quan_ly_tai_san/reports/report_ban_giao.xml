@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_ban_giao_tai_san" model="ir.actions.report">
+        <field name="name">In Biên Bản</field>
+        <field name="model">phieu_ban_giao</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">quan_ly_tai_san.report_ban_giao_tai_san</field>
+        <field name="report_file">quan_ly_tai_san.report_ban_giao_tai_san</field>
+        <field name="binding_model_id" ref="quan_ly_tai_san.model_phieu_ban_giao"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_ban_giao_tai_san">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="text-center mb-5 mt-4">
+                            <h2>
+                                <t t-if="o.loai_phieu == 'giao_moi'">BIÊN BẢN BÀN GIAO TÀI SẢN</t>
+                                <t t-if="o.loai_phieu == 'thu_hoi'">BIÊN BẢN THU HỒI TÀI SẢN</t>
+                            </h2>
+                            <h4>Số phiếu: <span t-field="o.ma_phieu"/></h4>
+                            <p><strong>Ngày thực hiện: </strong><span t-field="o.ngay_ban_giao"/></p>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <strong>Người giao: </strong> <span t-field="o.nguoi_giao_id.ho_va_ten"/><br/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Người nhận: </strong> <span t-field="o.nguoi_nhan_id.ho_va_ten"/><br/>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-4">Danh sách tài sản</h4>
+                        <table class="table table-sm table-bordered mt-3">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã tài sản</th>
+                                    <th>Tên tài sản</th>
+                                    <th>Tình trạng</th>
+                                    <th>Ghi chú</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="stt" t-value="1"/>
+                                <t t-foreach="o.chi_tiet_ids" t-as="line">
+                                    <tr>
+                                        <td><t t-esc="stt"/></td>
+                                        <td><span t-field="line.tai_san_id.ma_tai_san"/></td>
+                                        <td><span t-field="line.tai_san_id.ten_tai_san"/></td>
+                                        <td>
+                                            <span t-if="line.tinh_trang == 'binh_thuong'">Bình thường</span>
+                                            <span t-if="line.tinh_trang == 'hong_hoc'">Hỏng hóc</span>
+                                            <span t-if="line.tinh_trang == 'mat'">Mất</span>
+                                        </td>
+                                        <td><span t-field="line.ghi_chu"/></td>
+                                    </tr>
+                                    <t t-set="stt" t-value="stt + 1"/>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <div class="row mt-5 pt-5 text-center">
+                            <div class="col-6">
+                                <strong>BÊN GIAO</strong>
+                                <br/><br/><br/><br/>
+                                <span t-field="o.nguoi_giao_id.ho_va_ten"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>BÊN NHẬN</strong>
+                                <br/><br/><br/><br/>
+                                <span t-field="o.nguoi_nhan_id.ho_va_ten"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

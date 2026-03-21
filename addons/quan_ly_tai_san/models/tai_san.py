@@ -51,9 +51,25 @@ class TaiSan(models.Model):
         help="Số tiền đã bỏ ra để mua tài sản"
     )
 
+    so_gio_su_dung = fields.Float(
+        string="Tổng giờ đã sử dụng", 
+        default=0.0, 
+        readonly=True, 
+        help="Số giờ sử dụng cộng dồn từ các đợt mượn phòng"
+    )
+
     gia_tri_hien_tai = fields.Float(
         "Giá trị hiện tại", digits=(16, 2), compute='_compute_gia_tri_hien_tai', store=True,
         help="Giá trị tài sản hiện tại sau khi khấu hao"
+    )
+
+    ngay_bao_tri_tiep_theo = fields.Date(
+        "Ngày bảo trì tiếp theo", compute='_compute_ngay_bao_tri', store=True,
+        help="Ngày dự kiến cần bảo trì tiếp theo dựa trên chu kỳ bảo trì của loại tài sản"
+    )
+
+    is_qua_han_bao_tri = fields.Boolean(
+        "Quá hạn bảo trì", compute='_compute_ngay_bao_tri', store=True,
     )
 
     TRANG_THAI = [
@@ -188,6 +204,34 @@ class TaiSan(models.Model):
                 record.gia_tri_hien_tai = max(0, record.gia_tien_mua * (1 - depreciation_rate * years))
             else:
                 record.gia_tri_hien_tai = 0.0
+
+    @api.depends('lich_su_bao_tri_ids.ngay_bao_tri', 'ngay_mua', 'loai_tai_san_id.chu_ky_bao_tri_thang')
+    def _compute_ngay_bao_tri(self):
+        today = fields.Date.today()
+        for record in self:
+            chu_ky = record.loai_tai_san_id.chu_ky_bao_tri_thang or 0
+            if chu_ky == 0:
+                record.ngay_bao_tri_tiep_theo = False
+                record.is_qua_han_bao_tri = False
+                continue
+
+            last_date = False
+            if record.lich_su_bao_tri_ids:
+                bao_tri_dates = record.lich_su_bao_tri_ids.mapped('ngay_bao_tri')
+                valid_dates = [d for d in bao_tri_dates if d]
+                if valid_dates:
+                    last_date = max(valid_dates)
+            
+            if not last_date and record.ngay_mua:
+                last_date = record.ngay_mua.date() if isinstance(record.ngay_mua, datetime.datetime) else record.ngay_mua
+            
+            if last_date:
+                next_date = last_date + relativedelta(months=chu_ky)
+                record.ngay_bao_tri_tiep_theo = next_date
+                record.is_qua_han_bao_tri = next_date < today
+            else:
+                record.ngay_bao_tri_tiep_theo = False
+                record.is_qua_han_bao_tri = False
 
     @api.depends('trang_thai', 'gia_tri_hien_tai')
     def _compute_dashboard_stats(self):

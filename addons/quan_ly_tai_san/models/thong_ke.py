@@ -7,10 +7,11 @@ class ThongKeTaiSan(models.Model):
 
     tai_san_id = fields.Many2one('tai_san', string="Tài sản", readonly=True)
     trang_thai = fields.Selection([
-        ('moi', 'Mới'),
-        ('dang_su_dung', 'Đang sử dụng'),
-        ('bao_tri', 'Bảo trì'),
-        ('thanh_ly', 'Thanh lý')
+        ("LuuTru", "Lưu trữ"),
+        ("Muon", "Mượn"),
+        ("BaoTri", "Bảo trì"),
+        ("Hong", "Hỏng"),
+        ("DaThanhLy", "Đã thanh lý"),
     ], string="Trạng thái", readonly=True)
     loai_tai_san_id = fields.Many2one('loai_tai_san', string="Loại tài sản", readonly=True)
     vi_tri_hien_tai_id = fields.Many2one('vi_tri', string="Vị trí hiện tại", readonly=True)

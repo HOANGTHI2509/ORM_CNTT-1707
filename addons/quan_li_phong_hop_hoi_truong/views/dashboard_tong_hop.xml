@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_dashboard_tong_hop_board" model="ir.ui.view">
+        <field name="name">board.tong.hop.form</field>
+        <field name="model">board.board</field>
+        <field name="arch" type="xml">
+            <form string="Dashboard Tổng Hợp">
+                <board style="1">
+                    <column>
+                        <!-- Lịch họp -->
+                        <action string="Tình trạng phòng họp" name="%(quan_li_phong_hop_hoi_truong.action_dat_phong_dashboard)d"/>
+                    </column>
+                </board>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_dashboard_tong_hop" model="ir.actions.act_window">
+        <field name="name">Đại Sảnh (Dashboard)</field>
+        <field name="res_model">board.board</field>
+        <field name="view_mode">form</field>
+        <field name="usage">menu</field>
+        <field name="view_id" ref="view_dashboard_tong_hop_board"/>
+    </record>
+</odoo>
