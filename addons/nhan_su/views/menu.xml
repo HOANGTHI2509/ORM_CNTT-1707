@@ -67,18 +67,7 @@
             sequence="4"
             action="action_danh_sach_chung_chi_bang_cap"
         />
-        <menuitem name="Chấm công" 
-            id="menu_cham_cong" 
-            parent="menu_root" 
-            sequence="5"
-            action="action_cham_cong"
-        />
-        <menuitem name="Tính lương" 
-            id="menu_tinh_luong" 
-            parent="menu_root" 
-            sequence="6"
-            action="action_tinh_luong"
-        />
+
 
     </data>
 </odoo>

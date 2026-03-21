@@ -6,20 +6,31 @@
             <field name="model">nhan_vien</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <field name="trang_thai_lam_viec" widget="statusbar" options="{'clickable': '1'}"/>
+                    </header>
                     <sheet>
-                        <div class="oe_read_only" style="font-size:25px">Nhân viên</div>
-                        <group col="4" string="Thông tin chung">
-                            <field name="ho_ten_dem"/>
-                            <field name="ten"/>
-                            <field name="ho_va_ten"/>
-                            <field name="ma_dinh_danh"/>
-                            <field name="phong_ban_id"/>
-                            <field name="ngay_sinh"/>
-                            <field name="tuoi"/>
-                            <field name="so_nguoi_bang_tuoi"/>
-                            <field name="que_quan"/>
-                            <field name="email"/>
-                            <field name="anh" widget="image"/>
+                        <field name="anh" widget="image" class="oe_avatar" options='{"size": [128, 128]}'/>
+                        <div class="oe_title">
+                            <label for="ho_va_ten" class="oe_edit_only"/>
+                            <h1>
+                                <field name="ho_va_ten" placeholder="Tên nhân viên..."/>
+                            </h1>
+                        </div>
+                        <group string="Thông tin chung">
+                            <group>
+                                <field name="ho_ten_dem"/>
+                                <field name="ten"/>
+                                <field name="ma_dinh_danh"/>
+                                <field name="phong_ban_id"/>
+                            </group>
+                            <group>
+                                <field name="ngay_sinh"/>
+                                <field name="tuoi"/>
+                                <field name="so_nguoi_bang_tuoi"/>
+                                <field name="que_quan"/>
+                                <field name="email"/>
+                            </group>
                         </group>
                         <notebook>
                             <page string="Danh sách lịch sử công tác">
@@ -48,6 +59,9 @@
                     <field name="ho_ten_dem"/>
                     <field name="ten"/>
                     <field name="ho_va_ten"/>
+                    <field name="trang_thai_lam_viec" widget="badge" 
+                           decoration-success="trang_thai_lam_viec == 'dang_lam'" 
+                           decoration-danger="trang_thai_lam_viec == 'nghi_viec'"/>
                     <field name="ngay_sinh"/>
                     <field name="tuoi"/>
                     <field name="so_nguoi_bang_tuoi"/>
@@ -63,18 +77,80 @@
                 <search>
                     <field name="ma_dinh_danh"/>
                     <field name="ho_va_ten"/>
+                    <field name="trang_thai_lam_viec"/>
                     <field name="ngay_sinh"/>
                     <field name="tuoi"/>
                     <field name="que_quan"/>
                     <field name="email"/>
+
+                    <!-- Giao diện Bộ lọc thanh bên (Search Panel) cực xịn -->
+                    <searchpanel>
+                        <field name="phong_ban_id" icon="fa-building" enable_counters="1" string="Phòng Ban"/>
+                        <field name="trang_thai_lam_viec" icon="fa-id-badge" enable_counters="1" select="multi" string="Trạng Thái"/>
+                    </searchpanel>
                 </search>
+            </field>
+        </record>
+
+        <record id="view_nhan_vien_kanban" model="ir.ui.view">
+            <field name="name">nhan_vien.kanban</field>
+            <field name="model">nhan_vien</field>
+            <field name="arch" type="xml">
+                <kanban class="o_hr_employee_kanban">
+                    <field name="id"/>
+                    <field name="ho_va_ten"/>
+                    <field name="anh"/>
+                    <field name="phong_ban_id"/>
+                    <field name="email"/>
+                    <field name="so_dien_thoai"/>
+                    <field name="trang_thai_lam_viec"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
+                                <!-- Employee Avatar -->
+                                <div class="o_kanban_image_fill_left d-none d-md-block"
+                                     t-attf-style="background-image: url(#{kanban_image('nhan_vien', 'anh', record.id.raw_value)})"
+                                     role="img"/>
+                                
+                                <div class="oe_kanban_details">
+                                    <div class="o_kanban_record_top">
+                                        <div class="o_kanban_record_headings">
+                                            <strong class="o_kanban_record_title">
+                                                <field name="ho_va_ten"/>
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <ul>
+                                        <li t-if="record.phong_ban_id.raw_value" class="o_text_overflow">
+                                            <i class="fa fa-fw me-2 fa-building-o" title="Phòng ban"/>
+                                            <field name="phong_ban_id"/>
+                                        </li>
+                                        <li t-if="record.email.raw_value" class="o_text_overflow">
+                                            <i class="fa fa-fw me-2 fa-envelope-o" title="Email"/>
+                                            <field name="email"/>
+                                        </li>
+                                        <li t-if="record.so_dien_thoai.raw_value" class="o_force_ltr">
+                                            <i class="fa fa-fw me-2 fa-phone" title="Số điện thoại"/>
+                                            <field name="so_dien_thoai"/>
+                                        </li>
+                                    </ul>
+                                    <div class="mt-2">
+                                        <field name="trang_thai_lam_viec" widget="badge" 
+                                               decoration-success="trang_thai_lam_viec == 'dang_lam'" 
+                                               decoration-danger="trang_thai_lam_viec == 'nghi_viec'"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
             </field>
         </record>
 
         <record id="action_nhan_vien" model="ir.actions.act_window">
             <field name="name">Nhân viên</field>
             <field name="res_model">nhan_vien</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
             <field name="search_view_id" ref = "nhan_vien_search"/>
         </record>
     </data>

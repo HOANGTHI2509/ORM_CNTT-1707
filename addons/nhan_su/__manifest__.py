@@ -32,8 +32,6 @@
         'views/lich_su_cong_tac.xml',
         'views/chung_chi_bang_cap.xml',
         'views/danh_sach_chung_chi_bang_cap.xml',
-        'views/cham_cong.xml',
-        'views/tinh_luong.xml',
         'views/phong_ban_view.xml',
         'views/hop_dong_lao_dong_view.xml',
         'views/menu.xml',

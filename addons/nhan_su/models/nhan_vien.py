@@ -14,6 +14,11 @@ class NhanVien(models.Model):
     ho_ten_dem = fields.Char("Họ tên đệm", required=True)
     ten = fields.Char("Tên", required=True)
     ho_va_ten = fields.Char("Họ và tên", compute="_compute_ho_va_ten", store=True)
+    trang_thai_lam_viec = fields.Selection([
+        ('dang_lam', 'Đang làm việc'),
+        ('nghi_viec', 'Nghỉ làm')
+    ], string="Trạng thái", default='dang_lam')
+
     
     ngay_sinh = fields.Date("Ngày sinh")
     que_quan = fields.Char("Quê quán")

@@ -25,6 +25,11 @@ class LichSuBaoTri(models.Model):
         required=True,
         ondelete="cascade"
     )
+    dot_bao_duong_id = fields.Many2one(
+        comodel_name="dot_bao_duong",
+        string="Thuộc đợt bảo dưỡng",
+        ondelete="cascade"
+    )
 
     @api.constrains('ngay_bao_tri', 'ngay_tra')
     def _check_valid_dates(self):

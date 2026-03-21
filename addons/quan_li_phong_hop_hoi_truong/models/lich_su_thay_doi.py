@@ -14,10 +14,12 @@ class LichSuThayDoi(models.Model):
     thoi_gian_tra_thuc_te = fields.Datetime(string="Thời gian trả thực tế")
     trang_thai = fields.Selection([
         ("chờ_duyệt", "Chờ duyệt"),
+        ("cho_duyet_cap_2", "Chờ duyệt cấp 2"),
         ("đã_duyệt", "Đã duyệt"),
         ("đang_sử_dụng", "Đang sử dụng"),
         ("đã_hủy", "Đã hủy"),
         ("đã_trả", "Đã trả")
     ], string="Trạng thái")
     ngay_thay_doi = fields.Datetime(string="Ngày thay đổi", default=lambda self: datetime.now())
-    
+    ghi_chu = fields.Text(string="Thông báo hệ thống")
+

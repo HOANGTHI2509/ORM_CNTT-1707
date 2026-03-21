@@ -17,3 +17,6 @@ access_thong_ke,thong_ke.thong_ke,model_thong_ke,base.group_user,1,1,1,1
 
 
 access_chi_tiet_phieu_muon,chi_tiet_phieu_muon.chi_tiet_phieu_muon,model_chi_tiet_phieu_muon,base.group_user,1,1,1,1
+access_phieu_ban_giao,phieu_ban_giao.phieu_ban_giao,model_phieu_ban_giao,base.group_user,1,1,1,1
+access_chi_tiet_ban_giao,chi_tiet_ban_giao.chi_tiet_ban_giao,model_chi_tiet_ban_giao,base.group_user,1,1,1,1
+access_dot_bao_duong,dot_bao_duong.dot_bao_duong,model_dot_bao_duong,base.group_user,1,1,1,1

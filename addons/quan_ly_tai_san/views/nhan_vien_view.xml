@@ -7,18 +7,14 @@
             <field name="inherit_id" ref="nhan_su.view_nhan_vien_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
-                    <page string="Tài sản đang giữ">
-                        <field name="tai_san_ids">
+                    <page string="Lịch sử nhận/trả tài sản">
+                        <field name="phieu_ban_giao_ids" readonly="1">
                             <tree>
-                                <field name="ma_tai_san"/>
-                                <field name="ten_tai_san"/>
-                                <field name="trang_thai" widget="badge" 
-                                       decoration-info="trang_thai=='Muon'"
-                                       decoration-danger="trang_thai=='Hong'"
-                                       decoration-muted="trang_thai=='ThanhLy'"
-                                       decoration-success="trang_thai=='LuuTru'"/>
-                                <field name="ngay_mua"/>
-                                <field name="gia_tri_hien_tai"/>
+                                <field name="ma_phieu"/>
+                                <field name="loai_phieu"/>
+                                <field name="nguoi_giao_id"/>
+                                <field name="ngay_ban_giao"/>
+                                <field name="trang_thai"/>
                             </tree>
                         </field>
                     </page>

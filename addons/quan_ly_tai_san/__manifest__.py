@@ -15,7 +15,7 @@
     'website': "http://www.yourcompany.com",
 
     'category': 'Human Resources/Assets',
-    'version': '0.1',
+    'version': '0.2',
     'license': 'LGPL-3',
 
     'depends': ['base', 'nhan_su'],
@@ -39,6 +39,8 @@
         'views/khau_hao.xml',
         'views/thong_ke.xml',
         'views/nhan_vien_view.xml',
+        'views/phieu_ban_giao_view.xml',
+        'views/dot_bao_duong_view.xml',
         'views/menu.xml',
         'data/demo_tai_san.xml',
     ],

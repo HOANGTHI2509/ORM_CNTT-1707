@@ -17,7 +17,7 @@ class QuanLyPhongHop(models.Model):
         ("Trống", "Trống"),
         ("Đã_mượn", "Đã mượn"),
         ("Đang_sử_dụng", "Đang sử dụng"),
-    ], string="Trạng thái", compute="_compute_trang_thai", store=True)
+    ], string="Trạng thái", compute="_compute_trang_thai")
 
     dat_phong_ids = fields.One2many("dat_phong", "phong_id", string="Lịch sử mượn phòng")
     thiet_bi_ids = fields.One2many("thiet_bi", "phong_id", string="Thiết bị trong phòng")
@@ -25,7 +25,7 @@ class QuanLyPhongHop(models.Model):
     lich_dat_phong_ids = fields.One2many(
         "dat_phong", "phong_id",
         string="Lịch đặt phòng",
-        domain=[("trang_thai", "in", ["đã_duyệt", "đang_sử_dụng"])]
+        domain=[("trang_thai", "in", ["cho_duyet_cap_2", "đã_duyệt", "đang_sử_dụng"])]
     )
 
     # Lịch sử mượn trả (Chỉ hiển thị các trạng thái "Đã trả")
@@ -38,7 +38,7 @@ class QuanLyPhongHop(models.Model):
     @api.depends("dat_phong_ids.trang_thai")
     def _compute_trang_thai(self):
         for record in self:
-            trang_thai_dat_phong = record.dat_phong_ids.filtered(lambda r: r.trang_thai in ["đã_duyệt", "đang_sử_dụng"])
+            trang_thai_dat_phong = record.dat_phong_ids.filtered(lambda r: r.trang_thai in ["cho_duyet_cap_2", "đã_duyệt", "đang_sử_dụng"])
             trang_thai_dang_su_dung = record.dat_phong_ids.filtered(lambda r: r.trang_thai == "đang_sử_dụng")
             trang_thai_da_huy_da_tra = record.dat_phong_ids.filtered(lambda r: r.trang_thai in ["đã_hủy", "đã_trả"])
 

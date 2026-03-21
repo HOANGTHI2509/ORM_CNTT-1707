@@ -16,3 +16,5 @@ from . import phieu_kiem_ke
 from . import lich_su_kiem_ke
 from . import thanh_ly
 from . import thong_ke
+from . import phieu_ban_giao
+from . import dot_bao_duong

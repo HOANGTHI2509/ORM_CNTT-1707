@@ -20,12 +20,7 @@
                 <pivot string="Thống kê tài sản">
                     <field name="trang_thai" type="row"/>
                     <field name="loai_tai_san_id" type="col"/>
-                    <field name="gia_tien_mua" type="measure" operator="sum"/>
                     <field name="gia_tri_hien_tai" type="measure" operator="sum"/>
-                    <field name="gia_tri_thanh_ly" type="measure" operator="sum"/>
-                    <field name="so_lan_su_dung" type="measure" operator="sum"/>
-                    <field name="so_lan_bao_tri" type="measure" operator="sum"/>
-                    <field name="tong_chi_phi_bao_tri" type="measure" operator="sum"/>
                 </pivot>
             </field>
         </record>
@@ -65,7 +60,7 @@
         <record id="action_thong_ke" model="ir.actions.act_window">
             <field name="name">Thống kê tài sản</field>
             <field name="res_model">thong_ke</field>
-            <field name="view_mode">pivot,graph</field>
+            <field name="view_mode">graph,pivot</field>
             <field name="search_view_id" ref="view_thong_ke_search"/>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">

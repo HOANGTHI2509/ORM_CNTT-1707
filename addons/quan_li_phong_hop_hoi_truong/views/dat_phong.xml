@@ -24,12 +24,28 @@
             <field name="model">dat_phong</field>
             <field name="arch" type="xml">
                 <form string="📋 Chi tiết Đăng Ký Mượn Phòng">
+                    <header>
+                        <button name="xac_nhan_duyet_phong" string="✅ Duyệt" type="object" class="btn-primary"
+                            attrs="{'invisible': [('trang_thai', '!=', 'chờ_duyệt')]}"/>
+                        <button name="xac_nhan_duyet_cap_2" string="⭐ Lãnh đạo Duyệt" type="object" class="btn-warning"
+                            attrs="{'invisible': [('trang_thai', '!=', 'cho_duyet_cap_2')]}"/>
+                        <button name="huy_muon_phong" string="❌ Hủy" type="object" class="btn-danger"
+                            attrs="{'invisible': [('trang_thai', '!=', 'chờ_duyệt')]}"/>
+                        <button name="bat_dau_su_dung" string="🚀 Bắt đầu" type="object" class="btn-success"
+                            attrs="{'invisible': [('trang_thai', '!=', 'đã_duyệt')]}"/>
+                        <button name="huy_da_duyet" string="🛑 Hủy" type="object" class="btn-warning"
+                            attrs="{'invisible': [('trang_thai', '!=', 'đã_duyệt')]}"/>
+                        <button name="tra_phong" string="🏠 Trả phòng" type="object" class="btn-info"
+                            attrs="{'invisible': [('trang_thai', '!=', 'đang_sử_dụng')]}"/>
+                        <field name="trang_thai" widget="statusbar" statusbar_visible="chờ_duyệt,đã_duyệt,đang_sử_dụng"/>
+                    </header>
                     <sheet>
                         <group col="2">
                             <group>
                                 <separator string="🏷 Thông tin chung" colspan="2"/>
                                 <field name="phong_id"/>
                                 <field name="nguoi_muon_id"/>
+                                <field name="email"/>
                                 <field name="tai_san_ids" widget="many2many_tags" options="{'no_create': True}"/>
                                 <field name="dich_vu_ids" widget="many2many_tags" options="{'no_create': False}"/>
                             </group>
@@ -72,8 +88,7 @@
                         attrs="{'invisible': [('trang_thai', '!=', 'chờ_duyệt')]}"/>
                     
                     <button name="xac_nhan_duyet_cap_2" string="⭐ Lãnh đạo Duyệt" type="object" class="btn-warning"
-                        attrs="{'invisible': [('trang_thai', '!=', 'cho_duyet_cap_2')]}"
-                        groups="quan_li_phong_hop_hoi_truong.group_lanh_dao_duyet_phong"/>
+                        attrs="{'invisible': [('trang_thai', '!=', 'cho_duyet_cap_2')]}"/>
 
                     <button name="huy_muon_phong" string="❌ Hủy" type="object" class="btn-danger"
                         attrs="{'invisible': [('trang_thai', '!=', 'chờ_duyệt')]}"/>
@@ -115,7 +130,7 @@
             <field name="res_model">dat_phong</field>
             <field name="view_mode">tree,form</field>
             <field name="search_view_id" ref="dat_phong_search"/>
-            <field name="domain">[("trang_thai", "=", "chờ_duyệt")]</field>
+            <field name="domain">[("trang_thai", "in", ["chờ_duyệt", "cho_duyet_cap_2"])]</field>
         </record>
 
         <!-- Action - Danh sách Đã duyệt -->
