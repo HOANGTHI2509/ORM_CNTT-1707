@@ -38,9 +38,16 @@
                             attrs="{'invisible': [('trang_thai', '!=', 'đã_duyệt')]}"/>
                         <button name="tra_phong" string="🏠 Trả phòng" type="object" class="btn-info"
                             attrs="{'invisible': [('trang_thai', '!=', 'đang_sử_dụng')]}"/>
+                        <button name="action_lap_bien_ban" type="object" string="🚨 Báo hỏng / Lập Biên Bản" class="btn-danger"
+                            attrs="{'invisible': [('trang_thai', 'in', ['chờ_duyệt', 'cho_duyet_cap_2', 'đã_hủy'])]}"/>
                         <field name="trang_thai" widget="statusbar" statusbar_visible="chờ_duyệt,đã_duyệt,đang_sử_dụng"/>
                     </header>
                     <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ma_phieu" readonly="1"/>
+                            </h1>
+                        </div>
                         <group col="2">
                             <group>
                                 <separator string="🏷 Thông tin chung" colspan="2"/>
@@ -48,7 +55,7 @@
                                 <field name="nguoi_muon_id"/>
                                 <field name="email"/>
                                 <field name="tai_san_ids" widget="many2many_tags" options="{'no_create': True}"/>
-                                <field name="dich_vu_ids" widget="many2many_tags" options="{'no_create': False}"/>
+                                <field name="dich_vu_ids" widget="many2many_checkboxes"/>
                             </group>
                         </group>
 
@@ -61,7 +68,19 @@
                         </group>
                         <notebook>
                             <!-- Thêm tab hiển thị chi tiết sử dụng -->
-
+                            <page string="Phiếu Báo Hỏng / Đền Bù" name="bien_ban_den_bu">
+                                <field name="bien_ban_ids" readonly="1">
+                                    <tree>
+                                        <field name="ma_bien_ban"/>
+                                        <field name="tai_san_id"/>
+                                        <field name="so_tien_phat" widget="monetary"/>
+                                        <field name="trang_thai" widget="badge" 
+                                               decoration-success="trang_thai == 'da_duyet'" 
+                                               decoration-warning="trang_thai == 'cho_duyet'"
+                                               decoration-info="trang_thai == 'nhap'"/>
+                                    </tree>
+                                </field>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>
@@ -74,6 +93,7 @@
             <field name="model">dat_phong</field>
             <field name="arch" type="xml">
                 <tree string="📋 Danh sách Đăng Ký Mượn Phòng">
+                    <field name="ma_phieu" string="Mã phiếu"/>
                     <field name="phong_id" string="🏢 Phòng họp"/>
                     <field name="nguoi_muon_id" string="👤 Người mượn"/>
                     <field name="thoi_gian_muon_du_kien" string="⏳ Mượn dự kiến"/>
@@ -108,6 +128,7 @@
             <field name="model">dat_phong</field>
             <field name="arch" type="xml">
                 <search string="🔍 Tìm kiếm Đăng Ký Mượn Phòng">
+                    <field name="ma_phieu" string="Mã phiếu"/>
                     <field name="phong_id" string="🏢 Phòng họp"/>
                     <field name="nguoi_muon_id" string="👤 Người mượn"/>
                     <field name="thoi_gian_muon_du_kien" string="⏳ Mượn dự kiến"/>

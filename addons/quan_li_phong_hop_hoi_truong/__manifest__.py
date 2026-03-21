@@ -36,6 +36,7 @@
         'views/dat_phong_dashboard.xml',
         'views/dashboard_tong_hop.xml',
         'views/nhan_vien_view.xml',
+        'views/bien_ban_den_bu.xml',
         'views/menu.xml',
         'data/demo_phong_hop.xml',
         'data/cron_jobs.xml',

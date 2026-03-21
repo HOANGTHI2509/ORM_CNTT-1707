@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View - Biên Bản Đền Bù -->
+        <record id="view_bien_ban_den_bu_form" model="ir.ui.view">
+            <field name="name">bien.ban.den.bu.form</field>
+            <field name="model">bien_ban_den_bu</field>
+            <field name="arch" type="xml">
+                <form string="Biên Bản Đền Bù Tài Sản">
+                    <header>
+                        <button name="action_gui_duyet" type="object" string="Gửi Xét Duyệt" class="btn-primary" attrs="{'invisible': [('trang_thai', '!=', 'nhap')]}"/>
+                        <button name="action_duyet" type="object" string="Duyệt Đền Bù / Khóa Tài Sản" class="btn-warning" attrs="{'invisible': [('trang_thai', '!=', 'cho_duyet')]}"/>
+                        <button name="action_huy" type="object" string="Hủy Biên Bản" attrs="{'invisible': [('trang_thai', 'in', ['da_duyet', 'da_huy'])]}"/>
+                        <field name="trang_thai" widget="statusbar" statusbar_visible="nhap,cho_duyet,da_duyet,da_huy"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ma_bien_ban" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="dat_phong_id" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}"/>
+                                <field name="nhan_vien_id" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="tai_san_id" domain="[('trang_thai', '!=', 'Hong')]" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}"/>
+                                <field name="so_tien_phat" widget="monetary" attrs="{'readonly': [('trang_thai', 'in', ['da_duyet', 'da_huy'])]}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="tinh_trang_thiet_bi" placeholder="Nhập chi tiết về mức độ hỏng hóc..." attrs="{'readonly': [('trang_thai', 'in', ['da_duyet', 'da_huy'])]}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View - Danh sách Biên Bản Đền Bù -->
+        <record id="view_bien_ban_den_bu_tree" model="ir.ui.view">
+            <field name="name">bien.ban.den.bu.tree</field>
+            <field name="model">bien_ban_den_bu</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sách Biên Bản Phạt/Đền bù">
+                    <field name="ma_bien_ban"/>
+                    <field name="nhan_vien_id"/>
+                    <field name="dat_phong_id"/>
+                    <field name="tai_san_id"/>
+                    <field name="so_tien_phat" widget="monetary"/>
+                    <field name="trang_thai" string="Trạng thái" widget="badge" 
+                           decoration-success="trang_thai == 'da_duyet'" 
+                           decoration-warning="trang_thai == 'cho_duyet'"
+                           decoration-muted="trang_thai == 'da_huy'"
+                           decoration-info="trang_thai == 'nhap'"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action - Biên Bản Đền Bù -->
+        <record id="action_bien_ban_den_bu" model="ir.actions.act_window">
+            <field name="name">Biên Bản Phạt/Đền Bù</field>
+            <field name="res_model">bien_ban_den_bu</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Tạo Biên Bản Đền Bù đầu tiên
+                </p>
+                <p>
+                    Biên bản sẽ đóng băng tài sản và làm căn cứ phạt nhân viên vi phạm Nội quy phòng họp.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

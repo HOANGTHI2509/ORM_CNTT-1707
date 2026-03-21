@@ -10,15 +10,18 @@
                         <group col="2">
                             <group>
                                 <separator string="🏷 Thông tin chung" colspan="2"/>
+                                <field name="ma_phieu" readonly="1"/>
                                 <field name="ngay_su_dung"/>
                                 <field name="phong_id"/>
+                                <field name="nguoi_muon_id" readonly="1"/>
                                 <field name="tong_thoi_gian_su_dung"/>
                             </group>
                         </group>
 
                         <group col="2">
-                            <separator string="📊 Chi Tiết Sử Dụng" colspan="2"/>
-
+                            <separator string="📊 Chi Tiết Sử Dụng (Mang theo lúc mượn)" colspan="2"/>
+                            <field name="tai_san_ids" widget="many2many_tags" readonly="1"/>
+                            <field name="dich_vu_ids" widget="many2many_tags" readonly="1"/>
                         </group>
                     </sheet>
                 </form>
@@ -31,8 +34,10 @@
             <field name="model">lich_su_muon_tra</field>
             <field name="arch" type="xml">
                 <tree string="📜 Lịch Sử Mượn Trả" create="false">
+                    <field name="ma_phieu" string="Mã phiếu"/>
                     <field name="ngay_su_dung" string="📅 Ngày"/>
                     <field name="phong_id" string="🏢 Phòng"/>
+                    <field name="nguoi_muon_id" string="👤 Người mượn"/>
                     <field name="tong_thoi_gian_su_dung" string="⏳ Tổng thời gian sử dụng"/>
                 </tree>
             </field>
@@ -43,8 +48,10 @@
             <field name="model">lich_su_muon_tra</field>
             <field name="arch" type="xml">
                 <search string="🔍 Tìm kiếm Lịch Sử Mượn Trả">
+                    <field name="ma_phieu" string="Mã phiếu"/>
                     <field name="ngay_su_dung" string="📅 Ngày"/>
                     <field name="phong_id" string="🏢 Phòng"/>
+                    <field name="nguoi_muon_id" string="👤 Người mượn"/>
                 </search>
             </field>
         </record>

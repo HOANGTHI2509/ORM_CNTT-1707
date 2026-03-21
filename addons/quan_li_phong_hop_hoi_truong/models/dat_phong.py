@@ -1,8 +1,25 @@
 from odoo import models, fields, api, exceptions
 from datetime import datetime
 import logging
+import requests
 
 _logger = logging.getLogger(__name__)
+
+# ================= CẤU HÌNH TELEGRAM API =================
+TELEGRAM_BOT_TOKEN = "8674994673:AAGry6psZQjjR1EMXcXprIEevecQ6Ur4Ei0"
+TELEGRAM_CHAT_ID = "8262831605"
+
+def gui_tin_nhan_telegram(message):
+    if "THAY_" in TELEGRAM_BOT_TOKEN or "THAY_" in TELEGRAM_CHAT_ID:
+        _logger.warning("Chưa cấu hình Telegram Token hoặc Chat ID. Bỏ qua gửi tin nhắn.")
+        return
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    try:
+        requests.post(url, json={'chat_id': TELEGRAM_CHAT_ID, 'text': message, 'parse_mode': 'HTML'}, timeout=5)
+    except Exception as e:
+        _logger.error("Lỗi gửi Telegram: %s", str(e))
+# ==========================================================
+
 _logger.info("DEBUG: Module dat_phong.py ĐÃ ĐƯỢC LOAD")
 
 class DatPhong(models.Model):
@@ -10,6 +27,7 @@ class DatPhong(models.Model):
     _description = "Đăng ký mượn phòng"
 
     phong_id = fields.Many2one("quan_ly_phong_hop", string="Phòng họp", required=True)
+    ma_phieu = fields.Char(string="Mã Đặt Phòng", required=True, copy=False, readonly=True, default="New")
     nguoi_muon_id = fields.Many2one("nhan_vien", string="Người mượn", required=True)  
     email = fields.Char(string="Email nhận thông báo", required=True, help="Vui lòng nhập email @gmail.com")
     thoi_gian_muon_du_kien = fields.Datetime(string="Thời gian mượn dự kiến", required=True)
@@ -54,8 +72,22 @@ class DatPhong(models.Model):
             if record.email and not record.email.endswith('@gmail.com'):
                 raise exceptions.ValidationError("Email nhận thông báo không hợp lệ. Vui lòng sử dụng địa chỉ @gmail.com.")
 
+    @api.constrains('so_luong', 'phong_id')
+    def _check_suc_chua(self):
+        for record in self:
+            if record.phong_id and record.so_luong > record.phong_id.suc_chua:
+                raise exceptions.ValidationError(f"Phòng này chỉ chứa được tối đa {record.phong_id.suc_chua} người!")
+
     @api.model
     def create(self, vals):
+        if vals.get('ma_phieu', 'New') == 'New':
+            last_record = self.search([('ma_phieu', '=like', 'DP-%')], order='ma_phieu desc', limit=1)
+            if last_record:
+                last_number = int(last_record.ma_phieu.replace('DP-', ''))
+                vals['ma_phieu'] = f'DP-{last_number + 1:05d}'
+            else:
+                vals['ma_phieu'] = 'DP-00001'
+
         # Tạo bản ghi gốc
         record = super(DatPhong, self).create(vals)
         
@@ -118,6 +150,28 @@ class DatPhong(models.Model):
 
     lich_su_ids = fields.One2many("lich_su_thay_doi", "dat_phong_id", string="Lịch sử mượn trả")
 
+    def name_get(self):
+        result = []
+        for record in self:
+            name = f"[{record.ma_phieu}] {record.phong_id.name} - Người mượn: {record.nguoi_muon_id.display_name}"
+            result.append((record.id, name))
+        return result
+
+    bien_ban_ids = fields.One2many("bien_ban_den_bu", "dat_phong_id", string="Biên Bản Phạt/Đền Bù")
+
+    def action_lap_bien_ban(self):
+        self.ensure_one()
+        return {
+            'name': 'Lập Biên Bản Đền Bù',
+            'type': 'ir.actions.act_window',
+            'res_model': 'bien_ban_den_bu',
+            'view_mode': 'form',
+            'context': {
+                'default_dat_phong_id': self.id,
+            },
+            'target': 'current'
+        }
+
     def _gui_thong_bao_email(self, email_to, subject, message):
         """ Hàm phụ trợ để gửi thông báo Email đơn giản """
         _logger.info("DEBUG: Khởi động _gui_thong_bao_email cho %s", email_to if email_to else "None")
@@ -178,6 +232,10 @@ class DatPhong(models.Model):
                 _logger.info("DEBUG: Chuẩn bị gửi thông báo Duyệt cấp 1")
                 self._gui_thong_bao_email(record.email, f"Thông báo duyệt phòng: {record.phong_id.name}", msg)
                 ghi_chu_log = f"Đã gửi Email thông báo duyệt phòng tới {record.email}"
+                
+                # Gửi thông báo Telegram
+                tele_msg = f"✅ <b>ĐẶT PHÒNG THÀNH CÔNG</b>\nPhòng: {record.phong_id.name}\nNgười mượn: {record.nguoi_muon_id.display_name}\nThời gian: {record.thoi_gian_muon_du_kien.strftime('%H:%M %d/%m')} - {record.thoi_gian_tra_du_kien.strftime('%H:%M %d/%m')}"
+                gui_tin_nhan_telegram(tele_msg)
             
             self.lich_su(record, ghi_chu=ghi_chu_log)
 

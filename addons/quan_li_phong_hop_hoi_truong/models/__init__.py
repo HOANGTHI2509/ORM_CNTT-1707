@@ -8,3 +8,4 @@ from . import lich_su_muon_tra
 from . import thiet_bi
 from . import nhan_vien_inherit
 from . import chi_tiet_dat_phong
+from . import bien_ban_den_bu

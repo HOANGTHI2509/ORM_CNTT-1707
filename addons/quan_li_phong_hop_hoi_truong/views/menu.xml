@@ -58,5 +58,11 @@
                   parent="menu_root"
                   action="action_dich_vu_di_kem"
                   sequence="30"/>
+                  
+        <menuitem id="menu_bien_ban_den_bu"
+                  name="🚨 Biên Bản Đền Bù"
+                  parent="menu_root"
+                  action="action_bien_ban_den_bu"
+                  sequence="15"/>
     </data>
 </odoo>
