@@ -77,6 +77,130 @@ class DatPhong(models.Model):
         for record in self:
             if record.phong_id and record.so_luong > record.phong_id.suc_chua:
                 raise exceptions.ValidationError(f"Phòng này chỉ chứa được tối đa {record.phong_id.suc_chua} người!")
+                
+    @api.constrains('tai_san_ids', 'thoi_gian_muon_du_kien', 'thoi_gian_tra_du_kien', 'trang_thai')
+    def _check_xung_dot_tai_san(self):
+        """ TÍNH NĂNG 1: CHỐNG XUNG ĐỘT TÀI SẢN (ĐỀ 6) """
+        for record in self:
+            if record.trang_thai in ['đã_hủy', 'đã_trả']:
+                continue
+            if not record.tai_san_ids or not record.thoi_gian_muon_du_kien or not record.thoi_gian_tra_du_kien:
+                continue
+                
+            for tai_san in record.tai_san_ids:
+                conflicts = self.search([
+                    ('id', '!=', record.id),
+                    ('tai_san_ids', 'in', tai_san.id),
+                    ('trang_thai', 'not in', ['đã_hủy', 'đã_trả']),
+                    ('thoi_gian_muon_du_kien', '<', record.thoi_gian_tra_du_kien),
+                    ('thoi_gian_tra_du_kien', '>', record.thoi_gian_muon_du_kien)
+                ])
+                if conflicts:
+                    raise exceptions.ValidationError(
+                        f"⛔ Xung đột Lịch mượn Tài sản dùng chung!\n"
+                        f"Tài sản '{tai_san.ten_tai_san}' đã bị mượn bởi phiếu '{conflicts[0].ma_phieu}' "
+                        f"trong cùng khung giờ. Vui lòng chọn tài sản khác hoặc dời giờ họp."
+                    )
+
+    @api.onchange('tai_san_ids', 'thoi_gian_muon_du_kien', 'thoi_gian_tra_du_kien')
+    def _onchange_dieu_phoi_tai_san(self):
+        """ TÍNH NĂNG 3: ĐIỀU PHỐI TÀI SẢN THÔNG MINH KHI CÓ XUNG ĐỘT MƯỢN CHUNG (ĐỀ 6) """
+        if not self.thoi_gian_muon_du_kien or not self.thoi_gian_tra_du_kien or not getattr(self, 'tai_san_ids', False):
+            return
+
+        thong_bao_dieu_phoi = []
+        tai_san_ids_hop_le = []
+        origin_id = getattr(self, '_origin', False)
+        record_id = origin_id.id if origin_id else False
+        
+        for tai_san in self.tai_san_ids:
+            conflicts = self.env['dat_phong'].search([
+                ('id', '!=', record_id),
+                ('tai_san_ids', 'in', tai_san.id),
+                ('trang_thai', 'not in', ['đã_hủy', 'đã_trả']),
+                ('thoi_gian_muon_du_kien', '<', self.thoi_gian_tra_du_kien),
+                ('thoi_gian_tra_du_kien', '>', self.thoi_gian_muon_du_kien)
+            ])
+            
+            if conflicts:
+                tai_san_thay_the = self.env['tai_san'].search([
+                    ('loai_tai_san_id', '=', tai_san.loai_tai_san_id.id),
+                    ('trang_thai', '=', 'LuuTru'),
+                    ('id', '!=', tai_san.id)
+                ])
+                
+                tai_san_ranh = None
+                for ts_tt in tai_san_thay_the:
+                    is_ban = self.env['dat_phong'].search_count([
+                        ('id', '!=', record_id),
+                        ('tai_san_ids', 'in', ts_tt.id),
+                        ('trang_thai', 'not in', ['đã_hủy', 'đã_trả']),
+                        ('thoi_gian_muon_du_kien', '<', self.thoi_gian_tra_du_kien),
+                        ('thoi_gian_tra_du_kien', '>', self.thoi_gian_muon_du_kien)
+                    ])
+                    if is_ban == 0:
+                        tai_san_ranh = ts_tt
+                        break
+                
+                if tai_san_ranh:
+                    tai_san_ids_hop_le.append(tai_san_ranh.id)
+                    thong_bao_dieu_phoi.append(f"🔄 Đã gỡ bỏ '{tai_san.ten_tai_san}' (Kẹt lịch) -> Tự động đổi lấy '{tai_san_ranh.ten_tai_san}' (Sẵn sàng).")
+                else:
+                    tai_san_ids_hop_le.append(tai_san.id)
+            else:
+                tai_san_ids_hop_le.append(tai_san.id)
+                
+        if thong_bao_dieu_phoi:
+            self.tai_san_ids = [(6, 0, tai_san_ids_hop_le)]
+            return {
+                'warning': {
+                    'title': "🤖 HỆ THỐNG ĐIỀU PHỐI TÀI SẢN THÔNG MINH",
+                    'message': "Một số Tài sản dùng chung bạn vừa chọn đã bị trùng lịch! Hệ thống đã Điều phối Tự động bằng cách trích xuất các Thiết bị rảnh rỗi tương đương:\n\n" + "\n".join(thong_bao_dieu_phoi)
+                }
+            }
+
+    @api.constrains('phong_id', 'thoi_gian_muon_du_kien', 'thoi_gian_tra_du_kien', 'trang_thai')
+    def _check_xung_dot_phong(self):
+        """ TÍNH NĂNG 2: PHÂN QUYỀN ĐIỀU PHỐI (CƯỚP LỊCH) DỰA TRÊN CẤP BẬC HR (ĐỀ 6) """
+        for record in self:
+            if record.trang_thai in ['đã_hủy', 'đã_trả']:
+                continue
+            if not record.phong_id or not record.thoi_gian_muon_du_kien or not record.thoi_gian_tra_du_kien:
+                continue
+
+            # Phân quyền: Cấp bậc HR
+            def get_rank(nhan_vien):
+                ten_cv = nhan_vien.chuc_vu_id.name.lower() if nhan_vien.chuc_vu_id else ""
+                if 'giám đốc' in ten_cv: return 4
+                if 'trưởng phòng' in ten_cv: return 3
+                if 'phó' in ten_cv: return 2
+                return 1
+
+            current_rank = get_rank(record.nguoi_muon_id)
+
+            conflicts = self.search([
+                ('id', '!=', record.id),
+                ('phong_id', '=', record.phong_id.id),
+                ('trang_thai', 'not in', ['đã_hủy', 'đã_trả']),
+                ('thoi_gian_muon_du_kien', '<', record.thoi_gian_tra_du_kien),
+                ('thoi_gian_tra_du_kien', '>', record.thoi_gian_muon_du_kien)
+            ])
+            for other in conflicts:
+                other_rank = get_rank(other.nguoi_muon_id)
+                # Nếu mình có rank CAO HƠN HẲN, mình cướp lịch (Tự động Hủy đơn của họ)
+                if current_rank > other_rank:
+                    other.trang_thai = 'đã_hủy'
+                    msg_cancel = f"⚠️ Yêu cầu mượn phòng {other.phong_id.name} của bạn bị HỦY để nhường Quyền Ưu Tiên cho Lãnh Đạo (Bị cướp lịch bởi {record.nguoi_muon_id.display_name})."
+                    self._gui_thong_bao_email(other.email, f"Hủy lịch nhường Quyền Ưu Tiên: {other.phong_id.name}", msg_cancel)
+                    
+                    tele_msg = f"⚔️ <b>CƯỚP LỊCH THÀNH CÔNG</b>\nLãnh đạo {record.nguoi_muon_id.display_name} vừa đè lịch phòng {record.phong_id.name} của {other.nguoi_muon_id.display_name}."
+                    gui_tin_nhan_telegram(tele_msg)
+                else:
+                    raise exceptions.ValidationError(
+                        f"⛔ Xung đột Lịch Phòng Họp!\n"
+                        f"Phòng '{record.phong_id.name}' đã được đặt bởi '{other.nguoi_muon_id.display_name}' "
+                        f"trong cùng khung giờ. Chức vụ của bạn không đủ Quyền Ưu Tiên để đè lịch. Vui lòng chọn giờ khác!"
+                    )
 
     @api.model
     def create(self, vals):
@@ -272,53 +396,8 @@ class DatPhong(models.Model):
 
             self.lich_su(record, ghi_chu=f"Đã gửi Email thông báo Lãnh đạo duyệt tới {record.email}")
 
-            # Logic hủy các yêu cầu trùng (đã copy từ trên xuống để đảm bảo chạy khi duyệt chính thức)
-            # Hủy các yêu cầu cùng phòng có thời gian trùng lặp
-            cung_phong_trung_thoi_gian = [
-                ('phong_id', '=', record.phong_id.id),
-                ('id', '!=', record.id),
-                ('trang_thai', 'in', ['chờ_duyệt', 'cho_duyet_cap_2']),
-                ('thoi_gian_muon_du_kien', '<', record.thoi_gian_tra_du_kien),
-                ('thoi_gian_tra_du_kien', '>', record.thoi_gian_muon_du_kien)
-            ]
-            xu_li_cung_phong_trung_thoi_gian = self.search(cung_phong_trung_thoi_gian)
-            for other in xu_li_cung_phong_trung_thoi_gian:
-                other.write({"trang_thai": "đã_hủy"})
-                # Gửi thông báo hủy cho người bị trùng
-                msg_cancel = f"⚠️ Yêu cầu mượn phòng {other.phong_id.name} của bạn đã tự động bị hủy do trùng lịch với người khác."
-                self._gui_thong_bao_email(other.email, f"Thông báo hủy đặt phòng: {other.phong_id.name}", msg_cancel)
-                self.lich_su(other, ghi_chu=f"Tự động hủy và gửi Email thông báo tới {other.email}")
+            # Đã gỡ bỏ block check trùng lặp do Logic "Cướp Lịch" ở hàm _check_xung_dot_phong đã đảm đương xuất sắc.
 
-
-            # Hủy các yêu cầu cùng phòng có thời gian trùng lặp
-            cung_phong_trung_thoi_gian = [
-                ('phong_id', '=', record.phong_id.id),
-                ('id', '!=', record.id),
-                ('trang_thai', '=', 'chờ_duyệt'),
-                ('thoi_gian_muon_du_kien', '<', record.thoi_gian_tra_du_kien),
-                ('thoi_gian_tra_du_kien', '>', record.thoi_gian_muon_du_kien)
-            ]
-            xu_li_cung_phong_trung_thoi_gian = self.search(cung_phong_trung_thoi_gian)
-            for other in xu_li_cung_phong_trung_thoi_gian:
-                other.write({"trang_thai": "đã_hủy"})
-                msg_cancel = f"⚠️ Yêu cầu mượn phòng {other.phong_id.name} của bạn đã tự động bị hủy do trùng lịch với người khác."
-                self._gui_thong_bao_email(other.email, f"Thông báo hủy đặt phòng: {other.phong_id.name}", msg_cancel)
-                self.lich_su(other, ghi_chu=f"Tự động hủy và gửi Email thông báo tới {other.email}")
-
-            # Hủy các yêu cầu khác phòng nhưng của cùng một người mượn nếu bị trùng thời gian
-            khac_phong_trung_thoi_gian = [
-                ('nguoi_muon_id', '=', record.nguoi_muon_id.id),
-                ('id', '!=', record.id),
-                ('trang_thai', '=', 'chờ_duyệt'),
-                ('thoi_gian_muon_du_kien', '<', record.thoi_gian_tra_du_kien),
-                ('thoi_gian_tra_du_kien', '>', record.thoi_gian_muon_du_kien)
-            ]
-            xu_li_khac_phong_trung_thoi_gian = self.search(khac_phong_trung_thoi_gian)
-            for other in xu_li_khac_phong_trung_thoi_gian:
-                other.write({"trang_thai": "đã_hủy"})
-                msg_cancel = f"⚠️ Yêu cầu mượn phòng {other.phong_id.name} của bạn đã tự động bị hủy do thời gian yêu cầu trùng với lịch của bạn đã được duyệt ở phòng khác."
-                self._gui_thong_bao_email(other.email, f"Thông báo hủy đặt phòng: {other.phong_id.name}", msg_cancel)
-                self.lich_su(other, ghi_chu=f"Tự động hủy và gửi Email thông báo tới {other.email}")
 
     def huy_muon_phong(self):
         """ Hủy đăng ký mượn phòng """

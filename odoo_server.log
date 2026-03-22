@@ -31572,3 +31572,38 @@ Traceback (most recent call last):
     raise ValueError('%s: "%s" while evaluating\n%r' % (ustr(type(e)), ustr(e), expr))
 ValueError: <class 'AttributeError'>: "type object 'datetime.datetime' has no attribute 'timedelta'" while evaluating
 'model.cron_nhac_nho_hop()'
+2026-03-22 09:32:15,889 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:32:15] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 54.564
+2026-03-22 09:32:33,502 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:32:33] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-22 09:33:10,939 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:33:10] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 54.753
+2026-03-22 09:33:26,461 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:33:26] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.009
+2026-03-22 09:34:03,639 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:34:03] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.008 52.374
+2026-03-22 09:34:17,002 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:34:17] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-22 09:34:57,378 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:34:57] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.011 53.444
+2026-03-22 09:35:06,773 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:35:06] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.007
+2026-03-22 09:35:53,443 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:35:53] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.008 55.769
+2026-03-22 09:35:59,965 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:35:59] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-22 09:36:46,425 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:36:46] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.008 52.680
+2026-03-22 09:36:49,375 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:36:49] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-22 09:37:40,417 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:37:40] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-22 09:37:40,720 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:37:40] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 54.005
+2026-03-22 09:38:22,456 481128 INFO do_an_odoo_v3 odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-03-22 09:38:22,464 481128 INFO do_an_odoo_v3 odoo.addons.base.models.ir_cron: Job `Mail: Email Queue Manager` done. 
+2026-03-22 09:38:31,224 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:38:31] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.008
+2026-03-22 09:38:36,083 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:38:36] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.009 55.066
+2026-03-22 09:39:21,976 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:39:21] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-22 09:39:28,914 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:39:28] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 52.542
+2026-03-22 09:40:15,357 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:40:15] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-22 09:40:25,368 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:40:25] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 56.157
+2026-03-22 09:41:03,376 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:41:03] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.008
+2026-03-22 09:41:19,416 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:41:19] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.747
+2026-03-22 09:41:55,697 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:41:55] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.007
+2026-03-22 09:42:12,125 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:42:12] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 52.397
+2026-03-22 09:42:45,320 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:42:45] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-22 09:43:08,345 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:43:08] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 55.916
+2026-03-22 09:43:37,092 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:43:37] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-22 09:44:03,750 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:44:03] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 55.109
+2026-03-22 09:44:27,810 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:44:27] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-22 09:44:55,088 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:44:55] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 51.023
+2026-03-22 09:45:20,498 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:45:20] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-22 09:45:50,488 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:45:50] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.008 55.105
+2026-03-22 09:46:10,949 481128 INFO do_an_odoo_v3 werkzeug: 127.0.0.1 - - [22/Mar/2026 09:46:10] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
