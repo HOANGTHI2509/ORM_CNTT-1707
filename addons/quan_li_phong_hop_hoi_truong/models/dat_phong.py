@@ -17,6 +17,7 @@ class DatPhong(models.Model):
     thoi_gian_tra_du_kien = fields.Datetime(string="Thời gian trả dự kiến", required=True)
 
     thoi_gian_tra_thuc_te = fields.Datetime(string="Thời gian trả thực tế")
+    so_luong = fields.Integer(string="Số lượng", default=1)
 
     # Liên kết với tài sản (Shared Resource)
     tai_san_ids = fields.Many2many(
@@ -307,6 +308,8 @@ class DatPhong(models.Model):
                 "thoi_gian_muon_thuc_te": record.thoi_gian_muon_thuc_te or current_time
             })
             self.lich_su(record)
+        
+        self.env["lich_su_muon_tra"].update_lich_su_muon_tra()
 
     @api.model
     def lich_su(self, record, ghi_chu=''):

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_phieu_ban_giao_tree" model="ir.ui.view">
+            <field name="name">phieu.ban.giao.tree</field>
+            <field name="model">phieu_ban_giao</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_phieu"/>
+                    <field name="nguoi_giao_id"/>
+                    <field name="nguoi_nhan_id"/>
+                    <field name="ngay_ban_giao"/>
+                    <field name="loai_phieu"/>
+                    <field name="trang_thai"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_phieu_ban_giao_form" model="ir.ui.view">
+            <field name="name">phieu.ban.giao.form</field>
+            <field name="model">phieu_ban_giao</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="%(quan_ly_tai_san.action_report_ban_giao_tai_san)d" type="action" string="In Biên Bản" icon="fa-print" class="oe_highlight" attrs="{'invisible': [('trang_thai', '==', 'nhap')]}"/>
+                        <button name="action_hoan_thanh" type="object" string="Xác nhận" class="oe_highlight" attrs="{'invisible': [('trang_thai', '!=', 'nhap')]}"/>
+                        <button name="action_huy" type="object" string="Hủy" attrs="{'invisible': [('trang_thai', '!=', 'nhap')]}"/>
+                        <field name="trang_thai" widget="statusbar" statusbar_visible="nhap,hoan_thanh,huy"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ma_phieu" placeholder="Mã phiếu phân bổ..."/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="loai_phieu" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}"/>
+                                <field name="ngay_ban_giao" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}"/>
+                            </group>
+                            <group>
+                                <field name="nguoi_giao_id" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}"/>
+                                <field name="nguoi_nhan_id" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Danh sách tài sản">
+                                <field name="chi_tiet_ids" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}">
+                                    <tree editable="bottom">
+                                        <field name="tai_san_id"/>
+                                        <field name="tinh_trang"/>
+                                        <field name="ghi_chu"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_phieu_ban_giao" model="ir.actions.act_window">
+            <field name="name">Phiếu bàn giao / thu hồi</field>
+            <field name="res_model">phieu_ban_giao</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

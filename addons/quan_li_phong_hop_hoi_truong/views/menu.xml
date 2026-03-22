@@ -10,7 +10,7 @@
                   sequence="1"
                   action="action_quan_ly_phong_hop"/>
         <!-- Menu - Quản lý thiết bị -->
-        <menuitem id="menu_thiet_bi" name="📌 Quản lý Thiết Bị" action="action_thiet_bi"/>
+        <menuitem id="menu_thiet_bi_moi" name="📌 Quản lý Thiết Bị" action="action_thiet_bi" parent="menu_root"/>
         <menuitem name="Đăng ký mượn phòng" 
                   id="menu_dat_phong" 
                   parent="menu_root" 
@@ -48,9 +48,10 @@
                   action="action_lich_su_muon_tra"/>
 
         <menuitem id="menu_dashboard_trang_thai"
-                  name="📊 DashBoard"
+                  name="📊 DashBoard Tổng Hợp"
                   parent="menu_root"
-                  action="action_dat_phong_dashboard"/>
+                  action="action_dashboard_tong_hop"
+                  sequence="0" />
                   
         <menuitem id="menu_dich_vu_di_kem"
                   name="☕ Dịch vụ đi kèm"

@@ -3,7 +3,6 @@
     <data>
         <!-- Menu Chính -->
         <menuitem id="menu_root" name="Quản lý tài sản (QLTS)" sequence="0"/>
-        <menuitem id="menu_thong_ke" name="Tổng quan" parent="menu_root" sequence="4" action="action_thong_ke"/>
 
         <!-- Quản lý Tài Sản -->
         <menuitem id="menu_tai_san" name="Quản lý tài sản" parent="menu_root" sequence="10" action="action_tai_san"/>
@@ -20,8 +19,12 @@
         <!-- Quản lý Phiếu & Lịch Sử -->
         <menuitem id="menu_quan_ly_phieu_lich_su" name="Quản lý phiếu và Lịch sử" parent="menu_root" sequence="30"/>
 
+        <menuitem id="menu_phieu_ban_giao" name="Phiếu bàn giao/thu hồi" parent="menu_quan_ly_phieu_lich_su" sequence="5"
+                  action="action_phieu_ban_giao"/>
         <menuitem id="menu_phieu_muon" name="Phiếu mượn" parent="menu_quan_ly_phieu_lich_su" sequence="10"
                   action="action_phieu_muon"/>
+        <menuitem id="menu_dot_bao_duong" name="Đợt bảo dưỡng" parent="menu_quan_ly_phieu_lich_su" sequence="15"
+                  action="action_dot_bao_duong"/>
         <menuitem id="menu_phieu_bao_tri" name="Phiếu bảo trì" parent="menu_quan_ly_phieu_lich_su" sequence="20"
                   action="action_phieu_bao_tri"/>
         <menuitem id="menu_phieu_dieu_chuyen" name="Phiếu điều chuyển" parent="menu_quan_ly_phieu_lich_su" sequence="30"

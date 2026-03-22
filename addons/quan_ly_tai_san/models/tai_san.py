@@ -56,6 +56,15 @@ class TaiSan(models.Model):
         help="Giá trị tài sản hiện tại sau khi khấu hao"
     )
 
+    ngay_bao_tri_tiep_theo = fields.Date(
+        "Ngày bảo trì tiếp theo", compute='_compute_ngay_bao_tri', store=True,
+        help="Ngày dự kiến cần bảo trì tiếp theo dựa trên chu kỳ bảo trì của loại tài sản"
+    )
+
+    is_qua_han_bao_tri = fields.Boolean(
+        "Quá hạn bảo trì", compute='_compute_ngay_bao_tri', store=True,
+    )
+
     TRANG_THAI = [
         ("LuuTru", "Lưu trữ"),
         ("Muon", "Mượn"),
@@ -189,6 +198,34 @@ class TaiSan(models.Model):
             else:
                 record.gia_tri_hien_tai = 0.0
 
+    @api.depends('lich_su_bao_tri_ids.ngay_bao_tri', 'ngay_mua', 'loai_tai_san_id.chu_ky_bao_tri_thang')
+    def _compute_ngay_bao_tri(self):
+        today = fields.Date.today()
+        for record in self:
+            chu_ky = record.loai_tai_san_id.chu_ky_bao_tri_thang or 0
+            if chu_ky == 0:
+                record.ngay_bao_tri_tiep_theo = False
+                record.is_qua_han_bao_tri = False
+                continue
+
+            last_date = False
+            if record.lich_su_bao_tri_ids:
+                bao_tri_dates = record.lich_su_bao_tri_ids.mapped('ngay_bao_tri')
+                valid_dates = [d for d in bao_tri_dates if d]
+                if valid_dates:
+                    last_date = max(valid_dates)
+            
+            if not last_date and record.ngay_mua:
+                last_date = record.ngay_mua.date() if isinstance(record.ngay_mua, datetime.datetime) else record.ngay_mua
+            
+            if last_date:
+                next_date = last_date + relativedelta(months=chu_ky)
+                record.ngay_bao_tri_tiep_theo = next_date
+                record.is_qua_han_bao_tri = next_date < today
+            else:
+                record.ngay_bao_tri_tiep_theo = False
+                record.is_qua_han_bao_tri = False
+
     @api.depends('trang_thai', 'gia_tri_hien_tai')
     def _compute_dashboard_stats(self):
         all_assets = self.search([])
@@ -248,15 +285,10 @@ class TaiSan(models.Model):
             'last_updated': fields.Datetime.now(),
         }
 
-    def _gui_thong_bao_zalo(self, nhan_vien, message):
-        """ Hàm phụ trợ để gửi thông báo Zalo """
-        if nhan_vien and nhan_vien.so_dien_thoai:
-            self.env['zalo.notification'].send_message(nhan_vien.so_dien_thoai, message)
-
     @api.model
     def cron_canh_bao_bao_hanh(self):
         """
-        Quét các tài sản sắp hết bảo hành trong 7 ngày tới và gửi email/zalo.
+        Quét các tài sản sắp hết bảo hành trong 7 ngày tới và gửi email.
         """
         today = fields.Date.today()
         warning_date = today + datetime.timedelta(days=7)
@@ -268,10 +300,7 @@ class TaiSan(models.Model):
             ('trang_thai', '!=', 'DaThanhLy')
         ])
         
-        template = self.env.ref('quan_ly_tai_san.email_template_canh_bao_bao_hanh', raise_if_not_found=False)
+        template = self.env.ref('quan_ly_tai_san.email_template_canh_bao_bao_hanh')
         for asset in assets:
-            if asset.quan_ly_id:
-                if template and asset.quan_ly_id.work_email:
-                    template.send_mail(asset.id, force_send=True)
-                msg = f"⚠️ Cảnh báo bảo hành: Tài sản '{asset.ten_tai_san}' (Mã: {asset.ma_tai_san}) sẽ hết hạn bảo hành vào ngày {warning_date.strftime('%d/%m/%Y')}. Vui lòng kiểm tra."
-                self._gui_thong_bao_zalo(asset.quan_ly_id, msg)
+            if asset.quan_ly_id and asset.quan_ly_id.work_email:
+                template.send_mail(asset.id, force_send=True)

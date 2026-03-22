@@ -5,6 +5,7 @@ class QuanLyPhongHop(models.Model):
     _description = "Quản lý phòng họp, hội trường"
 
     name = fields.Char(string="Tên phòng họp", required=True)
+    hinh_anh = fields.Image(string="Hình ảnh phòng")
 
     suc_chua = fields.Integer(string="Sức chứa")
     
@@ -17,7 +18,7 @@ class QuanLyPhongHop(models.Model):
         ("Trống", "Trống"),
         ("Đã_mượn", "Đã mượn"),
         ("Đang_sử_dụng", "Đang sử dụng"),
-    ], string="Trạng thái", compute="_compute_trang_thai", store=True)
+    ], string="Trạng thái", compute="_compute_trang_thai")
 
     dat_phong_ids = fields.One2many("dat_phong", "phong_id", string="Lịch sử mượn phòng")
     thiet_bi_ids = fields.One2many("thiet_bi", "phong_id", string="Thiết bị trong phòng")

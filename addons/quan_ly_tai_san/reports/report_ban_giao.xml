@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_ban_giao_tai_san" model="ir.actions.report">
+        <field name="name">In Biên Bản Bàn Giao</field>
+        <field name="model">phieu_ban_giao</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">quan_ly_tai_san.report_ban_giao_tai_san</field>
+        <field name="report_file">quan_ly_tai_san.report_ban_giao_tai_san</field>
+        <field name="binding_model_id" ref="model_phieu_ban_giao"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_ban_giao_tai_san">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="text-center mb-4">
+                            <h2 t-if="o.loai_phieu == 'giao_moi'" class="mt-4 mb-2">BIÊN BẢN BÀN GIAO TÀI SẢN</h2>
+                            <h2 t-if="o.loai_phieu == 'thu_hoi'" class="mt-4 mb-2">BIÊN BẢN THU HỒI TÀI SẢN</h2>
+                            <strong>Mã số: </strong> <span t-field="o.ma_phieu"/> <br/>
+                            <strong>Ngày thực hiện: </strong> <span t-field="o.ngay_ban_giao"/>
+                        </div>
+
+                        <div class="row mb-4 mt-5">
+                            <div class="col-6">
+                                <strong>Bên Giao:</strong>
+                                <div><span t-field="o.nguoi_giao_id.name"/></div>
+                            </div>
+                            <div class="col-6">
+                                <strong>Bên Nhận:</strong>
+                                <div><span t-field="o.nguoi_nhan_id.name"/></div>
+                            </div>
+                        </div>
+
+                        <table class="table table-bordered mb-4 mt-4">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="text-center">STT</th>
+                                    <th>Mã tài sản</th>
+                                    <th>Tên tài sản</th>
+                                    <th>Số serial</th>
+                                    <th>Tình trạng</th>
+                                    <th>Ghi chú</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="stt" t-value="1"/>
+                                <t t-foreach="o.chi_tiet_ids" t-as="line">
+                                    <tr>
+                                        <td class="text-center"><span t-esc="stt"/></td>
+                                        <td><span t-field="line.tai_san_id.ma_tai_san"/></td>
+                                        <td><span t-field="line.tai_san_id.ten_tai_san"/></td>
+                                        <td><span t-field="line.tai_san_id.so_serial"/></td>
+                                        <td>
+                                            <span t-if="line.tinh_trang == 'binh_thuong'">Bình thường</span>
+                                            <span t-if="line.tinh_trang == 'hong_hoc'">Hỏng hóc</span>
+                                            <span t-if="line.tinh_trang == 'mat'">Mất</span>
+                                        </td>
+                                        <td><span t-field="line.ghi_chu"/></td>
+                                    </tr>
+                                    <t t-set="stt" t-value="stt + 1"/>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <div class="row mt-5 pt-5">
+                            <div class="col-6 text-center">
+                                <strong>ĐẠI DIỆN BÊN GIAO</strong>
+                                <br/><br/><br/><br/><br/>
+                                <span>(Ký và ghi rõ họ tên)</span>
+                            </div>
+                            <div class="col-6 text-center">
+                                <strong>ĐẠI DIỆN BÊN NHẬN</strong>
+                                <br/><br/><br/><br/><br/>
+                                <span>(Ký và ghi rõ họ tên)</span>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

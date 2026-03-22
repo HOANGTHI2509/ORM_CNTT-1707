@@ -13,6 +13,11 @@ class LoaiTaiSan(models.Model):
     ma_loai_tai_san = fields.Char("Mã Loại Tài sản")
     ten_loai_tai_san = fields.Char("Tên Loại Tài sản", required=True)
     mo_ta = fields.Text("Mô tả")
+    chu_ky_bao_tri_thang = fields.Integer(
+        "Chu kỳ bảo trì (tháng)", 
+        default=6, 
+        help="Khoảng thời gian (tính bằng tháng) cần bảo trì định kỳ cho loại tài sản này. Để 0 nếu không cần bảo trì."
+    )
     tai_san_ids = fields.One2many(
         comodel_name='tai_san',
         inverse_name='loai_tai_san_id', string="Tài sản", required=True)

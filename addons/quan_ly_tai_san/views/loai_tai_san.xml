@@ -19,6 +19,10 @@
                             <field name="mo_ta" placeholder="Mô tả chi tiết loại tài sản..." widget="textarea"
                                    class="form-control" nolabel="1"/>
                         </div>
+                        <div class="d-flex align-items-center mt-3">
+                            <span class="o_form_label me-2" style="min-width: 150px;">Chu kỳ bảo trì (Tháng)</span>
+                            <field name="chu_ky_bao_tri_thang" class="form-control" style="width: 100px;" nolabel="1"/>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-8">
@@ -92,6 +96,7 @@
                 <tree string="Danh sách loại tài sản">
                     <field name="ma_loai_tai_san"/>
                     <field name="ten_loai_tai_san"/>
+                    <field name="chu_ky_bao_tri_thang"/>
                     <field name="mo_ta"/>
                 </tree>
             </field>
