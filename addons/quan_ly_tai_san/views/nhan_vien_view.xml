@@ -2,9 +2,9 @@
 <odoo>
     <data>
         <record id="view_nhan_vien_form_inherit_asset" model="ir.ui.view">
-            <field name="name">nhan.vien.form.inherit.asset</field>
-            <field name="model">nhan_vien</field>
-            <field name="inherit_id" ref="nhan_su.view_nhan_vien_form"/>
+            <field name="name">hr.employee.form.inherit.asset</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
                     <page string="Lịch sử nhận/trả tài sản">

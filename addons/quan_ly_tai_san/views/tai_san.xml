@@ -95,17 +95,7 @@
                                     </tree>
                                 </field>
                             </page>
-                            <page string="Khấu hao">
-                                <field name="khau_hao_ids" nolabel="1" readonly="1">
-                                    <tree editable="bottom" class="o_list_full_width">
-                                        <field name="ma_khau_hao"/>
-                                        <field name="phuong_phap_khau_hao"/>
-                                        <field name="ngay_khau_hao"/>
-                                        <field name="gia_tri_khau_hao"/>
-                                        <field name="gia_tri_con_lai"/>
-                                    </tree>
-                                </field>
-                            </page>
+
                         </notebook>
                     </sheet>
                 </form>

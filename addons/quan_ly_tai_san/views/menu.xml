@@ -35,8 +35,6 @@
                   action="action_lich_su_su_dung"/>
         <menuitem id="menu_lich_su_bao_tri" name="Lịch sử bảo trì" parent="menu_quan_ly_phieu_lich_su" sequence="60"
                   action="action_lich_su_bao_tri"/>
-        <menuitem id="menu_khau_hao" name="Khấu hao" parent="menu_quan_ly_phieu_lich_su" sequence="70"
-                  action="action_khau_hao"/>
         <menuitem id="menu_thanh_ly" name="Phiếu thanh lý" parent="menu_quan_ly_phieu_lich_su" sequence="80"
                   action="action_thanh_ly"/>
 

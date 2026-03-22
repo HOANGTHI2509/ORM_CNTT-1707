@@ -28,7 +28,7 @@ class DatPhong(models.Model):
 
     phong_id = fields.Many2one("quan_ly_phong_hop", string="Phòng họp", required=True)
     ma_phieu = fields.Char(string="Mã Đặt Phòng", required=True, copy=False, readonly=True, default="New")
-    nguoi_muon_id = fields.Many2one("nhan_vien", string="Người mượn", required=True)  
+    nguoi_muon_id = fields.Many2one("hr.employee", string="Người mượn", required=True)  
     email = fields.Char(string="Email nhận thông báo", required=True, help="Vui lòng nhập email @gmail.com")
     thoi_gian_muon_du_kien = fields.Datetime(string="Thời gian mượn dự kiến", required=True)
     thoi_gian_muon_thuc_te = fields.Datetime(string="Thời gian mượn thực tế")
@@ -64,7 +64,7 @@ class DatPhong(models.Model):
     @api.onchange('nguoi_muon_id')
     def _onchange_nguoi_muon_id(self):
         if self.nguoi_muon_id:
-            self.email = self.nguoi_muon_id.email
+            self.email = self.nguoi_muon_id.work_email
 
     @api.constrains('email')
     def _check_email_gmail(self):
@@ -94,6 +94,11 @@ class DatPhong(models.Model):
         # Xử lý logic tạo các bản ghi lặp lại
         if vals.get('kieu_lap') and vals.get('kieu_lap') != 'khong_lap' and vals.get('ngay_ket_thuc_lap'):
             record.tao_ban_ghi_lap_lai()
+            
+        # Gửi thông báo Telegram khi có người vừa đăng ký
+        if record.nguoi_muon_id and record.phong_id and record.thoi_gian_muon_du_kien and record.thoi_gian_tra_du_kien:
+            tele_msg = f"🆕 <b>YÊU CẦU ĐẶT PHÒNG MỚI ({record.ma_phieu})</b>\nPhòng: {record.phong_id.name}\nNgười mượn: {record.nguoi_muon_id.display_name}\nThời gian: {record.thoi_gian_muon_du_kien.strftime('%H:%M %d/%m')} - {record.thoi_gian_tra_du_kien.strftime('%H:%M %d/%m')}\nTrạng thái: Chờ duyệt"
+            gui_tin_nhan_telegram(tele_msg)
             
         return record
 
@@ -261,6 +266,10 @@ class DatPhong(models.Model):
             _logger.info("DEBUG: Chuẩn bị gửi thông báo Duyệt cấp 2")
             self._gui_thong_bao_email(record.email, f"Thông báo duyệt hội trường: {record.phong_id.name}", msg)
             
+            # Gửi thông báo Telegram
+            tele_msg = f"✅ <b>DUYỆT HỘI TRƯỜNG CẤP 2 THÀNH CÔNG</b>\nPhòng: {record.phong_id.name}\nNgười mượn: {record.nguoi_muon_id.display_name}\nThời gian: {record.thoi_gian_muon_du_kien.strftime('%H:%M %d/%m')} - {record.thoi_gian_tra_du_kien.strftime('%H:%M %d/%m')}"
+            gui_tin_nhan_telegram(tele_msg)
+
             self.lich_su(record, ghi_chu=f"Đã gửi Email thông báo Lãnh đạo duyệt tới {record.email}")
 
             # Logic hủy các yêu cầu trùng (đã copy từ trên xuống để đảm bảo chạy khi duyệt chính thức)
@@ -318,6 +327,10 @@ class DatPhong(models.Model):
                 raise exceptions.UserError("Chỉ có thể hủy yêu cầu có trạng thái 'Chờ duyệt'.")
             record.write({"trang_thai": "đã_hủy"})
             self.lich_su(record)
+            
+            # Telegram
+            tele_msg = f"❌ <b>HỦY ĐẶT PHÒNG</b>\nPhòng: {record.phong_id.name}\nNgười mượn: {record.nguoi_muon_id.display_name}"
+            gui_tin_nhan_telegram(tele_msg)
 
     def huy_da_duyet(self):
         """ Hủy yêu cầu đã duyệt """
@@ -367,6 +380,10 @@ class DatPhong(models.Model):
                 "thoi_gian_muon_thuc_te": thoi_gian_muon
             })
             self.lich_su(record)
+            
+            # Gửi thông báo Telegram khi trả phòng
+            tele_msg = f"🏁 <b>ĐÃ TRẢ PHÒNG</b>\nPhòng: {record.phong_id.name}\nNgười mượn: {record.nguoi_muon_id.display_name}\nLúc: {current_time.strftime('%H:%M %d/%m')}"
+            gui_tin_nhan_telegram(tele_msg)
             
             # PHASE 3: Tính số giờ mượn và cộng dồn cho tài sản đi kèm
             delta = current_time - thoi_gian_muon

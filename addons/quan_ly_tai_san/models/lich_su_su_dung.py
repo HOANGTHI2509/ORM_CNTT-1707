@@ -15,7 +15,7 @@ class LichSuSuDung(models.Model):
     ngay_muon = fields.Datetime("Thời gian mượn", required=True)
     ngay_tra = fields.Datetime("Thời gian trả", required=True)
     ghi_chu = fields.Char("Ghi chú")
-    nhan_vien_id = fields.Many2one(comodel_name="nhan_vien", string="Nhân sự", store=True)
+    nhan_vien_id = fields.Many2one(comodel_name="hr.employee", string="Nhân sự", store=True)
     tai_san_id = fields.Many2one(comodel_name="tai_san", string="Tài sản", store=True)
 
     @api.constrains('ma_lich_su_su_dung')

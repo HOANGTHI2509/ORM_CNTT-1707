@@ -126,12 +126,6 @@ class TaiSan(models.Model):
         help="Các lần tài sản được bảo trì hoặc sửa chữa"
     )
 
-    khau_hao_ids = fields.One2many(
-        comodel_name='khau_hao', inverse_name='tai_san_id',
-        string="Khấu hao", store=True,
-        help="Thông tin về khấu hao tài sản theo thời gian"
-    )
-
     lich_su_di_chuyen_ids = fields.One2many(
         comodel_name='lich_su_di_chuyen', inverse_name='tai_san_id',
         string="Lịch sử điều chuyển", readonly=True,
@@ -159,8 +153,8 @@ class TaiSan(models.Model):
         help="Phiếu thanh lý liên quan đến tài sản này (mỗi tài sản chỉ có tối đa một phiếu)"
     )
 
-    quan_ly_id = fields.Many2one(comodel_name="nhan_vien", string="Người quản lý", store=True)
-    nguoi_dang_dung_id = fields.Many2one(comodel_name="nhan_vien", string="Người đang sử dụng", store=True)
+    quan_ly_id = fields.Many2one(comodel_name="hr.employee", string="Người quản lý", store=True)
+    nguoi_dang_dung_id = fields.Many2one(comodel_name="hr.employee", string="Người đang sử dụng", store=True)
 
     # Các trường computed cho dashboard
     tong_so_luong = fields.Integer(

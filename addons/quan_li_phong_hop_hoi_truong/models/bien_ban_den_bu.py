@@ -11,8 +11,9 @@ class BienBanDenBu(models.Model):
 
     ma_bien_ban = fields.Char(string='Mã Biên Bản', required=True, copy=False, readonly=True, default='New')
     dat_phong_id = fields.Many2one('dat_phong', string='Phiếu Đặt Phòng', required=True, ondelete='cascade')
-    nhan_vien_id = fields.Many2one('nhan_vien', related='dat_phong_id.nguoi_muon_id', string='Người mượn (Bị phạt)', store=True)
-    tai_san_id = fields.Many2one('tai_san', string='Tài sản làm hỏng', required=True)
+    nhan_vien_id = fields.Many2one('hr.employee', related='dat_phong_id.nguoi_muon_id', string='Người mượn (Bị phạt)', store=True)
+    available_tai_san_ids = fields.Many2many('tai_san', related='dat_phong_id.tai_san_ids')
+    tai_san_id = fields.Many2one('tai_san', string='Tài sản làm hỏng', required=True, domain="[('id', 'in', available_tai_san_ids)]")
     tinh_trang_thiet_bi = fields.Text(string='Mô tả Tình trạng', required=True)
     so_tien_phat = fields.Float(string='Số tiền đền bù (VNĐ)')
     
@@ -33,7 +34,16 @@ class BienBanDenBu(models.Model):
             else:
                 new_number = 1
             vals['ma_bien_ban'] = f'BB-{new_number:05d}'
-        return super(BienBanDenBu, self).create(vals)
+            vals['ma_bien_ban'] = f'BB-{new_number:05d}'
+            
+        record = super(BienBanDenBu, self).create(vals)
+        
+        # Nhắc Telegram khi lập biên bản
+        if record.dat_phong_id and record.tai_san_id:
+            tele_msg = f"⚠️ <b>LẬP BIÊN BẢN ({record.ma_bien_ban})</b>\nTài sản hỏng: {record.tai_san_id.display_name}\nNgười mượn: {record.nhan_vien_id.display_name}\nPhạt: {record.so_tien_phat:,.0f} VNĐ\nTrạng thái: Chờ duyệt"
+            gui_tin_nhan_telegram(tele_msg)
+            
+        return record
 
     def action_gui_duyet(self):
         for record in self:
@@ -69,6 +79,11 @@ class BienBanDenBu(models.Model):
                     'email_from': self.env.user.email or 'admin@example.com',
                 }
                 self.env['mail.mail'].create(mail_values).send()
+                
+            # Telegram thông báo Biên bản được duyệt
+            if record.tai_san_id:
+                tele_msg = f"💸 <b>ĐÃ DUYỆT PHẠT ĐỀN BÙ ({record.ma_bien_ban})</b>\nTài sản: {record.tai_san_id.display_name}\nQuân xanh bị phạt: {record.nhan_vien_id.display_name}\nSố tiền: {record.so_tien_phat:,.0f} VNĐ"
+                gui_tin_nhan_telegram(tele_msg)
 
     def action_huy(self):
         for record in self:

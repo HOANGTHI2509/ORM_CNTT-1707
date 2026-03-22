@@ -20,7 +20,7 @@
     'version': '0.1',
     'license': 'LGPL-3',
     # any module necessary for this one to work correctly
-    'depends': ['base', 'nhan_su', 'quan_ly_tai_san', 'mail', 'board'],
+    'depends': ['base', 'nhan_su', 'quan_ly_tai_san', 'mail', 'board', 'hr'],
 
     # always loaded
     'data': [

@@ -10,7 +10,7 @@ class LichSuMuonTra(models.Model):
     phong_id = fields.Many2one("quan_ly_phong_hop", string="🏢 Phòng", required=True)    
     dat_phong_id = fields.Many2one('dat_phong', string='Phiếu Đặt Phòng', ondelete='cascade')
     ma_phieu = fields.Char(related='dat_phong_id.ma_phieu', string="Mã Phiếu", store=True)
-    nguoi_muon_id = fields.Many2one('nhan_vien', related='dat_phong_id.nguoi_muon_id', string="Người mượn", store=True)
+    nguoi_muon_id = fields.Many2one('hr.employee', related='dat_phong_id.nguoi_muon_id', string="Người mượn", store=True)
     tai_san_ids = fields.Many2many("tai_san", related="dat_phong_id.tai_san_ids", string="Tài sản mượn kèm")
     dich_vu_ids = fields.Many2many("quan_ly_dich_vu", related="dat_phong_id.dich_vu_ids", string="Dịch vụ đi kèm")
     tong_thoi_gian_su_dung = fields.Char(string="⏳ Tổng thời gian sử dụng", compute="_compute_tong_thoi_gian", store=True)

@@ -29,39 +29,43 @@
         </record>
 
         <!-- Nhân Viên -->
-        <record id="nv_nguyen_van_a" model="nhan_vien">
+        <record id="nv_nguyen_van_a" model="hr.employee">
+            <field name="name">Nguyễn Văn A</field>
             <field name="ho_ten_dem">Nguyễn Văn</field>
             <field name="ten">A</field>
             <field name="ma_dinh_danh">nva</field>
             <field name="ngay_sinh">1990-01-01</field>
-            <field name="email">a.nguyen@example.com</field>
+            <field name="work_email">a.nguyen@example.com</field>
             <field name="so_dien_thoai">0901234567</field>
         </record>
         
-        <record id="nv_tran_thi_b" model="nhan_vien">
+        <record id="nv_tran_thi_b" model="hr.employee">
+            <field name="name">Trần Thị B</field>
             <field name="ho_ten_dem">Trần Thị</field>
             <field name="ten">B</field>
             <field name="ma_dinh_danh">ttb</field>
             <field name="ngay_sinh">1995-05-15</field>
-            <field name="email">b.tran@example.com</field>
+            <field name="work_email">b.tran@example.com</field>
             <field name="so_dien_thoai">0909876543</field>
         </record>
 
-        <record id="nv_le_van_c" model="nhan_vien">
+        <record id="nv_le_van_c" model="hr.employee">
+            <field name="name">Lê Văn C</field>
             <field name="ho_ten_dem">Lê Văn</field>
             <field name="ten">C</field>
             <field name="ma_dinh_danh">lvc</field>
             <field name="ngay_sinh">1988-11-20</field>
-            <field name="email">c.le@example.com</field>
+            <field name="work_email">c.le@example.com</field>
             <field name="so_dien_thoai">0912345678</field>
         </record>
 
-        <record id="nv_pham_van_d" model="nhan_vien">
+        <record id="nv_pham_van_d" model="hr.employee">
+            <field name="name">Phạm Văn D</field>
             <field name="ho_ten_dem">Phạm Văn</field>
             <field name="ten">D</field>
             <field name="ma_dinh_danh">pvd</field>
             <field name="ngay_sinh">2002-09-02</field>
-            <field name="email">d.pham@example.com</field>
+            <field name="work_email">d.pham@example.com</field>
             <field name="so_dien_thoai">0987654321</field>
         </record>
 

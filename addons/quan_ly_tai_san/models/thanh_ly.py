@@ -66,7 +66,7 @@ class ThanhLy(models.Model):
     )
 
     nguoi_xu_ly_id = fields.Many2one(
-        comodel_name='nhan_vien',
+        comodel_name='hr.employee',
         string="Người xử lý",
         required=True,
         help="Người thực hiện hoặc chịu trách nhiệm thanh lý"

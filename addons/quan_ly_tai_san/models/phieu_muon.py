@@ -35,7 +35,7 @@ class PhieuMuon(models.Model):
                                                'done': [('readonly', True)], 'cancelled': [('readonly', True)]})
     ghi_chu = fields.Char("Ghi chú", states={'approved': [('readonly', True)], 'done': [('readonly', True)],
                                              'cancelled': [('readonly', True)]})
-    nhan_vien_id = fields.Many2one(comodel_name="nhan_vien", string="Nhân sự", required=True, store=True,
+    nhan_vien_id = fields.Many2one(comodel_name="hr.employee", string="Nhân sự", required=True, store=True,
                                    states={'approved': [('readonly', True)], 'done': [('readonly', True)],
                                            'cancelled': [('readonly', True)]})
     

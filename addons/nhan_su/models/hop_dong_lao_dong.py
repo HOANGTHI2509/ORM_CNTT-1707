@@ -6,7 +6,7 @@ class HopDongLaoDong(models.Model):
     _rec_name = 'so_hop_dong'
 
     so_hop_dong = fields.Char(string="Số hợp đồng", required=True)
-    nhan_vien_id = fields.Many2one('nhan_vien', string="Nhân viên", required=True)
+    nhan_vien_id = fields.Many2one('hr.employee', string="Nhân viên", required=True)
     
     loai_hop_dong = fields.Selection([
         ('thu_viec', 'Thử việc'),

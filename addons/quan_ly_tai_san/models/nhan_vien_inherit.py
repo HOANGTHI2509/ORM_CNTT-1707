@@ -2,7 +2,7 @@
 from odoo import models, fields
 
 class NhanVien(models.Model):
-    _inherit = 'nhan_vien'
+    _inherit = 'hr.employee'
 
     phieu_ban_giao_ids = fields.One2many(
         comodel_name='phieu_ban_giao',
@@ -25,7 +25,7 @@ class NhanVien(models.Model):
                         'ghi_chu': 'Hệ thống tự động tạo do nhân viên nghỉ việc'
                     }) for asset in assets]
                     
-                    admin = self.env['nhan_vien'].search([], limit=1)
+                    admin = self.env['hr.employee'].search([], limit=1)
                     nguoi_nhan_id = admin.id if admin else record.id
                     if hasattr(self.env.user, 'employee_id') and self.env.user.employee_id:
                         nguoi_nhan_id = self.env.user.employee_id.id

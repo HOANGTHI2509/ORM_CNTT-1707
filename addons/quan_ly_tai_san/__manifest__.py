@@ -1,14 +1,13 @@
 {
     'name': "Quản lý tài sản",
 
-    'summary': "Quản lý tài sản, lịch sử sử dụng và khấu hao",
+    'summary': "Quản lý tài sản và lịch sử sử dụng",
 
     'description': """
         Module quản lý tài sản trong doanh nghiệp, bao gồm:
         - Thông tin tài sản (tai_san, loai_tai_san, vi_tri, nha_cung_cap)
         - Lịch sử sử dụng (lich_su_su_dung)
         - Lịch sử bảo trì (lich_su_bao_tri)
-        - Khấu hao tài sản (khau_hao)
     """,
 
     'author': "My Company",
@@ -18,7 +17,7 @@
     'version': '0.2',
     'license': 'LGPL-3',
 
-    'depends': ['base', 'nhan_su'],
+    'depends': ['base', 'nhan_su', 'hr'],
 
     'data': [
         'security/ir.model.access.csv',
@@ -37,7 +36,6 @@
         'views/phieu_kiem_ke.xml',
         'views/lich_su_kiem_ke.xml',
         'views/thanh_ly.xml',
-        'views/khau_hao.xml',
         'views/thong_ke.xml',
         'views/nhan_vien_view.xml',
         'views/phieu_ban_giao_view.xml',

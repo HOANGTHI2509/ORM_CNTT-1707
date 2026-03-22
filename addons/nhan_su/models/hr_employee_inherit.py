@@ -3,33 +3,24 @@ from datetime import date
 
 from odoo.exceptions import ValidationError
 
-class NhanVien(models.Model):
-    _name = 'nhan_vien'
-    _description = 'Bảng chứa thông tin nhân viên'
-    _rec_name = 'ho_va_ten'
-    _order = 'ten asc, tuoi desc'
+class HrEmployeeInherit(models.Model):
+    _inherit = 'hr.employee'
 
-    ma_dinh_danh = fields.Char("Mã định danh", required=True)
+    ma_dinh_danh = fields.Char("Mã định danh")
 
-    ho_ten_dem = fields.Char("Họ tên đệm", required=True)
-    ten = fields.Char("Tên", required=True)
+    ho_ten_dem = fields.Char("Họ tên đệm")
+    ten = fields.Char("Tên")
     ho_va_ten = fields.Char("Họ và tên", compute="_compute_ho_va_ten", store=True)
-    trang_thai_lam_viec = fields.Selection([
-        ('dang_lam', 'Đang làm việc'),
-        ('nghi_viec', 'Nghỉ làm')
-    ], string="Trạng thái", default='dang_lam')
-
     
-    ngay_sinh = fields.Date("Ngày sinh")
+    ngay_sinh = fields.Date("Ngày sinh", related="birthday", readonly=False)
     que_quan = fields.Char("Quê quán")
-    email = fields.Char("Email")
-    so_dien_thoai = fields.Char("Số điện thoại")
+    so_dien_thoai = fields.Char("Số điện thoại", related="work_phone", readonly=False)
+    
     lich_su_cong_tac_ids = fields.One2many(
         "lich_su_cong_tac", 
         inverse_name="nhan_vien_id", 
         string = "Danh sách lịch sử công tác")
     tuoi = fields.Integer("Tuổi", compute="_compute_tuoi", store=True)
-    anh = fields.Binary("Ảnh")
     danh_sach_chung_chi_bang_cap_ids = fields.One2many(
         "danh_sach_chung_chi_bang_cap", 
         inverse_name="nhan_vien_id", 
@@ -45,22 +36,21 @@ class NhanVien(models.Model):
                                         store=True
                                         )
 
-    
     @api.depends("tuoi")
     def _compute_so_nguoi_bang_tuoi(self):
         for record in self:
             if record.tuoi:
-                records = self.env['nhan_vien'].search(
+                records = self.env['hr.employee'].search(
                     [
                         ('tuoi', '=', record.tuoi),
-                        ('ma_dinh_danh', '!=', record.ma_dinh_danh)
+                        ('id', '!=', record.id)
                     ]
                 )
                 record.so_nguoi_bang_tuoi = len(records)
             else:
                  record.so_nguoi_bang_tuoi = 0
 
-    _sql_constrains = [
+    _sql_constraints = [
         ('ma_dinh_danh_unique', 'unique(ma_dinh_danh)', 'Mã định danh phải là duy nhất')
     ]
 
@@ -69,16 +59,14 @@ class NhanVien(models.Model):
         for record in self:
             if record.ho_ten_dem and record.ten:
                 record.ho_va_ten = record.ho_ten_dem + ' ' + record.ten
+                record.name = record.ho_va_ten
             else:
-                record.ho_va_ten = ''
-    
-    
-    
+                record.ho_va_ten = record.name if record.name else ''
                 
     @api.onchange("ten", "ho_ten_dem")
     def _default_ma_dinh_danh(self):
         for record in self:
-            if record.ho_ten_dem and record.ten:
+            if record.ho_ten_dem and record.ten and not record.ma_dinh_danh:
                 chu_cai_dau = ''.join([tu[0][0] for tu in record.ho_ten_dem.lower().split()])
                 record.ma_dinh_danh = record.ten.lower() + chu_cai_dau
     
@@ -94,5 +82,5 @@ class NhanVien(models.Model):
     @api.constrains('tuoi')
     def _check_tuoi(self):
         for record in self:
-            if record.tuoi < 18:
+            if record.tuoi > 0 and record.tuoi < 18:
                 raise ValidationError("Tuổi không được bé hơn 18")

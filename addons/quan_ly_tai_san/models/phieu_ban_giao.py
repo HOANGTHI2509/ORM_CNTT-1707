@@ -15,8 +15,8 @@ class PhieuBanGiao(models.Model):
     
     ngay_ban_giao = fields.Date(string="Ngày thực hiện", required=True, default=fields.Date.context_today)
     
-    nguoi_giao_id = fields.Many2one('nhan_vien', string="Người giao", required=True)
-    nguoi_nhan_id = fields.Many2one('nhan_vien', string="Người nhận", required=True)
+    nguoi_giao_id = fields.Many2one('hr.employee', string="Người giao", required=True)
+    nguoi_nhan_id = fields.Many2one('hr.employee', string="Người nhận", required=True)
     
     chi_tiet_ids = fields.One2many('chi_tiet_ban_giao', 'phieu_id', string="Chi tiết tài sản")
 

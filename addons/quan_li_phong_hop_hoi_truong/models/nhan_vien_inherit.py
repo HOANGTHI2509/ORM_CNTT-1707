@@ -2,7 +2,7 @@
 from odoo import models, fields
 
 class NhanVien(models.Model):
-    _inherit = 'nhan_vien'
+    _inherit = 'hr.employee'
 
     lich_su_dat_phong_ids = fields.One2many(
         comodel_name='dat_phong',

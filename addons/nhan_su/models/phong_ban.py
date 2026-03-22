@@ -17,13 +17,13 @@ class PhongBan(models.Model):
     
     # Người quản lý phòng ban
     truong_phong_id = fields.Many2one(
-        "nhan_vien", 
+        "hr.employee", 
         string="Trưởng phòng"
     )
 
     # Danh sách nhân viên trong phòng
     nhan_vien_ids = fields.One2many(
-        "nhan_vien",
+        "hr.employee",
         inverse_name="phong_ban_id",
         string="Danh sách nhân viên"
     )

@@ -1,4 +1,4 @@
-from . import nhan_vien
+from . import hr_employee_inherit
 from . import phong_ban
 from . import hop_dong_lao_dong
 from . import chuc_vu
