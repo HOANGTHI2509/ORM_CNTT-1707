@@ -14,6 +14,19 @@
 
 ---
 
+## 🏗 NGUỒN KẾ THỪA VÀ PHÁT TRIỂN MỚI
+Dự án được phân tích, tái cấu trúc và kế thừa các model cơ bản (như cấu trúc bảng lưu trữ) từ 2 nhóm khóa K15:
+- **Nhóm TTDN-15-05-N8**
+- **Nhóm TTDN-15-05-N1**
+
+**Những tính năng và module nghiệp vụ được phát triển MỚI HOÀN TOÀN so với phiên bản gốc của 2 nhóm trên:**
+1. **Model Giao tiếp Telegram (`requests.post`):** Xây dựng mới hoàn toàn tính năng gửi thông báo thời gian thực về Telegram Bot. Mọi biến động đặt/duyệt/hủy lịch đều được bắn lên Group chat thay vì phụ thuộc thuần vào Email.
+2. **Kế thừa và mở rộng Model Nhân sự (`hr.employee`):** Ở các dự án gốc, việc mượn chỉ đơn thuần lưu tên. Nhóm đã tích hợp Cây tổ chức HR vào Logic mượn phòng, khởi tạo tính năng **Phân quyền ưu tiên (Force Override - Cướp lịch)**: Lãnh đạo cấp cao có thể tự động đè lịch nhân viên cấp dưới, hệ thống sẽ tự động Auto-Cancel đơn cũ.
+3. **Module Điều phối Tài sản Thông minh (`@api.onchange`):** Phiên bản gốc chỉ cảnh báo lỗi khi trùng lặp đồ. Phiên bản mới này phát triển thuật toán tự động quét kho: Nếu người dùng chọn tài sản đang bị tranh chấp, hệ thống tự động gỡ và "swap" sang một thiết bị rảnh rỗi tương đương.
+4. **Tự động hóa Khấu hao và Bảo trì tích hợp chéo Module:** Móc nối chặt chẽ kết quả của *Module Phòng Họp* sang *Module Tài Sản*. Hành vi bấm "Trả Phòng" sẽ tính toán số giờ họp và cộng dồn trực tiếp vào số định mức sử dụng của Máy chiếu/Loa. Nếu vượt hạn mức 500h, API tự động trích xuất và sinh Phiếu Khám Bảo Trì ở Module Tài Sản.
+
+---
+
 ## 🌟 ĐÁP ỨNG TIÊU CHÍ ĐÁNH GIÁ (MỨC 1 - MỨC 2 - MỨC 3)
 
 ### 🟢 MỨC 1: TÍCH HỢP HỆ THỐNG (Cơ bản - Đáp ứng 100%)
@@ -24,9 +37,9 @@
 
 ### 🟡 MỨC 2: TỰ ĐỘNG HÓA QUY TRÌNH (Nâng cao - Vượt ngưỡng)
 Giảm thiểu tối đa thao tác thủ công bằng các Trigger tự động ngầm (Event-driven):
-- **Tự động Trích xuất Bảo trì (Cross-module):** Ngay khi một cuộc họp kết thúc (bấm `Trả phòng`), hệ thống tự động quét toàn bộ `tai_san_ids` (Loa, Máy chiếu) đi kèm trong phòng đó, trích xuất thời lượng cuộc họp (ví dụ: 2 giờ) và tự động cộng dồn vào `so_gio_su_dung` của Tài sản. Nếu máy chiếu vượt hạn mức (VD: 5000 giờ), **tự động phân rã Biên Bản Bảo Trì** ở Phân hệ Tài sản mà không cần con người nhúng tay thao tác.
+- **Tự động Trích xuất Bảo trì (Cross-module):** Ngay khi một cuộc họp kết thúc (bấm `Trả phòng`), hệ thống tự động quét toàn bộ `tai_san_ids` (Loa, Máy chiếu) đi kèm trong phòng đó, trích xuất thời lượng cuộc họp (ví dụ: 2 giờ) và tự động cộng dồn vào `so_gio_su_dung` của Tài sản. Nếu máy chiếu vượt hạn mức (VD: 500 giờ), **tự động phân rã Biên Bản Bảo Trì** ở Phân hệ Tài sản mà không cần con người nhúng tay thao tác.
 - **Auto-Cancel (Thuật toán Hủy Lịch Di Dây):** Khi 1 phiếu đặt phòng được duyệt, toàn bộ các phiếu khác trùng phòng xếp hàng chờ duyệt sẽ bị hệ thống **Tự động chuyển trạng thái Hủy** và gửi báo cáo về Email của người bị hủy.
-- **Scheduled Actions (Cron Jobs):** Hệ thống tự động đẩy Email nhắc nhở trước giờ họp 15 phút và cảnh báo tự động khi quá hạn trả phòng.
+
 
 ### 🔴 MỨC 3: ỨNG DỤNG CÔNG NGHỆ MỚI (Xuất sắc)
 - **Tích hợp External API (Telegram Bot API):** Toàn bộ luồng nghiệp vụ quan trọng đều được bắn thông báo thời gian thực về kênh chat qua hệ mã hóa Bot Telegram Token:
@@ -41,8 +54,8 @@ Giảm thiểu tối đa thao tác thủ công bằng các Trigger tự động 
 Nhóm đã phát triển 3 Cơ chế Điều phối Lịch độc quyền theo Sơ đồ ERD, xoáy mạnh vào Mục tiêu cốt lõi *Tránh Xung Đột Lịch (Booking Conflict)* của Đề 6:
 
 1. **Chống Trùng Lịch Kép (Tài sản dùng chung chéo):** Lọc `@api.constrains` không chỉ check Xung đột Phòng, mà ghim chặt cả Cấu trúc Tài Sản Đính kèm. Khóa cứng quyền mượn nếu Thiết bị đó (VD: Máy tính VIP) đang bị 1 phòng khác ở cách đó 10 mét mượn trong cùng khung giờ.
-2. **Nhượng Quyền Điều Phối HR (Force Override):** Tích hợp Sơ đồ tổ chức HR. Trưởng phòng / Giám đốc có quyền Đặt phòng/Thiết bị đè lên khung giờ của Nhân viên thực tập sinh. Hệ thống tự động tước quyền (Auto-Cancel) của Nhân viên để ưu tiên Cấp Lãnh đạo bằng một tin nhắn Thông báo đĩnh đạc.
-3. **Smart Suggestion (Tự động Điều Phối Thiết bị):** Nếu người dùng chọn mượn "Máy chiếu Sony" nhưng trúng lịch kẹt, hàm `@api.onchange` tự động quét kho và swap sang "Máy chiếu Panasonic" (Thiết bị rảnh rỗi tương đương) để cứu vãn đơn Đặt phòng thay vì báo lỗi cục súc. Kèm chức năng Đặt Dịch vụ (Tea-break, MC) hoàn thiện qua widget Checkbox.
+
+2. **Smart Suggestion (Tự động Điều Phối Thiết bị):** Nếu người dùng chọn mượn "Máy chiếu Sony" nhưng trúng lịch kẹt, hàm `@api.onchange` tự động quét kho và swap sang "Máy chiếu Panasonic" (Thiết bị rảnh rỗi tương đương) để cứu vãn đơn Đặt phòng thay vì báo lỗi cục súc. Kèm chức năng Đặt Dịch vụ (Tea-break, MC) hoàn thiện qua widget Checkbox.
 
 ---
 
