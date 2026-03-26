@@ -48,11 +48,12 @@
                                 </field>
                             </page>
                             <page string="🖥️ Thiết bị trong phòng">
-                                <field name="thiet_bi_ids">
+                                <field name="thiet_bi_ids" readonly="1">
                                     <tree>
-                                        <field name="name" string="📌 Tên thiết bị"/>
-                                        <field name="loai_thiet_bi" string="📦 Loại thiết bị"/>
-                                        <field name="trang_thai" string="🔄 Trạng thái"/>
+                                        <field name="ma_tai_san" string="Mã"/>
+                                        <field name="ten_tai_san" string="📌 Tên thiết bị"/>
+                                        <field name="loai_tai_san_id" string="📦 Loại thiết bị"/>
+                                        <field name="trang_thai" string="🔄 Trạng thái" widget="badge" decoration-success="trang_thai=='SanSang'"/>
                                     </tree>
                                 </field>
                             </page>

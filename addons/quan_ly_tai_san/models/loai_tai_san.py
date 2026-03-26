@@ -7,7 +7,8 @@ class LoaiTaiSan(models.Model):
     _rec_name = "ten_loai_tai_san"
     _order = 'ma_loai_tai_san'
     _sql_constraints = [
-        ('ma_loai_tai_san_unique', 'unique(ma_loai_tai_san)', 'Mã loại tài sản phải là duy nhất!')
+        ('ma_loai_tai_san_unique', 'unique(ma_loai_tai_san)', 'Mã loại tài sản phải là duy nhất!'),
+        ('ten_loai_tai_san_unique', 'unique(ten_loai_tai_san)', 'Tên Loại Tài sản này đã tồn tại trong hệ thống!')
     ]
 
     ma_loai_tai_san = fields.Char("Mã Loại Tài sản")

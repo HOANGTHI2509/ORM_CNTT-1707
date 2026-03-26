@@ -38,7 +38,6 @@
                             <group>
                                 <field name="ngay_bat_dau"/>
                                 <field name="ngay_ket_thuc"/>
-                                <field name="luong_co_ban"/>
                                 <field name="file_hop_dong" filename="so_hop_dong"/>
                             </group>
                         </group>

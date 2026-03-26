@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tai_san_ai_wizard" model="ir.ui.view">
+        <field name="name">tai_san.ai.wizard.form</field>
+        <field name="model">tai_san.ai.wizard</field>
+        <field name="arch" type="xml">
+            <form string="✨ Trợ lý AI Tài Sản">
+                <div class="alert alert-warning" role="alert" style="margin-bottom: 20px;">
+                    <h3 style="color: #d97706; margin-bottom: 5px;"><span class="fa fa-cubes mr8"/><b> Lệnh Cấp phát/Thu hồi bằng giọng văn!</b></h3>
+                    <i>VD: Cấp phát cái Laptop Asus và Cuộn cáp mạng cho anh Dũng. Chị Lan giao xuất kho.</i>
+                </div>
+                <group>
+                    <field name="ai_request" nolabel="1" 
+                           placeholder="Bàn giao/thua hồi đồ gì hoặc hỏi Số lượng tài sản... Trợ lý sẽ tự xử lý!"
+                           style="width: 100%; border: 2px dashed #d97706; padding: 10px; border-radius: 10px; min-height: 100px;"/>
+                </group>
+                <div attrs="{'invisible': [('ai_response', '=', False)]}" style="background-color: #fffbeb; border-left: 5px solid #d97706; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <h4 style="color: #b45309; margin-bottom: 5px;">🤖 AI Trả Lời:</h4>
+                    <field name="ai_response" nolabel="1" style="font-size: 14px; color: #1f2937;"/>
+                </div>
+                <footer>
+                    <button name="action_generate" type="object" string="Gửi" class="btn-primary" style="background-color: #d97706; border-color: #d97706;"/>
+                    <button string="Hủy bỏ" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_tai_san_ai" model="ir.actions.act_window">
+        <field name="name">✨ Trợ lý Tài Sản (AI)</field>
+        <field name="res_model">tai_san.ai.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

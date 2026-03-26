@@ -14,23 +14,21 @@ class HrEmployeeInherit(models.Model):
     
     ngay_sinh = fields.Date("Ngày sinh", related="birthday", readonly=False)
     que_quan = fields.Char("Quê quán")
+    so_cccd = fields.Char(string='Số CCCD', required=True) 
+    ngay_cap = fields.Date(string='Ngày cấp') 
     so_dien_thoai = fields.Char("Số điện thoại", related="work_phone", readonly=False)
     
-    lich_su_cong_tac_ids = fields.One2many(
-        "lich_su_cong_tac", 
-        inverse_name="nhan_vien_id", 
-        string = "Danh sách lịch sử công tác")
-    tuoi = fields.Integer("Tuổi", compute="_compute_tuoi", store=True)
-    danh_sach_chung_chi_bang_cap_ids = fields.One2many(
-        "danh_sach_chung_chi_bang_cap", 
-        inverse_name="nhan_vien_id", 
-        string = "Danh sách chứng chỉ bằng cấp")
     phong_ban_id = fields.Many2one("phong_ban", string="Phòng ban", help="Phòng ban nhân viên trực thuộc")
-    hop_dong_lao_dong_ids = fields.One2many(
-        "hop_dong_lao_dong",
-        inverse_name="nhan_vien_id",
-        string="Hợp đồng lao động"
-    )
+    chuc_vu_id = fields.Many2one("chuc_vu", string="Chức vụ hiện tại", help="Chức vụ chính thức đang đảm nhiệm")
+    trang_thai_lam_viec = fields.Selection([
+        ('dang_lam', 'Đang làm việc'),
+        ('nghi_viec', 'Đã nghỉ việc')
+    ], string='Trạng thái làm việc', default='dang_lam', tracking=True)
+    
+    hop_dong_ids = fields.One2many("hop_dong_lao_dong", "nhan_vien_id", string="Lịch sử hợp đồng lao động")
+    lich_su_cong_tac_ids = fields.One2many("lich_su_cong_tac", "nhan_vien_id", string="Quá trình công tác")
+
+    tuoi = fields.Integer("Tuổi", compute="_compute_tuoi", store=True)
     so_nguoi_bang_tuoi = fields.Integer("Số người bằng tuổi", 
                                         compute="_compute_so_nguoi_bang_tuoi",
                                         store=True
@@ -40,12 +38,10 @@ class HrEmployeeInherit(models.Model):
     def _compute_so_nguoi_bang_tuoi(self):
         for record in self:
             if record.tuoi:
-                records = self.env['hr.employee'].search(
-                    [
-                        ('tuoi', '=', record.tuoi),
-                        ('id', '!=', record.id)
-                    ]
-                )
+                domain = [('tuoi', '=', record.tuoi)]
+                if record._origin.id:
+                    domain.append(('id', '!=', record._origin.id))
+                records = self.env['hr.employee'].search(domain)
                 record.so_nguoi_bang_tuoi = len(records)
             else:
                  record.so_nguoi_bang_tuoi = 0
@@ -84,3 +80,9 @@ class HrEmployeeInherit(models.Model):
         for record in self:
             if record.tuoi > 0 and record.tuoi < 18:
                 raise ValidationError("Tuổi không được bé hơn 18")
+
+    @api.constrains('birthday') 
+    def _check_birthday(self): 
+        for rec in self: 
+            if rec.birthday and rec.birthday > fields.Date.today(): 
+                raise ValidationError("Ngày sinh không được lớn hơn ngày hiện tại!") 

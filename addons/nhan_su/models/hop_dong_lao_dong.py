@@ -1,4 +1,6 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+from dateutil.relativedelta import relativedelta
 
 class HopDongLaoDong(models.Model):
     _name = 'hop_dong_lao_dong'
@@ -17,7 +19,6 @@ class HopDongLaoDong(models.Model):
     
     ngay_bat_dau = fields.Date(string="Ngày bắt đầu", required=True)
     ngay_ket_thuc = fields.Date(string="Ngày kết thúc")
-    luong_co_ban = fields.Float(string="Mức lương cơ bản (VNĐ)")
     file_hop_dong = fields.Binary(string="Bản scan hợp đồng")
     
     trang_thai = fields.Selection([
@@ -27,6 +28,32 @@ class HopDongLaoDong(models.Model):
         ('cham_dut', 'Đã thanh lý/Chấm dứt')
     ], string="Trạng thái", default='nhap')
 
+    @api.onchange('loai_hop_dong', 'ngay_bat_dau')
+    def _onchange_tinh_ngay_ket_thuc(self):
+        for record in self:
+            if record.ngay_bat_dau:
+                if record.loai_hop_dong == 'thu_viec':
+                    # Mặc định thử việc 2 tháng
+                    record.ngay_ket_thuc = record.ngay_bat_dau + relativedelta(months=2)
+                elif record.loai_hop_dong == '1_nam':
+                    record.ngay_ket_thuc = record.ngay_bat_dau + relativedelta(years=1)
+                elif record.loai_hop_dong == '3_nam':
+                    record.ngay_ket_thuc = record.ngay_bat_dau + relativedelta(years=3)
+                elif record.loai_hop_dong == 'khong_thoi_han':
+                    record.ngay_ket_thuc = False
+
     _sql_constraints = [
         ('so_hop_dong_unique', 'unique(so_hop_dong)', 'Số hợp đồng này đã tồn tại trong hệ thống!')
     ]
+
+    @api.constrains('nhan_vien_id', 'trang_thai')
+    def _check_1_hop_dong_active(self):
+        for record in self:
+            if record.trang_thai in ['nhap', 'hieu_luc']:
+                count = self.search_count([
+                    ('nhan_vien_id', '=', record.nhan_vien_id.id),
+                    ('trang_thai', 'in', ['nhap', 'hieu_luc']),
+                    ('id', '!=', record.id)
+                ])
+                if count > 0:
+                    raise ValidationError(f"Nhân viên {record.nhan_vien_id.name} đang có Hợp đồng khác ở trạng thái Mới tạo/Đang hiệu lực. Vui lòng thanh lý Hợp đồng cũ trước khi tạo mới!")

@@ -11,9 +11,19 @@ class LichSuMuonTra(models.Model):
     dat_phong_id = fields.Many2one('dat_phong', string='Phiếu Đặt Phòng', ondelete='cascade')
     ma_phieu = fields.Char(related='dat_phong_id.ma_phieu', string="Mã Phiếu", store=True)
     nguoi_muon_id = fields.Many2one('hr.employee', related='dat_phong_id.nguoi_muon_id', string="Người mượn", store=True)
-    tai_san_ids = fields.Many2many("tai_san", related="dat_phong_id.tai_san_ids", string="Tài sản mượn kèm")
-    dich_vu_ids = fields.Many2many("quan_ly_dich_vu", related="dat_phong_id.dich_vu_ids", string="Dịch vụ đi kèm")
+    tai_san_ids = fields.Many2many("tai_san", compute="_compute_tai_san_dich_vu", string="Tài sản mượn kèm")
+    dich_vu_ids = fields.Many2many("dich_vu_di_kem", compute="_compute_tai_san_dich_vu", string="Dịch vụ đi kèm")
     tong_thoi_gian_su_dung = fields.Char(string="⏳ Tổng thời gian sử dụng", compute="_compute_tong_thoi_gian", store=True)
+
+    @api.depends("dat_phong_id", "dat_phong_id.tai_san_ids", "dat_phong_id.dich_vu_ids")
+    def _compute_tai_san_dich_vu(self):
+        for record in self:
+            if record.dat_phong_id:
+                record.tai_san_ids = record.dat_phong_id.tai_san_ids
+                record.dich_vu_ids = record.dat_phong_id.dich_vu_ids
+            else:
+                record.tai_san_ids = False
+                record.dich_vu_ids = False
 
 
 

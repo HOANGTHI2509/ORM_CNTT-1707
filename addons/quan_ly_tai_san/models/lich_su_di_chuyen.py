@@ -14,8 +14,7 @@ class LichSuDiChuyen(models.Model):
 
     vi_tri_chuyen_id = fields.Many2one(
         comodel_name='vi_tri',
-        string="Ví trí chuyển",
-        required=True,
+        string="Từ vị trí (Hiện tại)",
     )
 
     vi_tri_den_id = fields.Many2one(
@@ -28,6 +27,10 @@ class LichSuDiChuyen(models.Model):
         default=fields.Date.context_today,
         required=True
     )
+    nguoi_thuc_hien_id = fields.Many2one(
+        comodel_name='hr.employee',
+        string="Người thực hiện"
+    )
     ghi_chu = fields.Char("Ghi chú")
 
     is_current_location = fields.Boolean(
@@ -35,6 +38,12 @@ class LichSuDiChuyen(models.Model):
         compute="_compute_is_current_location",
         store=True
     )
+
+    @api.onchange('tai_san_id')
+    def _onchange_tai_san_id(self):
+        for record in self:
+            if record.tai_san_id:
+                record.vi_tri_chuyen_id = record.tai_san_id.vi_tri_hien_tai_id
 
     @api.depends('tai_san_id.vi_tri_hien_tai_id', 'vi_tri_den_id')
     def _compute_is_current_location(self):

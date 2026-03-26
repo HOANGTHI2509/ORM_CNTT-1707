@@ -4,37 +4,26 @@
                   name="Quản lí phòng họp, hội trường"
                   sequence="0"/>
 
+        <menuitem id="menu_dat_phong_ai"
+                  name="✨ Trợ lý Đặt Phòng"
+                  parent="menu_root"
+                  action="action_wizard_dat_phong_ai"
+                  sequence="99"/>
+
         <menuitem name="Danh sách phòng họp, hội trường" 
                   id="menu_quan_ly_phong_hop" 
                   parent="menu_root" 
                   sequence="1"
                   action="action_quan_ly_phong_hop"/>
-        <!-- Menu - Quản lý thiết bị -->
-        <menuitem id="menu_thiet_bi_moi" name="📌 Quản lý Thiết Bị" action="action_thiet_bi" parent="menu_root"/>
-        <menuitem name="Đăng ký mượn phòng" 
+
+        <menuitem name="Đơn đặt phòng" 
                   id="menu_dat_phong" 
                   parent="menu_root" 
+                  action="action_dat_phong"
                   sequence="2"/>
 
-        <menuitem name="Danh sách chờ duyệt"
-                  id="menu_dat_phong_cho_duyet"
-                  parent="menu_dat_phong"
-                  action="action_dat_phong_cho_duyet"/>
+        <!-- Loại bỏ các menu con chờ duyệt, đã duyệt, đang sử dụng, đã hủy để dồn chung vào Đơn đặt phòng -->
 
-        <menuitem name="Danh sách đã duyệt"
-                  id="menu_dat_phong_da_duyet"
-                  parent="menu_dat_phong"
-                  action="action_dat_phong_da_duyet"/>
-
-        <menuitem name="Danh sách phòng đang sử dụng"
-                  id="menu_dat_phong_dang_su_dung"
-                  parent="menu_dat_phong"
-                  action="action_dat_phong_dang_su_dung"/>
-
-        <menuitem name="Danh sách đã hủy"
-                  id="menu_dat_phong_da_huy"
-                  parent="menu_dat_phong"
-                  action="action_dat_phong_da_huy"/>
 
         <menuitem name="Lịch sử thay đổi" 
                   id="menu_lich_su_thay_doi" 
@@ -48,9 +37,9 @@
                   action="action_lich_su_muon_tra"/>
 
         <menuitem id="menu_dashboard_trang_thai"
-                  name="📊 DashBoard Tổng Hợp"
+                  name="📊 Bảng Tổng Hợp"
                   parent="menu_root"
-                  action="action_dashboard_tong_hop"
+                  action="action_dashboard_tong_hop_v3"
                   sequence="0" />
                   
         <menuitem id="menu_dich_vu_di_kem"
@@ -59,10 +48,6 @@
                   action="action_dich_vu_di_kem"
                   sequence="30"/>
                   
-        <menuitem id="menu_bien_ban_den_bu"
-                  name="🚨 Biên Bản Đền Bù"
-                  parent="menu_root"
-                  action="action_bien_ban_den_bu"
-                  sequence="15"/>
+        <!-- Đã ẩn Menu Biên bản đền bù bên module Phòng họp theo yêu cầu để tập trung quản lý bên Tài sản -->
     </data>
 </odoo>

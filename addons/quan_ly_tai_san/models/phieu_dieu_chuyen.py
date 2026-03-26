@@ -48,6 +48,19 @@ class PhieuDieuChuyen(models.Model):
     def action_duyet(self):
         self.write({'trang_thai': 'duyet'})
 
+    def _send_telegram_message(self, message):
+        import requests
+        import logging
+        _logger = logging.getLogger(__name__)
+        bot_token = self.env['ir.config_parameter'].sudo().get_param('telegram_bot_token', "8674994673:AAGry6psZQjjR1EMXcXprIEevecQ6Ur4Ei0")
+        chat_id = self.env['ir.config_parameter'].sudo().get_param('telegram_chat_id', "8262831605")
+        if bot_token and chat_id:
+            url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+            try:
+                requests.post(url, json={'chat_id': chat_id, 'text': message, 'parse_mode': 'HTML'}, timeout=5)
+            except Exception as e:
+                _logger.error("Lỗi gửi Telegram: %s", str(e))
+
     def action_hoan_thanh(self):
         if self.trang_thai != 'duyet':
             raise UserError(_('Chỉ có thể hoàn thành phiếu đã được duyệt.'))
@@ -60,6 +73,15 @@ class PhieuDieuChuyen(models.Model):
         })
         self.tai_san.write({'vi_tri_hien_tai_id': self.vi_tri_moi.id})
         self.write({'trang_thai': 'hoan_thanh'})
+
+        # Telegram
+        ten_vi_tri_cu = self.vi_tri_hien_tai.ten_vi_tri if self.vi_tri_hien_tai else 'Kho'
+        tele_msg = f"<b>[ĐIỀU CHUYỂN TÀI SẢN]</b>\n" \
+                   f"Tài sản: {self.tai_san.ten_tai_san} ({self.tai_san.ma_tai_san})\n" \
+                   f"Từ: {ten_vi_tri_cu}\n" \
+                   f"Đến Vị trí: {self.vi_tri_moi.ten_vi_tri}\n" \
+                   f"Ghi chú: {self.ghi_chu or 'Không có'}"
+        self._send_telegram_message(tele_msg)
 
     def action_huy(self):
         if self.trang_thai == 'hoan_thanh':

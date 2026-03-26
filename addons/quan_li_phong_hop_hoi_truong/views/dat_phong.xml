@@ -38,8 +38,6 @@
                             attrs="{'invisible': [('trang_thai', '!=', 'đã_duyệt')]}"/>
                         <button name="tra_phong" string="🏠 Trả phòng" type="object" class="btn-info"
                             attrs="{'invisible': [('trang_thai', '!=', 'đang_sử_dụng')]}"/>
-                        <button name="action_lap_bien_ban" type="object" string="🚨 Báo hỏng / Lập Biên Bản" class="btn-danger"
-                            attrs="{'invisible': [('trang_thai', 'in', ['chờ_duyệt', 'cho_duyet_cap_2', 'đã_hủy'])]}"/>
                         <field name="trang_thai" widget="statusbar" statusbar_visible="chờ_duyệt,đã_duyệt,đang_sử_dụng"/>
                     </header>
                     <sheet>
@@ -66,22 +64,6 @@
                             <field name="kieu_lap"/>
                             <field name="ngay_ket_thuc_lap" attrs="{'invisible': [('kieu_lap', '=', 'khong_lap')], 'required': [('kieu_lap', '!=', 'khong_lap')]}"/>
                         </group>
-                        <notebook>
-                            <!-- Thêm tab hiển thị chi tiết sử dụng -->
-                            <page string="Phiếu Báo Hỏng / Đền Bù" name="bien_ban_den_bu">
-                                <field name="bien_ban_ids" readonly="1">
-                                    <tree>
-                                        <field name="ma_bien_ban"/>
-                                        <field name="tai_san_id"/>
-                                        <field name="so_tien_phat" widget="monetary"/>
-                                        <field name="trang_thai" widget="badge" 
-                                               decoration-success="trang_thai == 'da_duyet'" 
-                                               decoration-warning="trang_thai == 'cho_duyet'"
-                                               decoration-info="trang_thai == 'nhap'"/>
-                                    </tree>
-                                </field>
-                            </page>
-                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -91,6 +73,7 @@
         <record id="view_dat_phong_tree" model="ir.ui.view">
             <field name="name">dat_phong_tree</field>
             <field name="model">dat_phong</field>
+            <field name="priority">1</field>
             <field name="arch" type="xml">
                 <tree string="📋 Danh sách Đăng Ký Mượn Phòng">
                     <field name="ma_phieu" string="Mã phiếu"/>
@@ -103,7 +86,7 @@
                            decoration-danger="trang_thai=='đang_sử_dụng'"
                            decoration-info="trang_thai=='đã_duyệt'"
                            decoration-success="trang_thai=='chờ_duyệt'"/>
-
+                    
                     <!-- Nút hành động -->
                     <button name="xac_nhan_duyet_phong" string="✅ Duyệt" type="object" class="btn-primary"
                         attrs="{'invisible': [('trang_thai', '!=', 'chờ_duyệt')]}"/>
@@ -138,11 +121,49 @@
             </field>
         </record>
 
+        <!-- Kanban View - Đơn đặt phòng -->
+        <record id="view_dat_phong_kanban" model="ir.ui.view">
+            <field name="name">dat_phong.kanban</field>
+            <field name="model">dat_phong</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="trang_thai" class="o_kanban_small_column" sample="1">
+                    <field name="ma_phieu"/>
+                    <field name="phong_id"/>
+                    <field name="nguoi_muon_id"/>
+                    <field name="thoi_gian_muon_du_kien"/>
+                    <field name="thoi_gian_tra_du_kien"/>
+                    <field name="trang_thai"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_record_title">
+                                    <strong><field name="ma_phieu"/></strong> - <span><field name="phong_id"/></span>
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <span>Mượn: <field name="thoi_gian_muon_du_kien" widget="datetime"/></span><br/>
+                                    <span>Trả: <field name="thoi_gian_tra_du_kien" widget="datetime"/></span>
+                                </div>
+                                <div class="o_kanban_record_bottom mt-2">
+                                    <div class="oe_kanban_bottom_left">
+                                        <field name="trang_thai" widget="label_selection" options="{'classes': {'chờ_duyệt': 'info', 'cho_duyet_cap_2': 'warning', 'đã_duyệt': 'primary', 'đang_sử_dụng': 'success', 'đã_hủy': 'danger', 'đã_trả': 'secondary'}}"/>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <img t-att-src="kanban_image('hr.employee', 'image_128', record.nguoi_muon_id.raw_value)" class="oe_kanban_avatar rounded-circle"/>
+                                        <span class="ml-1"><field name="nguoi_muon_id"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
         <!-- Action - Danh sách tất cả đăng ký -->
         <record id="action_dat_phong" model="ir.actions.act_window">
             <field name="name">📋 Danh sách Đăng Ký Mượn Phòng</field>
             <field name="res_model">dat_phong</field>
-            <field name="view_mode">tree,form,calendar</field>
+            <field name="view_mode">kanban,tree,form,calendar</field>
             <field name="search_view_id" ref="dat_phong_search"/>
         </record>
 
@@ -150,7 +171,7 @@
         <record id="action_dat_phong_cho_duyet" model="ir.actions.act_window">
             <field name="name">📋 Danh sách Chờ Duyệt</field>
             <field name="res_model">dat_phong</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
             <field name="search_view_id" ref="dat_phong_search"/>
             <field name="domain">[("trang_thai", "in", ["chờ_duyệt", "cho_duyet_cap_2"])]</field>
         </record>
@@ -159,7 +180,7 @@
         <record id="action_dat_phong_da_duyet" model="ir.actions.act_window">
             <field name="name">📋 Danh sách Đã Duyệt</field>
             <field name="res_model">dat_phong</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
             <field name="search_view_id" ref="dat_phong_search"/>
             <field name="domain">[("trang_thai", "=", "đã_duyệt")]</field>
         </record>
@@ -168,7 +189,7 @@
         <record id="action_dat_phong_dang_su_dung" model="ir.actions.act_window">
             <field name="name">📋 Danh sách Phòng Đang Sử Dụng</field>
             <field name="res_model">dat_phong</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
             <field name="search_view_id" ref="dat_phong_search"/>
             <field name="domain">[("trang_thai", "=", "đang_sử_dụng")]</field>
         </record>
@@ -177,7 +198,7 @@
         <record id="action_dat_phong_da_huy" model="ir.actions.act_window">
             <field name="name">📋 Danh sách Đã Hủy</field>
             <field name="res_model">dat_phong</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
             <field name="search_view_id" ref="dat_phong_search"/>
             <field name="domain">[("trang_thai", "=", "đã_hủy")]</field>
         </record>

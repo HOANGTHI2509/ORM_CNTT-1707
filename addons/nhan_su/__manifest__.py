@@ -26,16 +26,14 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'wizard/nhan_vien_ai_view.xml',
         'views/chuc_vu.xml',
         'views/don_vi.xml',
         'views/nhan_vien.xml',
-        'views/lich_su_cong_tac.xml',
-        'views/chung_chi_bang_cap.xml',
-        'views/danh_sach_chung_chi_bang_cap.xml',
         'views/phong_ban_view.xml',
         'views/hop_dong_lao_dong_view.xml',
+        'views/lich_su_cong_tac.xml',
         'views/menu.xml',
-        'data/demo_nhan_su.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_dat_phong_ai_wizard" model="ir.ui.view">
+        <field name="name">dat_phong.ai.wizard.form</field>
+        <field name="model">dat_phong.ai.wizard</field>
+        <field name="arch" type="xml">
+            <form string="✨ Trợ Lý Ảo Odoo Đặt Phòng">
+                <div class="alert alert-info" role="alert" style="margin-bottom: 20px;">
+                    <h3 style="color: #8c52ff; margin-bottom: 5px;"><span class="fa fa-magic mr8"/><b> Hãy ra lệnh cho tôi!</b></h3>
+                    <i>Ví dụ: "Lấy cho anh phòng Họp lớn 9h-11h sáng mai, kèm 2 chai nước và 1 máy chiếu nhé!"</i>
+                </div>
+                <group>
+                    <field name="ai_request" nolabel="1" 
+                           placeholder="Gõ 'Có phòng nào rảnh không?' hoặc 'Cho tôi cái phòng Lớn'... AI sẽ hiểu ngay!"
+                           style="width: 100%; border: 2px dashed #8c52ff; padding: 10px; border-radius: 10px; min-height: 100px;"/>
+                </group>
+                <div attrs="{'invisible': [('ai_response', '=', False)]}" style="background-color: #f5f3ff; border-left: 5px solid #8c52ff; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <h4 style="color: #6d28d9; margin-bottom: 5px;">🤖 Chuyên gia Đặt Phòng Trả Lời:</h4>
+                    <field name="ai_response" nolabel="1" style="font-size: 14px; color: #1f2937;"/>
+                </div>
+                <footer>
+                    <button name="action_generate" type="object" string="🪄 Phân tích &amp; Lên Đơn Mượn" class="btn-primary" style="background-color: #8c52ff; border-color: #8c52ff;"/>
+                    <button string="Hủy bỏ" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_dat_phong_ai" model="ir.actions.act_window">
+        <field name="name">✨ Trợ lý AI (Gemini)</field>
+        <field name="res_model">dat_phong.ai.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

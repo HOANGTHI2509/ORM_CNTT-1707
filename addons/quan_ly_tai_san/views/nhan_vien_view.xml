@@ -7,6 +7,17 @@
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
+                    <page string="Tài sản đang giữ/quản lý">
+                        <field name="tai_san_dang_quan_ly_ids" readonly="1">
+                            <tree>
+                                <field name="ma_tai_san"/>
+                                <field name="ten_tai_san"/>
+                                <field name="loai_tai_san_id"/>
+                                <field name="trang_thai" widget="badge" decoration-success="trang_thai in ('SanSang','DangSuDung','Muon')"/>
+                                <field name="vi_tri_hien_tai_id"/>
+                            </tree>
+                        </field>
+                    </page>
                     <page string="Lịch sử nhận/trả tài sản">
                         <field name="phieu_ban_giao_ids" readonly="1">
                             <tree>

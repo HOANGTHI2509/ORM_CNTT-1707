@@ -11,6 +11,7 @@ class NhaCungCap(models.Model):
     _order = 'ma_nha_cung_cap'
     _sql_constraints = [
         ('ma_nha_cung_cap_unique', 'unique(ma_nha_cung_cap)', 'Mã nhà cung cấp phải là duy nhất!'),
+        ('ten_nha_cung_cap_unique', 'unique(ten_nha_cung_cap)', 'Tên nhà cung cấp này đã tồn tại trong hệ thống!'),
     ]
 
     ma_nha_cung_cap = fields.Char("Mã nhà cung cấp")

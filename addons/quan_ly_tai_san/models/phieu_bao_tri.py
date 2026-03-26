@@ -7,16 +7,6 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
-TELEGRAM_BOT_TOKEN = "8674994673:AAGry6psZQjjR1EMXcXprIEevecQ6Ur4Ei0"
-TELEGRAM_CHAT_ID = "8262831605"
-
-def gui_tin_nhan_telegram_ts(message):
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    try:
-        requests.post(url, json={'chat_id': TELEGRAM_CHAT_ID, 'text': message, 'parse_mode': 'HTML'}, timeout=5)
-    except Exception as e:
-        _logger.error("Lỗi gửi Telegram: %s", str(e))
-
 
 class PhieuBaoTri(models.Model):
     _name = 'phieu_bao_tri'
@@ -55,6 +45,17 @@ class PhieuBaoTri(models.Model):
         [('draft', 'Nháp'), ('approved', 'Đã duyệt'), ('done', 'Hoàn thành'), ('cancelled', 'Hủy')],
         default='draft', string="Trạng thái")
 
+    def _send_telegram_message(self, message):
+        bot_token = self.env['ir.config_parameter'].sudo().get_param('telegram_bot_token')
+        chat_id = self.env['ir.config_parameter'].sudo().get_param('telegram_chat_id')
+        if bot_token and chat_id:
+            url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+            payload = {'chat_id': chat_id, 'text': message, 'parse_mode': 'HTML'}
+            try:
+                requests.post(url, json=payload, timeout=5)
+            except Exception as e:
+                _logger.error("Lỗi gửi Telegram định danh: %s", str(e))
+
     @api.constrains('ma_phieu_bao_tri')
     def _check_ma_phieu_bao_tri_format(self):
         for record in self:
@@ -77,7 +78,7 @@ class PhieuBaoTri(models.Model):
         # Telegram New
         if record.tai_san_id:
             tele_msg = f"🔧 <b>BÁO CÁO HỎNG / BẢO TRÌ MỚI ({record.ma_phieu_bao_tri})</b>\nTài sản: {record.tai_san_id.ten_tai_san}\nChi phí dự kiến: {record.chi_phi:,.0f} VNĐ\nTrạng thái: Nháp"
-            gui_tin_nhan_telegram_ts(tele_msg)
+            record._send_telegram_message(tele_msg)
             
         return record
 
@@ -96,7 +97,7 @@ class PhieuBaoTri(models.Model):
                 
                 # Telegram Approve
                 tele_msg = f"✅ <b>ĐÃ DUYỆT BẢO TRÌ TÀI SẢN ({record.ma_phieu_bao_tri})</b>\nTài sản: {record.tai_san_id.ten_tai_san}\nNgày dự kiến xong: {record.ngay_tra.strftime('%d/%m/%Y') if record.ngay_tra else ''}"
-                gui_tin_nhan_telegram_ts(tele_msg)
+                record._send_telegram_message(tele_msg)
 
     def action_done(self):
         for record in self:

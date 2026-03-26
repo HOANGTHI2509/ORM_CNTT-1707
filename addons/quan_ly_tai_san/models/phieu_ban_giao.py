@@ -26,6 +26,20 @@ class PhieuBanGiao(models.Model):
         ('huy', 'Đã Hủy')
     ], string="Trạng thái", default='nhap')
 
+    def _send_telegram_message(self, message):
+        bot_token = self.env['ir.config_parameter'].sudo().get_param('telegram_bot_token')
+        chat_id = self.env['ir.config_parameter'].sudo().get_param('telegram_chat_id')
+        if bot_token and chat_id:
+            import requests
+            import logging
+            _logger = logging.getLogger(__name__)
+            url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+            payload = {'chat_id': chat_id, 'text': message, 'parse_mode': 'HTML'}
+            try:
+                requests.post(url, json=payload, timeout=5)
+            except Exception as e:
+                _logger.error("Lỗi gửi Telegram: %s", str(e))
+
     @api.model
     def create(self, vals):
         if vals.get('ma_phieu', 'New') == 'New':
@@ -55,6 +69,14 @@ class PhieuBanGiao(models.Model):
                         'nguoi_dang_dung_id': False
                     })
             record.write({'trang_thai': 'hoan_thanh'})
+
+            # Telegram Notification
+            danh_sach_tai_san = ", ".join([ct.tai_san_id.ten_tai_san for ct in record.chi_tiet_ids])
+            if record.loai_phieu == 'giao_moi':
+                msg = f"📦 <b>ĐÃ BÀN GIAO TÀI SẢN ({record.ma_phieu})</b>\nNgười nhận: {record.nguoi_nhan_id.name}\nTài sản: {danh_sach_tai_san}"
+            else:
+                msg = f"🚨 <b>THU HỒI TÀI SẢN ({record.ma_phieu})</b>\nThu từ: {record.nguoi_giao_id.name}\nTài sản: {danh_sach_tai_san}"
+            record._send_telegram_message(msg)
 
     def action_huy(self):
         self.write({'trang_thai': 'huy'})

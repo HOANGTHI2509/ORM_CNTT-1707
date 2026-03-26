@@ -71,6 +71,19 @@ class PhieuKiemKe(models.Model):
         else:
             raise models.UserError('Chỉ có thể xác nhận phiếu ở trạng thái Nháp!')
 
+    def _send_telegram_message(self, message):
+        import requests
+        import logging
+        _logger = logging.getLogger(__name__)
+        bot_token = self.env['ir.config_parameter'].sudo().get_param('telegram_bot_token', "8674994673:AAGry6psZQjjR1EMXcXprIEevecQ6Ur4Ei0")
+        chat_id = self.env['ir.config_parameter'].sudo().get_param('telegram_chat_id', "8262831605")
+        if bot_token and chat_id:
+            url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+            try:
+                requests.post(url, json={'chat_id': chat_id, 'text': message, 'parse_mode': 'HTML'}, timeout=5)
+            except Exception as e:
+                _logger.error("Lỗi gửi Telegram: %s", str(e))
+
     def action_done(self):
         self.ensure_one()
         if self.state != 'confirmed':
@@ -79,9 +92,27 @@ class PhieuKiemKe(models.Model):
             self.env['lich_su_kiem_ke'].create({
                 'phieu_kiem_ke_id': self.id,
                 'tai_san_id': tai_san.id,
-                'trang_thai_truoc': tai_san.trang_thai_kiem_ke,
+                'trang_thai_truoc': tai_san.trang_thai_kiem_ke or 'binh_thuong',
                 'trang_thai_sau': self.trang_thai_thuc_te,
                 'ngay_kiem_ke': self.ngay_kiem_ke,
             })
             tai_san.trang_thai_kiem_ke = self.trang_thai_thuc_te
+
+            # Tự động đồng bộ với Trạng thái vật lý
+            if self.trang_thai_thuc_te == 'hong_hoc' and tai_san.trang_thai not in ('Hong', 'DaThanhLy'):
+                tai_san.trang_thai = 'Hong'
+            elif self.trang_thai_thuc_te == 'sua_chua' and tai_san.trang_thai not in ('BaoTri', 'DaThanhLy'):
+                tai_san.trang_thai = 'BaoTri'
+            elif self.trang_thai_thuc_te == 'mat':
+                tai_san.trang_thai = 'Hong'
+                
         self.state = 'done'
+
+        # Telegram
+        trang_thai_dict = dict(self._fields['trang_thai_thuc_te'].selection)
+        tele_msg = f"<b>[HOÀN THÀNH KIỂM KÊ]</b>\n" \
+                   f"Mã phiếu: {self.ma_phieu_kiem_ke}\n" \
+                   f"Tình trạng thẩm định: {trang_thai_dict.get(self.trang_thai_thuc_te)}\n" \
+                   f"Số tài sản quét: {len(self.tai_san_ids)}\n" \
+                   f"Ghi chú: {self.ghi_chu or 'Không có'}"
+        self._send_telegram_message(tele_msg)

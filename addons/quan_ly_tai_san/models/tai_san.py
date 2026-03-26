@@ -73,36 +73,35 @@ class TaiSan(models.Model):
     )
 
     TRANG_THAI = [
-        ("LuuTru", "Lưu trữ"),
+        ("LuuTru", "Lưu trữ (Kho)"),
+        ("SanSang", "Sẵn sàng (Tại phòng)"),
         ("Muon", "Mượn"),
-        ("BaoTri", "Bảo trì"),
+        ("BaoTri", "Đang BD/Sửa chữa"),
         ("Hong", "Hỏng"),
         ("DaThanhLy", "Đã thanh lý"),
-    ]
-
-    TRANG_THAI_KIEM_KE = [
-        ('binh_thuong', 'Bình thường'),
-        ('hong_hoc', 'Hỏng hóc'),
-        ('mat', 'Mất'),
-        ('sua_chua', 'Đang sửa chữa')
     ]
 
     trang_thai = fields.Selection(
         TRANG_THAI, string="Trạng thái", default="LuuTru",
         help="Trạng thái hiện tại của tài sản:\n"
-             "- Lưu trữ: Đang trong kho\n"
-             "- Mượn: Đang có người sử dụng\n"
-             "- Bảo trì: Đang được sửa chữa\n"
+             "- Lưu trữ: Đang rảnh rỗi trong kho\n"
+             "- Sẵn sàng: Đã được phân bổ vào các phòng\n"
+             "- Mượn: Đang có người mượn\n"
+             "- Bảo dưỡng/Sửa chữa: Đang được bảo dưỡng hoặc sửa chữa\n"
              "- Hỏng: Không thể sử dụng"
-    )
-    trang_thai_kiem_ke = fields.Selection(
-        TRANG_THAI_KIEM_KE, string="Trạng thái Kiểm Kê", default="binh_thuong",
     )
 
     loai_tai_san_id = fields.Many2one(
         comodel_name='loai_tai_san', string="Loại tài sản", required=True,
         help="Loại tài sản, ví dụ: Thiết bị điện tử, Phương tiện di chuyển..."
     )
+
+    trang_thai_kiem_ke = fields.Selection([
+        ('binh_thuong', 'Bình thường'),
+        ('hong_hoc', 'Hỏng hóc'),
+        ('mat', 'Mất'),
+        ('sua_chua', 'Đang sửa chữa')
+    ], string="Tình trạng thẩm định", readonly=True, help="Kết quả ghi nhận từ kỳ kiểm kê gần nhất")
 
     vi_tri_hien_tai_id = fields.Many2one(
         comodel_name='vi_tri', string="Vị trí hiện tại", store=True,
@@ -126,25 +125,19 @@ class TaiSan(models.Model):
         help="Các lần tài sản được bảo trì hoặc sửa chữa"
     )
 
+    lich_su_kiem_ke_ids = fields.One2many(
+        comodel_name='lich_su_kiem_ke', inverse_name='tai_san_id',
+        string="Lịch sử kiểm kê", readonly=True,
+        help="Các lần tài sản được đánh giá/thẩm định trạng thái"
+    )
+
     lich_su_di_chuyen_ids = fields.One2many(
         comodel_name='lich_su_di_chuyen', inverse_name='tai_san_id',
         string="Lịch sử điều chuyển", readonly=True,
         help="Các lần tài sản được di chuyển giữa các vị trí"
     )
 
-    phieu_kiem_ke_ids = fields.Many2many(
-        comodel_name='phieu_kiem_ke',
-        string="Phiếu kiểm kê",
-        relation='tai_san_phieu_kiem_ke_rel',
-        column1='tai_san_id',
-        column2='phieu_kiem_ke_id'
-    )
 
-    lich_su_kiem_ke_ids = fields.One2many(
-        comodel_name='lich_su_kiem_ke', inverse_name='tai_san_id',
-        string="Lịch sử kiểm kê", readonly=True,
-        help="Các lần kiểm kê"
-    )
 
     thanh_ly_id = fields.Many2one(
         comodel_name='thanh_ly',
@@ -257,7 +250,7 @@ class TaiSan(models.Model):
                 'target': 'new',
                 'context': {
                     'default_tai_san_id': record.id,
-                    'default_vi_tri_id': record.vi_tri_hien_tai_id.id,
+                    'default_vi_tri_chuyen_id': record.vi_tri_hien_tai_id.id,
                 },
             }
 

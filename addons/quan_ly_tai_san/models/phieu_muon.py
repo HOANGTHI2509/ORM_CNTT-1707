@@ -1,6 +1,20 @@
 import re
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError, UserError
+import logging
+import requests
+
+_logger = logging.getLogger(__name__)
+
+TELEGRAM_BOT_TOKEN = "8674994673:AAGry6psZQjjR1EMXcXprIEevecQ6Ur4Ei0"
+TELEGRAM_CHAT_ID = "8262831605"
+
+def gui_tin_nhan_telegram(message):
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    try:
+        requests.post(url, json={'chat_id': TELEGRAM_CHAT_ID, 'text': message, 'parse_mode': 'HTML'}, timeout=5)
+    except Exception as e:
+        pass
 
 class ChiTietPhieuMuon(models.Model):
     _name = 'chi_tiet_phieu_muon'
@@ -64,8 +78,27 @@ class PhieuMuon(models.Model):
             else:
                 new_number = 1
             vals['ma_phieu_muon'] = f'PM-{new_number:05d}'
-        return super(PhieuMuon, self).create(vals)
+            
+        record = super(PhieuMuon, self).create(vals)
+        if record.nhan_vien_id:
+            tele_msg = f"🆕 <b>YÊU CẦU MƯỢN TÀI SẢN MỚI ({record.ma_phieu_muon})</b>\nNgười mượn: {record.nhan_vien_id.display_name}"
+            gui_tin_nhan_telegram(tele_msg)
+        return record
 
+
+    def _gui_thong_bao_email(self, email_to, subject, message):
+        if email_to:
+            formatted_message = message.replace("\n", "<br/>")
+            mail_values = {
+                'subject': subject,
+                'body_html': f'<div style="font-family: sans-serif;">{formatted_message}</div>',
+                'email_to': email_to,
+            }
+            try:
+                mail = self.env['mail.mail'].sudo().create(mail_values)
+                mail.send()
+            except Exception as e:
+                pass
 
     @api.depends('ngay_muon_du_kien', 'ngay_muon_thuc_te', 'ngay_tra_du_kien', 'ngay_tra_thuc_te')
     def _compute_trang_thai_muon(self):
@@ -99,13 +132,14 @@ class PhieuMuon(models.Model):
                 raise UserError("Vui lòng chọn ít nhất một tài sản để mượn!")
                 
             if record.state == 'draft':
+                record.ngay_muon_thuc_te = fields.Datetime.now()
                 for item in record.chi_tiet_ids:
                     if item.tai_san_id.trang_thai != 'LuuTru':
                         raise UserError(f"Tài sản {item.tai_san_id.ten_tai_san} không sẵn sàng để mượn!")
                         
                     self.env['lich_su_su_dung'].create({
                         'ma_lich_su_su_dung': self.env['ir.sequence'].next_by_code('lich_su_su_dung') or 'New',
-                        'ngay_muon': record.ngay_muon_du_kien,
+                        'ngay_muon': record.ngay_muon_thuc_te,
                         'ngay_tra': record.ngay_tra_du_kien,
                         'ghi_chu': record.ghi_chu,
                         'nhan_vien_id': record.nhan_vien_id.id,
@@ -116,19 +150,25 @@ class PhieuMuon(models.Model):
                         'nguoi_dang_dung_id': record.nhan_vien_id.id
                     })
                 record.state = 'approved'
+                
+                danh_sach = ", ".join(record.chi_tiet_ids.mapped('tai_san_id.ten_tai_san'))
+                msg = f"✅ Phiếu mượn tài sản {record.ma_phieu_muon} của bạn đã được duyệt!\nThiết bị: {danh_sach}"
+                if record.nhan_vien_id.work_email:
+                    self._gui_thong_bao_email(record.nhan_vien_id.work_email, f"Đã duyệt mượn tài sản {record.ma_phieu_muon}", msg)
+                tele_msg = f"✅ <b>DUYỆT MƯỢN TÀI SẢN ({record.ma_phieu_muon})</b>\nNgười mượn: {record.nhan_vien_id.display_name}\nThiết bị: {danh_sach}"
+                gui_tin_nhan_telegram(tele_msg)
 
     def action_done(self):
         for record in self:
             if record.state == 'approved':
-                if not record.ngay_muon_thuc_te or not record.ngay_tra_thuc_te:
-                    raise UserError('Vui lòng nhập Ngày mượn thực tế và Ngày trả thực tế trước khi hoàn thành.')
+                record.ngay_tra_thuc_te = fields.Datetime.now()
                 
                 record.state = 'done'
                 for item in record.chi_tiet_ids:
                     lich_su = self.env['lich_su_su_dung'].search([
                         ('nhan_vien_id', '=', record.nhan_vien_id.id),
                         ('tai_san_id', '=', item.tai_san_id.id),
-                        ('ngay_muon', '=', record.ngay_muon_du_kien),
+                        ('ngay_muon', '=', record.ngay_muon_thuc_te),
                         ('ngay_tra', '=', record.ngay_tra_du_kien)
                     ], limit=1)
                     
@@ -143,6 +183,9 @@ class PhieuMuon(models.Model):
                         'nguoi_dang_dung_id': False
                     })
                     item.trang_thai = 'da_tra'
+                
+                tele_msg = f"🏁 <b>ĐÃ TRẢ TÀI SẢN ({record.ma_phieu_muon})</b>\nNgười mượn: {record.nhan_vien_id.display_name}\nTài sản: {', '.join(record.chi_tiet_ids.mapped('tai_san_id.ten_tai_san'))}"
+                gui_tin_nhan_telegram(tele_msg)
 
     def action_cancel(self):
         for record in self:
@@ -151,7 +194,7 @@ class PhieuMuon(models.Model):
                     lich_su_su_dung = self.env['lich_su_su_dung'].search([
                         ('nhan_vien_id', '=', record.nhan_vien_id.id),
                         ('tai_san_id', '=', item.tai_san_id.id),
-                        ('ngay_muon', '=', record.ngay_muon_du_kien),
+                        ('ngay_muon', '=', record.ngay_muon_thuc_te if record.ngay_muon_thuc_te else record.ngay_muon_du_kien),
                         ('ngay_tra', '=', record.ngay_tra_du_kien),
                         ('ghi_chu', '=', record.ghi_chu)
                     ])
@@ -163,6 +206,11 @@ class PhieuMuon(models.Model):
                         'nguoi_dang_dung_id': False
                     })
                 record.state = 'cancelled'
+
+                tele_msg = f"❌ <b>HỦY PHIẾU MƯỢN TÀI SẢN ({record.ma_phieu_muon})</b>\nNgười mượn: {record.nhan_vien_id.display_name}"
+                gui_tin_nhan_telegram(tele_msg)
+                if record.nhan_vien_id.work_email:
+                    self._gui_thong_bao_email(record.nhan_vien_id.work_email, f"Phiếu mượn tài sản bị hủy: {record.ma_phieu_muon}", f"Phiếu mượn tài sản {record.ma_phieu_muon} của bạn đã bị hủy.")
 
     def action_reset_to_draft(self):
         for record in self:

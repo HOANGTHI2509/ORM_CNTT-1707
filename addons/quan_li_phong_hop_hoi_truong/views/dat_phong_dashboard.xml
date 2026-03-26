@@ -13,12 +13,80 @@
             </field>
         </record>
 
-        <!-- Action -->
+        <!-- View biểu đồ phòng họp được mượn nhiều nhất -->
+        <record id="view_dat_phong_graph_phong" model="ir.ui.view">
+            <field name="name">dat.phong.graph.phong</field>
+            <field name="model">dat_phong</field>
+            <field name="arch" type="xml">
+                <graph string="Mật độ mượn theo phòng" type="pie">
+                    <field name="phong_id" type="row"/>
+                    <field name="so_luong" type="measure" operator="sum"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- View danh sách đặt phòng chờ duyệt (tóm gọn) -->
+        <record id="view_dat_phong_tree_dashboard" model="ir.ui.view">
+            <field name="name">dat.phong.tree.dashboard</field>
+            <field name="model">dat_phong</field>
+            <field name="arch" type="xml">
+                <tree string="Duyệt yêu cầu" create="false" edit="false" delete="false" decoration-info="trang_thai in ('chờ_duyệt', 'cho_duyet_cap_2')">
+                    <field name="ma_phieu"/>
+                    <field name="phong_id"/>
+                    <field name="nguoi_muon_id"/>
+                    <field name="thoi_gian_muon_du_kien"/>
+                    <field name="trang_thai" widget="badge" decoration-warning="trang_thai == 'chờ_duyệt'" decoration-danger="trang_thai == 'cho_duyet_cap_2'"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action 1: Trạng thái (đã có) -->
         <record id="action_dat_phong_dashboard" model="ir.actions.act_window">
-            <field name="name">📊 Dashboard Trạng Thái Mượn Phòng</field>
+            <field name="name">Tình trạng Xử lý Yêu cầu</field>
             <field name="res_model">dat_phong</field>
             <field name="view_mode">graph</field>
             <field name="view_id" ref="view_dat_phong_graph_an_toan"/>
+        </record>
+
+        <!-- Action 2: Mật độ phòng -->
+        <record id="action_dashboard_dat_phong_phong" model="ir.actions.act_window">
+            <field name="name">Mật độ sử dụng theo Cơ sở</field>
+            <field name="res_model">dat_phong</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_dat_phong_graph_phong"/>
+        </record>
+
+        <!-- Action 3: Chờ duyệt -->
+        <record id="action_dashboard_dat_phong_cho_duyet" model="ir.actions.act_window">
+            <field name="name">Các yêu cầu Cần Duyệt Khẩn Cấp</field>
+            <field name="res_model">dat_phong</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('trang_thai', 'in', ['chờ_duyệt', 'cho_duyet_cap_2'])]</field>
+            <field name="view_id" ref="view_dat_phong_tree_dashboard"/>
+        </record>
+
+        <!-- View danh sách Biên bản chờ duyệt -->
+        <record id="view_bien_ban_tree_dashboard" model="ir.ui.view">
+            <field name="name">bien.ban.tree.dashboard</field>
+            <field name="model">bien_ban_den_bu</field>
+            <field name="arch" type="xml">
+                <tree string="Biên bản chờ duyệt" create="false" edit="false" delete="false" decoration-warning="trang_thai == 'cho_duyet'">
+                    <field name="ma_bien_ban"/>
+                    <field name="nhan_vien_id"/>
+                    <field name="tai_san_id"/>
+                    <field name="so_tien_phat"/>
+                    <field name="trang_thai" widget="badge" decoration-warning="trang_thai == 'cho_duyet'"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action 4: Biên bản đền bù -->
+        <record id="action_dashboard_bien_ban_cho_duyet" model="ir.actions.act_window">
+            <field name="name">Biên Bản Chờ Phê Duyệt</field>
+            <field name="res_model">bien_ban_den_bu</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('trang_thai', '=', 'cho_duyet')]</field>
+            <field name="view_id" ref="view_bien_ban_tree_dashboard"/>
         </record>
 
     </data>

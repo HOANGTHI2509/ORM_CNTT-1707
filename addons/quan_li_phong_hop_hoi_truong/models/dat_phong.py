@@ -66,6 +66,19 @@ class DatPhong(models.Model):
         if self.nguoi_muon_id:
             self.email = self.nguoi_muon_id.work_email
 
+    @api.onchange('phong_id')
+    def _onchange_phong_id_kiem_tra_thiet_bi(self):
+        if self.phong_id and self.phong_id.thiet_bi_ids:
+            thiet_bi_hong = self.phong_id.thiet_bi_ids.filtered(lambda x: x.trang_thai in ['Hong', 'BaoTri'])
+            if thiet_bi_hong:
+                danh_sach = ", ".join(thiet_bi_hong.mapped('ten_tai_san'))
+                return {
+                    'warning': {
+                        'title': "⚠️ CẢNH BÁO THIẾT BỊ HỎNG",
+                        'message': f"Phòng này hiện đang có đồ đạc bị hỏng/bảo trì:\n- {danh_sach}\n\nBạn vẫn có thể tiếp tục mượn phòng, nhưng vui lòng cân nhắc mang theo đồ dự phòng."
+                    }
+                }
+
     @api.constrains('email')
     def _check_email_gmail(self):
         for record in self:
@@ -170,7 +183,7 @@ class DatPhong(models.Model):
 
             # Phân quyền: Cấp bậc HR
             def get_rank(nhan_vien):
-                ten_cv = nhan_vien.chuc_vu_id.name.lower() if nhan_vien.chuc_vu_id else ""
+                ten_cv = nhan_vien.job_id.name.lower() if nhan_vien.job_id else ""
                 if 'giám đốc' in ten_cv: return 4
                 if 'trưởng phòng' in ten_cv: return 3
                 if 'phó' in ten_cv: return 2
@@ -221,7 +234,9 @@ class DatPhong(models.Model):
             
         # Gửi thông báo Telegram khi có người vừa đăng ký
         if record.nguoi_muon_id and record.phong_id and record.thoi_gian_muon_du_kien and record.thoi_gian_tra_du_kien:
-            tele_msg = f"🆕 <b>YÊU CẦU ĐẶT PHÒNG MỚI ({record.ma_phieu})</b>\nPhòng: {record.phong_id.name}\nNgười mượn: {record.nguoi_muon_id.display_name}\nThời gian: {record.thoi_gian_muon_du_kien.strftime('%H:%M %d/%m')} - {record.thoi_gian_tra_du_kien.strftime('%H:%M %d/%m')}\nTrạng thái: Chờ duyệt"
+            assets_str = ", ".join(record.tai_san_ids.mapped('ten_tai_san')) if record.tai_san_ids else "Không"
+            dich_vu_str = ", ".join(record.dich_vu_ids.mapped('name')) if record.dich_vu_ids else "Không"
+            tele_msg = f"🆕 <b>YÊU CẦU ĐẶT PHÒNG MỚI ({record.ma_phieu})</b>\nPhòng: {record.phong_id.name}\nNgười mượn: {record.nguoi_muon_id.display_name}\nThời gian: {record.thoi_gian_muon_du_kien.strftime('%H:%M %d/%m')} - {record.thoi_gian_tra_du_kien.strftime('%H:%M %d/%m')}\nĐồ dùng: {assets_str}\nDịch vụ: {dich_vu_str}\nTrạng thái: Chờ duyệt"
             gui_tin_nhan_telegram(tele_msg)
             
         return record
@@ -297,6 +312,7 @@ class DatPhong(models.Model):
             'view_mode': 'form',
             'context': {
                 'default_dat_phong_id': self.id,
+                'default_nhan_vien_id': self.nguoi_muon_id.id,
             },
             'target': 'current'
         }
@@ -363,7 +379,7 @@ class DatPhong(models.Model):
                 ghi_chu_log = f"Đã gửi Email thông báo duyệt phòng tới {record.email}"
                 
                 # Gửi thông báo Telegram
-                tele_msg = f"✅ <b>ĐẶT PHÒNG THÀNH CÔNG</b>\nPhòng: {record.phong_id.name}\nNgười mượn: {record.nguoi_muon_id.display_name}\nThời gian: {record.thoi_gian_muon_du_kien.strftime('%H:%M %d/%m')} - {record.thoi_gian_tra_du_kien.strftime('%H:%M %d/%m')}"
+                tele_msg = f"✅ <b>ĐẶT PHÒNG THÀNH CÔNG</b>\nPhòng: {record.phong_id.name}\nNgười mượn: {record.nguoi_muon_id.display_name}\nThời gian: {record.thoi_gian_muon_du_kien.strftime('%H:%M %d/%m')} - {record.thoi_gian_tra_du_kien.strftime('%H:%M %d/%m')}\nĐồ dùng: {assets_str}\nDịch vụ: {dich_vu_str}"
                 gui_tin_nhan_telegram(tele_msg)
             
             self.lich_su(record, ghi_chu=ghi_chu_log)
@@ -391,7 +407,7 @@ class DatPhong(models.Model):
             self._gui_thong_bao_email(record.email, f"Thông báo duyệt hội trường: {record.phong_id.name}", msg)
             
             # Gửi thông báo Telegram
-            tele_msg = f"✅ <b>DUYỆT HỘI TRƯỜNG CẤP 2 THÀNH CÔNG</b>\nPhòng: {record.phong_id.name}\nNgười mượn: {record.nguoi_muon_id.display_name}\nThời gian: {record.thoi_gian_muon_du_kien.strftime('%H:%M %d/%m')} - {record.thoi_gian_tra_du_kien.strftime('%H:%M %d/%m')}"
+            tele_msg = f"✅ <b>DUYỆT HỘI TRƯỜNG CẤP 2 THÀNH CÔNG</b>\nPhòng: {record.phong_id.name}\nNgười mượn: {record.nguoi_muon_id.display_name}\nThời gian: {record.thoi_gian_muon_du_kien.strftime('%H:%M %d/%m')} - {record.thoi_gian_tra_du_kien.strftime('%H:%M %d/%m')}\nĐồ dùng: {assets_str}\nDịch vụ: {dich_vu_str}"
             gui_tin_nhan_telegram(tele_msg)
 
             self.lich_su(record, ghi_chu=f"Đã gửi Email thông báo Lãnh đạo duyệt tới {record.email}")

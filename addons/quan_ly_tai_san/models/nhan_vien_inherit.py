@@ -9,14 +9,29 @@ class NhanVien(models.Model):
         inverse_name='nguoi_nhan_id',
         string="Lịch sử nhận/trả tài sản",
     )
+    
+    tai_san_dang_quan_ly_ids = fields.Many2many(
+        comodel_name='tai_san',
+        compute='_compute_tai_san_dang_quan_ly',
+        string="Tài sản đang sử dụng / quản lý",
+    )
+
+    def _compute_tai_san_dang_quan_ly(self):
+        for record in self:
+            record.tai_san_dang_quan_ly_ids = self.env['tai_san'].search([
+                '|', 
+                ('quan_ly_id', '=', record.id), 
+                ('nguoi_dang_dung_id', '=', record.id)
+            ])
 
     def write(self, vals):
         res = super(NhanVien, self).write(vals)
         if 'trang_thai_lam_viec' in vals and vals['trang_thai_lam_viec'] == 'nghi_viec':
             for record in self:
                 assets = self.env['tai_san'].search([
-                    ('nguoi_dang_dung_id', '=', record.id),
-                    ('trang_thai', '=', 'Muon')
+                    '&',
+                    '|', ('nguoi_dang_dung_id', '=', record.id), ('quan_ly_id', '=', record.id),
+                    ('trang_thai', '!=', 'DaThanhLy')
                 ])
                 if assets:
                     lines = [(0, 0, {

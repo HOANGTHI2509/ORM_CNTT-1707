@@ -35,20 +35,20 @@
                             <group class="o_3col">
                                 <field name="so_serial" placeholder="Số serial"/>
                                 <field name="loai_tai_san_id" widget="many2one" placeholder="Chọn loại tài sản..."/>
+                                <field name="trang_thai_kiem_ke" />
                             </group>
                             <group class="o_2col">
                                 <field name="nha_cung_cap_id" widget="many2one" placeholder="Chọn nhà cung cấp..."/>
                                 <field name="quan_ly_id" widget="many2one" placeholder="Chọn người quản lý..."/>
-                                <field name="nguoi_dang_dung_id" widget="many2one" readonly="1"/>
-                                <field name="vi_tri_hien_tai_id" widget="many2one" placeholder="Vị trí hiện tại..."
-                                       readonly="1"/>
+                                <field name="nguoi_dang_dung_id" widget="many2one" />
+                                <field name="vi_tri_hien_tai_id" widget="many2one" placeholder="Vị trí hiện tại..."/>
                             </group>
                         </group>
                         <notebook class="o_notebook_full">
                             <page string="Thông tin bổ sung" class="oe_grey">
                                 <group class="o_2col">
                                     <field name="ngay_mua" widget="datetime" placeholder="Ngày mua"/>
-                                    <field name="trang_thai_kiem_ke" placeholder="Trạng thái kiểm kê"/>
+
                                     <field name="ngay_het_han_bao_hanh" widget="date" placeholder="Ngày hết bảo hành"/>
                                     <field name="ngay_bao_tri_tiep_theo" widget="date" decoration-danger="is_qua_han_bao_tri" decoration-bf="is_qua_han_bao_tri"/>
                                     <field name="is_qua_han_bao_tri" invisible="1"/>
@@ -71,7 +71,7 @@
                                     </tree>
                                 </field>
                             </page>
-                            <page string="Lịch Sử Bảo Trì">
+                            <page string="Lịch sử Bảo dưỡng / Sửa chữa">
                                 <field name="lich_su_bao_tri_ids" readonly="1">
                                     <tree editable="bottom" class="o_list_view">
                                         <field name="ma_lich_su_bao_tri" readonly="1"/>
@@ -91,6 +91,18 @@
                                         <field name="vi_tri_den_id" widget="selection"
                                                decoration-success="is_current_location"/>
                                         <field name="ngay_di_chuyen" widget="datetime"/>
+                                        <field name="ghi_chu"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Lịch sử kiểm kê">
+                                <field name="lich_su_kiem_ke_ids" nolabel="1" readonly="1">
+                                    <tree class="o_list_full_width">
+                                        <field name="ma_lich_su_kiem_ke"/>
+                                        <field name="ngay_kiem_ke"/>
+                                        <field name="phieu_kiem_ke_id"/>
+                                        <field name="trang_thai_truoc" widget="badge"/>
+                                        <field name="trang_thai_sau" widget="badge"/>
                                         <field name="ghi_chu"/>
                                     </tree>
                                 </field>
@@ -125,7 +137,7 @@
                     <field name="gia_tien_mua" widget="monetary" optional="show"/>
                     <field name="gia_tri_hien_tai" widget="monetary" optional="show"/>
                     <field name="ngay_bao_tri_tiep_theo" widget="date" decoration-danger="is_qua_han_bao_tri" decoration-bf="is_qua_han_bao_tri" optional="show"/>
-                    <field name="trang_thai_kiem_ke" placeholder="Trạng thái kiểm kê" optional="hide"/>
+
                     <field name="trang_thai" widget="badge"
                            options="{'clickable': True, 'class_mapping': {'Muon': 'info', 'Hong': 'danger', 'LuuTru': 'success'}}"/>
                 </tree>
@@ -187,11 +199,14 @@
                                         <i class="fa fa-tags" title="Loại tài sản"/> <field name="loai_tai_san_id"/>
                                     </div>
                                     <div style="color: #6b7280; font-size: 13px; margin-top: 5px;">
+                                        <i class="fa fa-check-square-o" title="Trạng thái kiểm kê"/> <field name="trang_thai_kiem_ke"/>
+                                    </div>
+                                    <div style="color: #6b7280; font-size: 13px; margin-top: 5px;">
                                         <i class="fa fa-map-marker" title="Vị trí"/> <field name="vi_tri_hien_tai_id"/>
                                     </div>
                                     <div class="o_row mt4" style="text-align: right; margin-top: 10px;">
-                                        <span t-attf-class="badge #{record.trang_thai.raw_value == 'LuuTru' ? 'badge-success' : record.trang_thai.raw_value == 'Muon' ? 'badge-info' : record.trang_thai.raw_value == 'Hong' ? 'badge-danger' : record.trang_thai.raw_value == 'BaoTri' ? 'badge-warning' : 'badge-secondary'}">
-                                            <field name="trang_thai"/>
+                                        <span t-attf-class="badge #{record.trang_thai.raw_value == 'LuuTru' ? 'badge-secondary' : record.trang_thai.raw_value == 'SanSang' ? 'badge-success' : record.trang_thai.raw_value == 'Muon' ? 'badge-info' : record.trang_thai.raw_value == 'Hong' ? 'badge-danger' : record.trang_thai.raw_value == 'BaoTri' ? 'badge-warning' : 'badge-secondary'}">
+                                            <i class="fa fa-tag"/> <field name="trang_thai"/>
                                         </span>
                                     </div>
                                 </div>

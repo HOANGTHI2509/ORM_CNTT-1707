@@ -108,12 +108,33 @@ class ThanhLy(models.Model):
         else:
             raise ValidationError("Chỉ có thể xác nhận phiếu ở trạng thái Nháp!")
 
+    def _send_telegram_message(self, message):
+        import requests
+        import logging
+        _logger = logging.getLogger(__name__)
+        bot_token = self.env['ir.config_parameter'].sudo().get_param('telegram_bot_token', "8674994673:AAGry6psZQjjR1EMXcXprIEevecQ6Ur4Ei0")
+        chat_id = self.env['ir.config_parameter'].sudo().get_param('telegram_chat_id', "8262831605")
+        if bot_token and chat_id:
+            url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+            try:
+                requests.post(url, json={'chat_id': chat_id, 'text': message, 'parse_mode': 'HTML'}, timeout=5)
+            except Exception as e:
+                _logger.error("Lỗi gửi Telegram: %s", str(e))
+
     def action_done(self):
         self.ensure_one()
         if self.trang_thai != 'confirmed':
             raise ValidationError("Phiếu cần được xác nhận trước khi hoàn thành!")
         self.tai_san_id.trang_thai = 'DaThanhLy'
         self.trang_thai = 'done'
+
+        # Telegram
+        tele_msg = f"<b>[THANH LÝ TÀI SẢN]</b>\n" \
+                   f"Tài sản: {self.tai_san_id.ten_tai_san} ({self.tai_san_id.ma_tai_san})\n" \
+                   f"Giá trị thu hồi: {self.gia_tri_thanh_ly:,.0f} VNĐ\n" \
+                   f"Lý do: {self.ly_do}\n" \
+                   f"Người xử lý: {self.nguoi_xu_ly_id.name}"
+        self._send_telegram_message(tele_msg)
 
     def action_cancel(self):
         self.ensure_one()
@@ -127,7 +148,7 @@ class ThanhLy(models.Model):
     @api.constrains('tai_san_id', 'trang_thai')
     def _check_tai_san_trang_thai(self):
         for record in self:
-            if record.trang_thai == 'done' and record.tai_san_id.trang_thai not in ('Hong', 'LuuTru'):
+            if record.trang_thai == 'done' and record.tai_san_id.trang_thai not in ('Hong', 'LuuTru', 'DaThanhLy'):
                 raise ValidationError("Chỉ có thể thanh lý tài sản ở trạng thái 'Hỏng' hoặc 'Lưu trữ'!")
             if record.trang_thai == 'confirmed' and record.tai_san_id.trang_thai in ('Muon', 'BaoTri'):
                 raise ValidationError("Không thể thanh lý tài sản đang được mượn hoặc bảo trì!")

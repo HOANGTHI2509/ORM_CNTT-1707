@@ -25,6 +25,10 @@ class LichSuKiemKe(models.Model):
         required=True,
         ondelete="cascade"
     )
+    nguoi_kiem_ke_id = fields.Many2one(
+        comodel_name="hr.employee",
+        string="Người kiểm kê"
+    )
     tai_san_id = fields.Many2one(
         comodel_name="tai_san",
         string="Tài sản",
