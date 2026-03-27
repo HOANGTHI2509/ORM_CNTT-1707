@@ -79205,3 +79205,1102 @@ Traceback (most recent call last):
   File "/home/dmin/Business-Internship/odoo/sql_db.py", line 485, in rollback
     result = self._cnx.rollback()
 psycopg2.InterfaceError: connection already closed
+2026-03-26 07:19:52,080 17332 INFO ? odoo: Odoo version 15.0 
+2026-03-26 07:19:52,080 17332 INFO ? odoo: Using configuration file at /home/dmin/Business-Internship/odoo.conf 
+2026-03-26 07:19:52,080 17332 INFO ? odoo: addons paths: ['/home/dmin/Business-Internship/odoo/addons', '/home/dmin/.local/share/Odoo/addons/15.0', '/home/dmin/Business-Internship/addons'] 
+2026-03-26 07:19:52,080 17332 INFO ? odoo: database: odoo@127.0.0.1:5431 
+2026-03-26 07:19:52,084 17332 INFO ? odoo.sql_db: Connection to the database failed 
+2026-03-26 07:20:01,783 24770 INFO ? odoo: Odoo version 15.0 
+2026-03-26 07:20:01,783 24770 INFO ? odoo: Using configuration file at /home/dmin/Business-Internship/odoo.conf 
+2026-03-26 07:20:01,783 24770 INFO ? odoo: addons paths: ['/home/dmin/Business-Internship/odoo/addons', '/home/dmin/.local/share/Odoo/addons/15.0', '/home/dmin/Business-Internship/addons'] 
+2026-03-26 07:20:01,783 24770 INFO ? odoo: database: odoo@127.0.0.1:5431 
+2026-03-26 07:20:01,784 24770 INFO ? odoo.sql_db: Connection to the database failed 
+2026-03-26 07:20:36,408 46539 INFO ? odoo: Odoo version 15.0 
+2026-03-26 07:20:36,408 46539 INFO ? odoo: Using configuration file at /home/dmin/Business-Internship/odoo.conf 
+2026-03-26 07:20:36,408 46539 INFO ? odoo: addons paths: ['/home/dmin/Business-Internship/odoo/addons', '/home/dmin/.local/share/Odoo/addons/15.0', '/home/dmin/Business-Internship/addons'] 
+2026-03-26 07:20:36,408 46539 INFO ? odoo: database: odoo@127.0.0.1:5431 
+2026-03-26 07:20:36,409 46539 INFO ? odoo.sql_db: Connection to the database failed 
+2026-03-26 07:21:30,131 87609 INFO ? odoo: Odoo version 15.0 
+2026-03-26 07:21:30,131 87609 INFO ? odoo: Using configuration file at /home/dmin/Business-Internship/odoo.conf 
+2026-03-26 07:21:30,131 87609 INFO ? odoo: addons paths: ['/home/dmin/Business-Internship/odoo/addons', '/home/dmin/.local/share/Odoo/addons/15.0', '/home/dmin/Business-Internship/addons'] 
+2026-03-26 07:21:30,131 87609 INFO ? odoo: database: odoo@127.0.0.1:5431 
+2026-03-26 07:21:30,137 87609 INFO ? odoo.sql_db: Connection to the database failed 
+2026-03-26 07:21:32,215 89210 INFO ? odoo: Odoo version 15.0 
+2026-03-26 07:21:32,216 89210 INFO ? odoo: Using configuration file at /home/dmin/Business-Internship/odoo.conf 
+2026-03-26 07:21:32,216 89210 INFO ? odoo: addons paths: ['/home/dmin/Business-Internship/odoo/addons', '/home/dmin/.local/share/Odoo/addons/15.0', '/home/dmin/Business-Internship/addons'] 
+2026-03-26 07:21:32,216 89210 INFO ? odoo: database: odoo@127.0.0.1:5431 
+2026-03-26 07:21:32,343 89210 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/bin/wkhtmltopdf 
+2026-03-26 07:21:32,659 89210 INFO ? odoo.service.server: HTTP service (werkzeug) running on DESKTOP-UQEQA98.localdomain:8069 
+2026-03-26 07:21:32,713 89210 INFO Business-Internship odoo.modules.loading: loading 1 modules... 
+2026-03-26 07:21:32,716 89210 INFO Business-Internship odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-03-26 07:21:32,741 89210 INFO Business-Internship odoo.modules.loading: updating modules list 
+2026-03-26 07:21:32,749 89210 INFO Business-Internship odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-03-26 07:21:33,415 89210 INFO Business-Internship odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['nhan_su'] to user __system__ #1 via n/a 
+2026-03-26 07:21:33,415 89210 INFO Business-Internship odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['nhan_su'] to user __system__ #1 via n/a 
+2026-03-26 07:21:34,105 89210 INFO Business-Internship odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-03-26 07:21:34,169 89210 INFO Business-Internship odoo.modules.loading: loading 32 modules... 
+2026-03-26 07:21:34,326 89210 INFO Business-Internship odoo.modules.loading: Loading module nhan_su (27/32) 
+2026-03-26 07:21:34,365 89210 WARNING Business-Internship odoo.models: The model nhan_vien.ai.wizard has no _description 
+2026-03-26 07:21:34,391 89210 INFO Business-Internship odoo.modules.registry: module nhan_su: creating or updating database tables 
+2026-03-26 07:21:34,550 89210 INFO Business-Internship odoo.modules.loading: loading nhan_su/security/ir.model.access.csv 
+2026-03-26 07:21:34,671 89210 INFO Business-Internship odoo.modules.loading: loading nhan_su/wizard/nhan_vien_ai_view.xml 
+2026-03-26 07:21:34,680 89210 WARNING Business-Internship odoo.addons.base.models.ir_ui_view: A <span> with fa class (fa fa-user-plus mr8) must have title in its tag, parents, descendants or have text
+View error context:
+{'file': '/home/dmin/Business-Internship/addons/nhan_su/wizard/nhan_vien_ai_view.xml',
+ 'line': 4,
+ 'name': 'nhan_vien.ai.wizard.form',
+ 'view': ir.ui.view(460,),
+ 'view.model': 'nhan_vien.ai.wizard',
+ 'view.parent': ir.ui.view(),
+ 'xmlid': 'view_nhan_vien_ai_wizard'} 
+2026-03-26 07:21:34,689 89210 INFO Business-Internship odoo.modules.loading: loading nhan_su/views/chuc_vu.xml 
+2026-03-26 07:21:34,708 89210 INFO Business-Internship odoo.modules.loading: loading nhan_su/views/don_vi.xml 
+2026-03-26 07:21:34,726 89210 INFO Business-Internship odoo.modules.loading: loading nhan_su/views/nhan_vien.xml 
+2026-03-26 07:21:34,760 89210 INFO Business-Internship odoo.modules.loading: loading nhan_su/views/phong_ban_view.xml 
+2026-03-26 07:21:34,774 89210 INFO Business-Internship odoo.modules.loading: loading nhan_su/views/hop_dong_lao_dong_view.xml 
+2026-03-26 07:21:34,788 89210 INFO Business-Internship odoo.modules.loading: loading nhan_su/views/lich_su_cong_tac.xml 
+2026-03-26 07:21:34,808 89210 INFO Business-Internship odoo.modules.loading: loading nhan_su/views/menu.xml 
+2026-03-26 07:21:34,873 89210 INFO Business-Internship odoo.modules.loading: Module nhan_su: loading demo 
+2026-03-26 07:21:34,878 89210 INFO Business-Internship odoo.addons.base.models.ir_translation: module nhan_su: no translation for language vi_VN 
+2026-03-26 07:21:34,894 89210 INFO Business-Internship odoo.modules.loading: Module nhan_su loaded in 0.57s, 422 queries 
+2026-03-26 07:21:34,923 89210 INFO Business-Internship odoo.modules.loading: Loading module quan_ly_tai_san (31/32) 
+2026-03-26 07:21:34,991 89210 WARNING Business-Internship odoo.fields: Field bien_ban_den_bu.trang_thai: unknown parameter 'tracking', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-03-26 07:21:35,000 89210 INFO Business-Internship odoo.modules.registry: module quan_ly_tai_san: creating or updating database tables 
+2026-03-26 07:21:35,195 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/security/ir.model.access.csv 
+2026-03-26 07:21:35,262 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/wizard/tai_san_ai_view.xml 
+2026-03-26 07:21:35,269 89210 WARNING Business-Internship odoo.addons.base.models.ir_ui_view: A <span> with fa class (fa fa-cubes mr8) must have title in its tag, parents, descendants or have text
+View error context:
+{'file': '/home/dmin/Business-Internship/addons/quan_ly_tai_san/wizard/tai_san_ai_view.xml',
+ 'line': 4,
+ 'name': 'tai_san.ai.wizard.form',
+ 'view': ir.ui.view(475,),
+ 'view.model': 'tai_san.ai.wizard',
+ 'view.parent': ir.ui.view(),
+ 'xmlid': 'view_tai_san_ai_wizard'} 
+2026-03-26 07:21:35,274 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/sequences.xml 
+2026-03-26 07:21:35,279 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/reports/report_ban_giao.xml 
+2026-03-26 07:21:35,295 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/dashboard.xml 
+2026-03-26 07:21:35,322 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/tai_san.xml 
+2026-03-26 07:21:35,342 89210 WARNING Business-Internship odoo.addons.base.models.ir_ui_view: A <i> with fa class (fa fa-tag) must have title in its tag, parents, descendants or have text
+View error context:
+{'file': '/home/dmin/Business-Internship/addons/quan_ly_tai_san/views/tai_san.xml',
+ 'line': 33,
+ 'name': 'tai_san_kanban',
+ 'view': ir.ui.view(481,),
+ 'view.model': 'tai_san',
+ 'view.parent': ir.ui.view(),
+ 'xmlid': 'view_tai_san_kanban'} 
+2026-03-26 07:21:35,463 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/phieu_muon.xml 
+2026-03-26 07:21:35,490 89210 WARNING Business-Internship odoo.addons.base.models.ir_ui_view: A <i> with fa class (fa fa-calendar) must have title in its tag, parents, descendants or have text
+View error context:
+{'file': '/home/dmin/Business-Internship/addons/quan_ly_tai_san/views/phieu_muon.xml',
+ 'line': 18,
+ 'name': 'phieu.muon.kanban',
+ 'view': ir.ui.view(558,),
+ 'view.model': 'phieu_muon',
+ 'view.parent': ir.ui.view(),
+ 'xmlid': 'view_phieu_muon_kanban'} 
+2026-03-26 07:21:35,495 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/phieu_bao_tri.xml 
+2026-03-26 07:21:35,520 89210 WARNING Business-Internship odoo.addons.base.models.ir_ui_view: A <i> with fa class (fa fa-calendar) must have title in its tag, parents, descendants or have text
+View error context:
+{'file': '/home/dmin/Business-Internship/addons/quan_ly_tai_san/views/phieu_bao_tri.xml',
+ 'line': 18,
+ 'name': 'phieu.bao.tri.kanban',
+ 'view': ir.ui.view(559,),
+ 'view.model': 'phieu_bao_tri',
+ 'view.parent': ir.ui.view(),
+ 'xmlid': 'view_phieu_bao_tri_kanban'} 
+2026-03-26 07:21:35,524 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/vi_tri.xml 
+2026-03-26 07:21:35,548 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/loai_tai_san.xml 
+2026-03-26 07:21:35,569 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/nha_cung_cap.xml 
+2026-03-26 07:21:35,590 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/lich_su_su_dung.xml 
+2026-03-26 07:21:35,620 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/lich_su_bao_tri.xml 
+2026-03-26 07:21:35,645 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/lich_su_di_chuyen.xml 
+2026-03-26 07:21:35,669 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/phieu_dieu_chuyen.xml 
+2026-03-26 07:21:35,699 89210 WARNING Business-Internship odoo.addons.base.models.ir_ui_view: A <i> with fa class (fa fa-calendar) must have title in its tag, parents, descendants or have text
+View error context:
+{'file': '/home/dmin/Business-Internship/addons/quan_ly_tai_san/views/phieu_dieu_chuyen.xml',
+ 'line': 21,
+ 'name': 'phieu.dieu.chuyen.kanban',
+ 'view': ir.ui.view(560,),
+ 'view.model': 'phieu_dieu_chuyen',
+ 'view.parent': ir.ui.view(),
+ 'xmlid': 'view_phieu_dieu_chuyen_kanban'} 
+2026-03-26 07:21:35,700 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/phieu_kiem_ke.xml 
+2026-03-26 07:21:35,717 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/lich_su_kiem_ke.xml 
+2026-03-26 07:21:35,741 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/bien_ban_den_bu.xml 
+2026-03-26 07:21:35,766 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/thanh_ly.xml 
+2026-03-26 07:21:35,798 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/thong_ke.xml 
+2026-03-26 07:21:35,837 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/nhan_vien_view.xml 
+2026-03-26 07:21:35,861 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/phieu_ban_giao_view.xml 
+2026-03-26 07:21:35,889 89210 WARNING Business-Internship odoo.addons.base.models.ir_ui_view: A <i> with fa class (fa fa-calendar) must have title in its tag, parents, descendants or have text
+View error context:
+{'file': '/home/dmin/Business-Internship/addons/quan_ly_tai_san/views/phieu_ban_giao_view.xml',
+ 'line': 20,
+ 'name': 'phieu.ban.giao.kanban',
+ 'view': ir.ui.view(561,),
+ 'view.model': 'phieu_ban_giao',
+ 'view.parent': ir.ui.view(),
+ 'xmlid': 'view_phieu_ban_giao_kanban'} 
+2026-03-26 07:21:35,891 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/dot_bao_duong_view.xml 
+2026-03-26 07:21:35,921 89210 WARNING Business-Internship odoo.addons.base.models.ir_ui_view: A <i> with fa class (fa fa-calendar) must have title in its tag, parents, descendants or have text
+View error context:
+{'file': '/home/dmin/Business-Internship/addons/quan_ly_tai_san/views/dot_bao_duong_view.xml',
+ 'line': 19,
+ 'name': 'dot.bao.duong.kanban',
+ 'view': ir.ui.view(562,),
+ 'view.model': 'dot_bao_duong',
+ 'view.parent': ir.ui.view(),
+ 'xmlid': 'view_dot_bao_duong_kanban'} 
+2026-03-26 07:21:35,923 89210 INFO Business-Internship odoo.modules.loading: loading quan_ly_tai_san/views/menu.xml 
+2026-03-26 07:21:36,144 89210 INFO Business-Internship odoo.modules.loading: Module quan_ly_tai_san: loading demo 
+2026-03-26 07:21:36,151 89210 INFO Business-Internship odoo.addons.base.models.ir_translation: module quan_ly_tai_san: no translation for language vi_VN 
+2026-03-26 07:21:36,160 89210 WARNING Business-Internship odoo.modules.loading: The models ['khau_hao'] have no access rules in module quan_ly_tai_san, consider adding some, like:
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+quan_ly_tai_san.access_khau_hao,access_khau_hao,quan_ly_tai_san.model_khau_hao,base.group_user,1,0,0,0 
+2026-03-26 07:21:36,174 89210 INFO Business-Internship odoo.modules.loading: Module quan_ly_tai_san loaded in 1.25s, 1253 queries 
+2026-03-26 07:21:36,174 89210 INFO Business-Internship odoo.modules.loading: Loading module quan_li_phong_hop_hoi_truong (32/32) 
+2026-03-26 07:21:36,197 89210 WARNING Business-Internship odoo.fields: Field bien_ban_den_bu.trang_thai: unknown parameter 'tracking', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-03-26 07:21:36,215 89210 INFO Business-Internship odoo.addons.quan_li_phong_hop_hoi_truong.models.dat_phong: DEBUG: Module dat_phong.py ĐÃ ĐƯỢC LOAD 
+2026-03-26 07:21:36,250 89210 WARNING Business-Internship odoo.fields: Field bien_ban_den_bu.trang_thai: unknown parameter 'tracking', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-03-26 07:21:36,263 89210 INFO Business-Internship odoo.modules.registry: module quan_li_phong_hop_hoi_truong: creating or updating database tables 
+2026-03-26 07:21:36,382 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/security/security.xml 
+2026-03-26 07:21:36,428 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/security/ir.model.access.csv 
+2026-03-26 07:21:36,457 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/wizard/dat_phong_ai_view.xml 
+2026-03-26 07:21:36,464 89210 WARNING Business-Internship odoo.addons.base.models.ir_ui_view: A <span> with fa class (fa fa-magic mr8) must have title in its tag, parents, descendants or have text
+View error context:
+{'file': '/home/dmin/Business-Internship/addons/quan_li_phong_hop_hoi_truong/wizard/dat_phong_ai_view.xml',
+ 'line': 4,
+ 'name': 'dat_phong.ai.wizard.form',
+ 'view': ir.ui.view(530,),
+ 'view.model': 'dat_phong.ai.wizard',
+ 'view.parent': ir.ui.view(),
+ 'xmlid': 'view_dat_phong_ai_wizard'} 
+2026-03-26 07:21:36,472 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/reports/report_dat_phong.xml 
+2026-03-26 07:21:36,486 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/views/quan_ly_phong_hop.xml 
+2026-03-26 07:21:36,507 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/views/dat_phong.xml 
+2026-03-26 07:21:36,539 89210 WARNING Business-Internship odoo.addons.base.models.ir_ui_view: <img> tag must contain an alt attribute
+View error context:
+{'file': '/home/dmin/Business-Internship/addons/quan_li_phong_hop_hoi_truong/views/dat_phong.xml',
+ 'line': 24,
+ 'name': 'dat_phong.kanban',
+ 'view': ir.ui.view(563,),
+ 'view.model': 'dat_phong',
+ 'view.parent': ir.ui.view(),
+ 'xmlid': 'view_dat_phong_kanban'} 
+2026-03-26 07:21:36,559 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/views/lich_su_thay_doi.xml 
+2026-03-26 07:21:36,581 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/views/lich_su_muon_tra.xml 
+2026-03-26 07:21:36,615 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/views/dich_vu.xml 
+2026-03-26 07:21:36,625 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/views/dat_phong_dashboard.xml 
+2026-03-26 07:21:36,666 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/views/dashboard_tong_hop.xml 
+2026-03-26 07:21:36,679 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/views/nhan_vien_view.xml 
+2026-03-26 07:21:36,698 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/views/bien_ban_den_bu.xml 
+2026-03-26 07:21:36,726 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/views/menu.xml 
+2026-03-26 07:21:36,787 89210 INFO Business-Internship odoo.modules.loading: loading quan_li_phong_hop_hoi_truong/data/cron_jobs.xml 
+2026-03-26 07:21:36,791 89210 INFO Business-Internship odoo.modules.loading: Module quan_li_phong_hop_hoi_truong: loading demo 
+2026-03-26 07:21:36,799 89210 INFO Business-Internship odoo.addons.base.models.ir_translation: module quan_li_phong_hop_hoi_truong: no translation for language vi_VN 
+2026-03-26 07:21:36,811 89210 WARNING Business-Internship odoo.modules.loading: The models ['chi_tiet_dat_phong'] have no access rules in module quan_li_phong_hop_hoi_truong, consider adding some, like:
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+quan_li_phong_hop_hoi_truong.access_chi_tiet_dat_phong,access_chi_tiet_dat_phong,quan_li_phong_hop_hoi_truong.model_chi_tiet_dat_phong,base.group_user,1,0,0,0 
+2026-03-26 07:21:36,825 89210 INFO Business-Internship odoo.modules.loading: Module quan_li_phong_hop_hoi_truong loaded in 0.65s, 605 queries 
+2026-03-26 07:21:36,825 89210 INFO Business-Internship odoo.modules.loading: 32 modules loaded in 2.66s, 2280 queries (+0 extra) 
+2026-03-26 07:21:36,853 89210 WARNING Business-Internship odoo.fields: Field bien_ban_den_bu.trang_thai: unknown parameter 'tracking', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2026-03-26 07:21:37,318 89210 INFO Business-Internship odoo.modules.loading: Modules loaded. 
+2026-03-26 07:21:37,323 89210 INFO Business-Internship odoo.modules.registry: Registry loaded in 4.664s 
+2026-03-26 07:21:39,026 89210 INFO ? odoo.http: HTTP Configuring static files 
+2026-03-26 07:21:39,031 89210 INFO Business-Internship odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-03-26 07:21:39,093 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:39] "[32mGET / HTTP/1.1[0m" 303 - 2 0.003 0.062
+2026-03-26 07:21:39,552 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:39] "GET /web HTTP/1.1" 200 - 351 0.227 0.228
+2026-03-26 07:21:39,593 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:39] "GET /web/assets/debug/web.assets_common.css HTTP/1.1" 200 - 3 0.002 0.005
+2026-03-26 07:21:39,934 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:39] "GET /web/webclient/load_menus/11698e6badf0f0c02e0848e5cacf4eeecca20aaba0dfe06b5e1b1a35a9da0a6c HTTP/1.1" 200 - 1 0.002 0.033
+2026-03-26 07:21:39,942 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:39] "GET /web/assets/debug/web.assets_backend_prod_only.js HTTP/1.1" 200 - 3 0.008 0.037
+2026-03-26 07:21:39,965 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:39] "GET /web/assets/debug/web.assets_backend.css HTTP/1.1" 200 - 3 0.006 0.066
+2026-03-26 07:21:39,977 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:39] "GET /web/assets/debug/web.assets_common.js HTTP/1.1" 200 - 3 0.008 0.074
+2026-03-26 07:21:39,980 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:39] "GET /web/assets/debug/web.assets_backend.js HTTP/1.1" 200 - 3 0.002 0.081
+2026-03-26 07:21:40,019 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:40] "GET /web/webclient/qweb/3e6ac88a9d5f05932153dcfb59039148161602c601eeef0596019909a03c35ae?bundle=web.assets_qweb HTTP/1.1" 200 - 2 0.004 0.115
+2026-03-26 07:21:40,260 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:40] "GET /web/webclient/translations/e1f17a8ed7fefbea71d26c4e42e107ffe6bcfbc0?lang=vi_VN HTTP/1.1" 200 - 7 0.015 0.014
+2026-03-26 07:21:40,336 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:40] "GET /web/webclient/translations/e1f17a8ed7fefbea71d26c4e42e107ffe6bcfbc0?lang=vi_VN HTTP/1.1" 200 - 5 0.013 0.013
+2026-03-26 07:21:40,579 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:40] "GET /web/webclient/translations/e1f17a8ed7fefbea71d26c4e42e107ffe6bcfbc0?lang=vi_VN HTTP/1.1" 200 - 5 0.011 0.014
+2026-03-26 07:21:40,640 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:40] "GET /web/assets/debug/web.assets_tests.js HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:21:40,970 89210 INFO ? werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:40] "[36mGET /web/static/lib/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1[0m" 304 - - - -
+2026-03-26 07:21:40,978 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:40] "POST /web/dataset/call_kw/res.users/systray_get_activities HTTP/1.1" 200 - 2 0.004 0.004
+2026-03-26 07:21:41,001 89210 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-03-26 07:21:41,045 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:41] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 200 - 21 0.033 0.030
+2026-03-26 07:21:41,051 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:41] "POST /web/action/load HTTP/1.1" 200 - 57 0.052 0.018
+2026-03-26 07:21:41,125 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:41] "POST /mail/init_messaging HTTP/1.1" 200 - 66 0.067 0.059
+2026-03-26 07:21:41,425 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:41] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.004
+2026-03-26 07:21:41,429 89210 INFO ? werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:41] "[36mGET /web/static/fonts/google/Roboto/Roboto-Regular.ttf HTTP/1.1[0m" 304 - - - -
+2026-03-26 07:21:41,444 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:41] "POST /mail/load_message_failures HTTP/1.1" 200 - 11 0.010 0.007
+2026-03-26 07:21:41,464 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:41] "POST /web/dataset/call_kw/hr.employee/load_views HTTP/1.1" 200 - 120 0.077 0.040
+2026-03-26 07:21:41,786 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:41] "POST /web/dataset/call_kw/hr.employee/search_panel_select_range HTTP/1.1" 200 - 12 0.014 0.005
+2026-03-26 07:21:41,799 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:41] "POST /web/dataset/search_read HTTP/1.1" 200 - 18 0.020 0.014
+2026-03-26 07:21:42,136 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:42] "GET /web/image?model=hr.employee&id=21&field=avatar_128&unique=26032026023942 HTTP/1.1" 200 - 10 0.007 0.010
+2026-03-26 07:21:42,141 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:42] "GET /web/image?model=hr.employee&id=24&field=avatar_128&unique=26032026025214 HTTP/1.1" 200 - 9 0.007 0.013
+2026-03-26 07:21:42,143 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:42] "GET /web/image?model=hr.employee&id=22&field=avatar_128&unique=26032026025023 HTTP/1.1" 200 - 10 0.017 0.008
+2026-03-26 07:21:44,604 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:44] "POST /web/action/load HTTP/1.1" 200 - 14 0.012 0.007
+2026-03-26 07:21:44,907 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:44] "POST /web/dataset/call_kw/board.board/load_views HTTP/1.1" 200 - 25 0.015 0.007
+2026-03-26 07:21:45,199 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:45] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 3 0.004 0.004
+2026-03-26 07:21:45,505 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:45] "POST /web/dataset/call_kw/ir.ui.view/render_public_asset HTTP/1.1" 200 - 19 0.010 0.011
+2026-03-26 07:21:45,802 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:45] "GET /web/assets/debug/web.assets_backend_legacy_lazy.css HTTP/1.1" 200 - 3 0.002 0.005
+2026-03-26 07:21:45,803 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:45] "GET /web/assets/debug/web.assets_backend_legacy_lazy.js HTTP/1.1" 200 - 3 0.002 0.005
+2026-03-26 07:21:46,129 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:46] "POST /web/action/load HTTP/1.1" 200 - 10 0.012 0.010
+2026-03-26 07:21:46,137 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:46] "POST /web/action/load HTTP/1.1" 200 - 16 0.014 0.015
+2026-03-26 07:21:46,138 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:46] "POST /web/action/load HTTP/1.1" 200 - 15 0.019 0.015
+2026-03-26 07:21:46,146 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:46] "POST /web/action/load HTTP/1.1" 200 - 20 0.027 0.014
+2026-03-26 07:21:46,437 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:46] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 8 0.007 0.008
+2026-03-26 07:21:46,440 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:46] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 8 0.008 0.009
+2026-03-26 07:21:46,442 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:46] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 8 0.009 0.010
+2026-03-26 07:21:46,447 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:46] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 11 0.013 0.007
+2026-03-26 07:21:46,731 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:46] "POST /web/dataset/search_read HTTP/1.1" 200 - 3 0.003 0.004
+2026-03-26 07:21:46,733 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:46] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.003 0.003
+2026-03-26 07:21:46,736 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:46] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 4 0.006 0.004
+2026-03-26 07:21:46,746 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:46] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.006 0.006
+2026-03-26 07:21:47,017 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:47] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 2 0.002 0.003
+2026-03-26 07:21:54,910 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:54] "POST /web/dataset/call_kw/hr.employee/search_panel_select_range HTTP/1.1" 200 - 3 0.004 0.006
+2026-03-26 07:21:54,925 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:54] "POST /web/dataset/search_read HTTP/1.1" 200 - 9 0.008 0.014
+2026-03-26 07:21:56,643 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:56] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:21:56,970 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:56] "POST /web/action/load HTTP/1.1" 200 - 10 0.012 0.012
+2026-03-26 07:21:56,975 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:56] "POST /web/action/load HTTP/1.1" 200 - 14 0.017 0.014
+2026-03-26 07:21:56,980 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:56] "POST /web/action/load HTTP/1.1" 200 - 14 0.022 0.013
+2026-03-26 07:21:56,981 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:21:56] "POST /web/action/load HTTP/1.1" 200 - 14 0.023 0.010
+2026-03-26 07:22:00,759 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:00] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.007 0.009
+2026-03-26 07:22:00,761 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:00] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.008 0.011
+2026-03-26 07:22:00,763 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:00] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.008 0.010
+2026-03-26 07:22:00,767 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:00] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.010 0.010
+2026-03-26 07:22:01,072 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:01] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.003 0.007
+2026-03-26 07:22:01,072 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:01] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.005 0.007
+2026-03-26 07:22:01,073 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:01] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.002 0.008
+2026-03-26 07:22:01,076 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:01] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.005 0.007
+2026-03-26 07:22:14,164 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:14] "POST /web/action/load HTTP/1.1" 200 - 12 0.007 0.007
+2026-03-26 07:22:14,467 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:14] "POST /web/dataset/call_kw/board.board/load_views HTTP/1.1" 200 - 10 0.008 0.006
+2026-03-26 07:22:14,751 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:14] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.001 0.003
+2026-03-26 07:22:15,058 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:15] "POST /web/action/load HTTP/1.1" 200 - 15 0.012 0.012
+2026-03-26 07:22:15,062 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:15] "POST /web/action/load HTTP/1.1" 200 - 15 0.016 0.012
+2026-03-26 07:22:15,063 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:15] "POST /web/action/load HTTP/1.1" 200 - 15 0.016 0.011
+2026-03-26 07:22:15,063 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:15] "POST /web/action/load HTTP/1.1" 200 - 17 0.016 0.010
+2026-03-26 07:22:15,363 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:15] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 7 0.005 0.005
+2026-03-26 07:22:15,379 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:15] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.006 0.007
+2026-03-26 07:22:15,380 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:15] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.006 0.006
+2026-03-26 07:22:15,383 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:15] "POST /web/dataset/call_kw/bien_ban_den_bu/load_views HTTP/1.1" 200 - 8 0.007 0.007
+2026-03-26 07:22:15,688 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:15] "POST /web/dataset/search_read HTTP/1.1" 200 - 6 0.010 0.004
+2026-03-26 07:22:15,697 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:15] "POST /web/dataset/call_kw/dat_phong/read_group HTTP/1.1" 200 - 2 0.003 0.004
+2026-03-26 07:22:15,698 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:15] "POST /web/dataset/call_kw/dat_phong/read_group HTTP/1.1" 200 - 3 0.003 0.006
+2026-03-26 07:22:15,700 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:15] "POST /web/dataset/search_read HTTP/1.1" 200 - 3 0.004 0.004
+2026-03-26 07:22:24,249 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:24] "POST /web/action/load HTTP/1.1" 200 - 13 0.010 0.009
+2026-03-26 07:22:24,594 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:24] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 32 0.025 0.015
+2026-03-26 07:22:24,907 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:24] "POST /web/dataset/call_kw/dat_phong/web_read_group HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:22:25,230 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:25] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.006 0.009
+2026-03-26 07:22:25,230 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:25] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.005 0.007
+2026-03-26 07:22:25,230 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:25] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.005 0.009
+2026-03-26 07:22:25,574 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:25] "GET /web/image?model=hr.employee&field=image_128&id=22 HTTP/1.1" 200 - 4 0.005 0.007
+2026-03-26 07:22:25,576 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:25] "GET /web/image?model=hr.employee&field=image_128&id=21 HTTP/1.1" 200 - 4 0.006 0.010
+2026-03-26 07:22:25,583 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:25] "GET /web/image?model=hr.employee&field=image_128&id=24 HTTP/1.1" 200 - 3 0.005 0.018
+2026-03-26 07:22:32,103 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:32] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:22:34,038 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:34] "POST /longpolling/poll HTTP/1.1" 200 - 13 0.021 53.047
+2026-03-26 07:22:40,438 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-03-26 07:22:40,448 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Job `Mail: Email Queue Manager` done. 
+2026-03-26 07:22:40,459 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete : Sync with remote DB`. 
+2026-03-26 07:22:40,463 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Job `Partner Autocomplete : Sync with remote DB` done. 
+2026-03-26 07:22:40,472 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-03-26 07:22:40,477 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Job `Snailmail: process letters queue` done. 
+2026-03-26 07:22:40,486 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-03-26 07:22:40,491 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Job `SMS: SMS Queue Manager` done. 
+2026-03-26 07:22:40,501 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Phòng họp: Nhắc trả phòng`. 
+2026-03-26 07:22:40,504 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Job `Phòng họp: Nhắc trả phòng` done. 
+2026-03-26 07:22:40,514 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Phòng họp: Nhắc nhở trước giờ họp`. 
+2026-03-26 07:22:40,517 89210 ERROR Business-Internship odoo.addons.base.models.ir_cron: Call from cron Phòng họp: Nhắc nhở trước giờ họp for server action #236 failed in Job #12 
+Traceback (most recent call last):
+  File "/home/dmin/Business-Internship/odoo/tools/safe_eval.py", line 385, in safe_eval
+    return unsafe_eval(c, globals_dict, locals_dict)
+  File "", line 1, in <module>
+  File "/home/dmin/Business-Internship/addons/quan_li_phong_hop_hoi_truong/models/dat_phong.py", line 521, in cron_nhac_nho_hop
+    warning_time = now + datetime.timedelta(minutes=15)
+AttributeError: type object 'datetime.datetime' has no attribute 'timedelta'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_cron.py", line 390, in _callback
+    self.env['ir.actions.server'].browse(server_action_id).run()
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_actions.py", line 649, in run
+    res = runner(run_self, eval_context=eval_context)
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_actions.py", line 518, in _run_action_code_multi
+    safe_eval(self.code.strip(), eval_context, mode="exec", nocopy=True)  # nocopy allows to return 'action'
+  File "/home/dmin/Business-Internship/odoo/tools/safe_eval.py", line 401, in safe_eval
+    raise ValueError('%s: "%s" while evaluating\n%r' % (ustr(type(e)), ustr(e), expr))
+ValueError: <class 'AttributeError'>: "type object 'datetime.datetime' has no attribute 'timedelta'" while evaluating
+'model.cron_nhac_nho_hop()'
+2026-03-26 07:22:41,809 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:41] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.003 0.005
+2026-03-26 07:22:42,127 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:42] "POST /web/action/load HTTP/1.1" 200 - 10 0.011 0.009
+2026-03-26 07:22:42,133 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:42] "POST /web/action/load HTTP/1.1" 200 - 14 0.016 0.013
+2026-03-26 07:22:42,133 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:42] "POST /web/action/load HTTP/1.1" 200 - 14 0.016 0.012
+2026-03-26 07:22:42,136 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:42] "POST /web/action/load HTTP/1.1" 200 - 14 0.020 0.012
+2026-03-26 07:22:42,431 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:42] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.005 0.006
+2026-03-26 07:22:42,449 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:42] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.007 0.009
+2026-03-26 07:22:42,449 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:42] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.007 0.008
+2026-03-26 07:22:42,453 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:42] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.008 0.009
+2026-03-26 07:22:42,730 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:42] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.002 0.003
+2026-03-26 07:22:42,759 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:42] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:22:42,761 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:42] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.005 0.005
+2026-03-26 07:22:42,762 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:42] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:22:49,481 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:49] "POST /web/action/load HTTP/1.1" 200 - 27 0.026 0.012
+2026-03-26 07:22:49,817 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:49] "POST /web/dataset/call_kw/res.config.settings/load_views HTTP/1.1" 200 - 15 0.012 0.020
+2026-03-26 07:22:50,183 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:50] "POST /web/dataset/call_kw/res.config.settings/onchange HTTP/1.1" 200 - 62 0.048 0.016
+2026-03-26 07:22:50,506 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:50] "POST /base_setup/data HTTP/1.1" 200 - 6 0.006 0.004
+2026-03-26 07:22:50,507 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:50] "POST /base_setup/demo_active HTTP/1.1" 200 - 4 0.003 0.003
+2026-03-26 07:22:50,799 89210 INFO ? werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:50] "[36mGET /base_setup/static/src/img/app_store.png HTTP/1.1[0m" 304 - - - -
+2026-03-26 07:22:50,800 89210 INFO ? werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:50] "[36mGET /base_setup/static/src/img/google_play.png HTTP/1.1[0m" 304 - - - -
+2026-03-26 07:22:50,803 89210 INFO ? werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:50] "[36mGET /base/static/description/settings.png HTTP/1.1[0m" 304 - - - -
+2026-03-26 07:22:55,066 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:55] "POST /web/dataset/call_kw/res.config.settings/create HTTP/1.1" 200 - 18 0.014 0.011
+2026-03-26 07:22:55,386 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:55] "POST /web/dataset/call_kw/res.config.settings/read HTTP/1.1" 200 - 17 0.012 0.009
+2026-03-26 07:22:55,713 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:55] "POST /web/action/load HTTP/1.1" 200 - 24 0.015 0.009
+2026-03-26 07:22:56,037 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:56] "POST /web/dataset/call_kw/ir.mail_server/load_views HTTP/1.1" 200 - 21 0.014 0.008
+2026-03-26 07:22:56,355 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:56] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:22:59,005 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:22:59] "POST /web/dataset/call_kw/ir.mail_server/read HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:23:07,447 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:07] "POST /web/dataset/call_kw/ir.mail_server/write HTTP/1.1" 200 - 5 0.004 0.007
+2026-03-26 07:23:07,743 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:07] "POST /web/dataset/call_kw/ir.mail_server/read HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:23:17,932 89210 WARNING Business-Internship odoo.http: Máy chủ đã đóng kết nối đột ngột. Kiểm tra cấu hình được cung cấp trên số port này.
+ None 
+2026-03-26 07:23:17,935 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:17] "POST /web/dataset/call_button HTTP/1.1" 200 - 3 0.006 9.894
+2026-03-26 07:23:18,264 89210 INFO ? werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:18] "GET /web/static/lib/stacktracejs/stacktrace.js HTTP/1.1" 200 - - - -
+2026-03-26 07:23:18,591 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:18] "GET /web/assets/debug/web.assets_backend.js HTTP/1.1" 200 - 3 0.002 0.027
+2026-03-26 07:23:18,951 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:18] "GET /web/assets/355-b30dc60/web.assets_backend.js.map HTTP/1.1" 200 - 2 0.001 0.040
+2026-03-26 07:23:21,640 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:21] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:23:25,575 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:25] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.008 51.245
+2026-03-26 07:23:25,754 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:25] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.003
+2026-03-26 07:23:26,072 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:26] "POST /web/action/load HTTP/1.1" 200 - 10 0.011 0.008
+2026-03-26 07:23:26,077 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:26] "POST /web/action/load HTTP/1.1" 200 - 14 0.013 0.013
+2026-03-26 07:23:26,077 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:26] "POST /web/action/load HTTP/1.1" 200 - 14 0.016 0.012
+2026-03-26 07:23:26,079 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:26] "POST /web/action/load HTTP/1.1" 200 - 14 0.015 0.010
+2026-03-26 07:23:26,381 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:26] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.006 0.008
+2026-03-26 07:23:26,388 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:26] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.008 0.009
+2026-03-26 07:23:26,389 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:26] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.008 0.008
+2026-03-26 07:23:26,390 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:26] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.007 0.009
+2026-03-26 07:23:26,682 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:26] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.001 0.003
+2026-03-26 07:23:26,692 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:26] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.002 0.006
+2026-03-26 07:23:26,693 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:26] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.003 0.005
+2026-03-26 07:23:26,694 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:23:26] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.007
+2026-03-26 07:23:43,028 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Phòng họp: Nhắc nhở trước giờ họp`. 
+2026-03-26 07:23:43,033 89210 ERROR Business-Internship odoo.addons.base.models.ir_cron: Call from cron Phòng họp: Nhắc nhở trước giờ họp for server action #236 failed in Job #12 
+Traceback (most recent call last):
+  File "/home/dmin/Business-Internship/odoo/tools/safe_eval.py", line 385, in safe_eval
+    return unsafe_eval(c, globals_dict, locals_dict)
+  File "", line 1, in <module>
+  File "/home/dmin/Business-Internship/addons/quan_li_phong_hop_hoi_truong/models/dat_phong.py", line 521, in cron_nhac_nho_hop
+    warning_time = now + datetime.timedelta(minutes=15)
+AttributeError: type object 'datetime.datetime' has no attribute 'timedelta'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_cron.py", line 390, in _callback
+    self.env['ir.actions.server'].browse(server_action_id).run()
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_actions.py", line 649, in run
+    res = runner(run_self, eval_context=eval_context)
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_actions.py", line 518, in _run_action_code_multi
+    safe_eval(self.code.strip(), eval_context, mode="exec", nocopy=True)  # nocopy allows to return 'action'
+  File "/home/dmin/Business-Internship/odoo/tools/safe_eval.py", line 401, in safe_eval
+    raise ValueError('%s: "%s" while evaluating\n%r' % (ustr(type(e)), ustr(e), expr))
+ValueError: <class 'AttributeError'>: "type object 'datetime.datetime' has no attribute 'timedelta'" while evaluating
+'model.cron_nhac_nho_hop()'
+2026-03-26 07:24:12,606 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:12] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:24:18,533 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:18] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 52.657
+2026-03-26 07:24:51,160 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:51] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.003 0.007
+2026-03-26 07:24:51,485 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:51] "POST /web/action/load HTTP/1.1" 200 - 10 0.015 0.013
+2026-03-26 07:24:51,492 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:51] "POST /web/action/load HTTP/1.1" 200 - 14 0.019 0.015
+2026-03-26 07:24:51,494 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:51] "POST /web/action/load HTTP/1.1" 200 - 14 0.020 0.019
+2026-03-26 07:24:51,495 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:51] "POST /web/action/load HTTP/1.1" 200 - 14 0.023 0.018
+2026-03-26 07:24:51,809 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:51] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.007 0.005
+2026-03-26 07:24:51,829 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:51] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.007 0.010
+2026-03-26 07:24:51,830 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:51] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.007 0.009
+2026-03-26 07:24:51,832 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:51] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.010 0.008
+2026-03-26 07:24:52,124 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:52] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:24:52,148 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:52] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.002 0.005
+2026-03-26 07:24:52,149 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:52] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.004 0.006
+2026-03-26 07:24:52,152 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:24:52] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.004 0.006
+2026-03-26 07:25:01,872 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:01] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.004
+2026-03-26 07:25:11,647 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:11] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 52.815
+2026-03-26 07:25:14,319 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:14] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:25:14,627 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:14] "POST /web/action/load HTTP/1.1" 200 - 11 0.011 0.008
+2026-03-26 07:25:14,630 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:14] "POST /web/action/load HTTP/1.1" 200 - 15 0.013 0.011
+2026-03-26 07:25:14,631 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:14] "POST /web/action/load HTTP/1.1" 200 - 15 0.014 0.012
+2026-03-26 07:25:14,633 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:14] "POST /web/action/load HTTP/1.1" 200 - 15 0.017 0.009
+2026-03-26 07:25:14,923 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:14] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.006 0.007
+2026-03-26 07:25:14,925 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:14] "POST /web/dataset/call_kw/bien_ban_den_bu/load_views HTTP/1.1" 200 - 6 0.007 0.009
+2026-03-26 07:25:14,928 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:14] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.007 0.008
+2026-03-26 07:25:14,930 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:14] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.006 0.009
+2026-03-26 07:25:15,213 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:15] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.003 0.005
+2026-03-26 07:25:15,218 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:15] "POST /web/dataset/call_kw/dat_phong/read_group HTTP/1.1" 200 - 2 0.002 0.006
+2026-03-26 07:25:15,219 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:15] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.006 0.006
+2026-03-26 07:25:15,220 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:15] "POST /web/dataset/call_kw/dat_phong/read_group HTTP/1.1" 200 - 3 0.003 0.006
+2026-03-26 07:25:31,810 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:31] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:25:32,123 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:32] "POST /web/action/load HTTP/1.1" 200 - 10 0.011 0.012
+2026-03-26 07:25:32,126 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:32] "POST /web/action/load HTTP/1.1" 200 - 14 0.015 0.013
+2026-03-26 07:25:32,127 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:32] "POST /web/action/load HTTP/1.1" 200 - 14 0.017 0.011
+2026-03-26 07:25:32,130 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:32] "POST /web/action/load HTTP/1.1" 200 - 14 0.019 0.009
+2026-03-26 07:25:32,435 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:32] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.009 0.008
+2026-03-26 07:25:32,442 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:32] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.008 0.012
+2026-03-26 07:25:32,442 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:32] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.008 0.014
+2026-03-26 07:25:32,444 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:32] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.008 0.012
+2026-03-26 07:25:32,871 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:32] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.003 0.007
+2026-03-26 07:25:32,873 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:32] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.003 0.008
+2026-03-26 07:25:32,876 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:32] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.005 0.009
+2026-03-26 07:25:32,877 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:32] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.004 0.009
+2026-03-26 07:25:34,883 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:34] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:25:35,221 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:35] "POST /web/action/load HTTP/1.1" 200 - 11 0.012 0.011
+2026-03-26 07:25:35,222 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:35] "POST /web/action/load HTTP/1.1" 200 - 15 0.016 0.013
+2026-03-26 07:25:35,225 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:35] "POST /web/action/load HTTP/1.1" 200 - 15 0.016 0.013
+2026-03-26 07:25:35,226 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:35] "POST /web/action/load HTTP/1.1" 200 - 15 0.018 0.013
+2026-03-26 07:25:35,543 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:35] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.005 0.009
+2026-03-26 07:25:35,544 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:35] "POST /web/dataset/call_kw/bien_ban_den_bu/load_views HTTP/1.1" 200 - 6 0.008 0.008
+2026-03-26 07:25:35,547 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:35] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.006 0.009
+2026-03-26 07:25:35,548 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:35] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.006 0.008
+2026-03-26 07:25:35,867 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:35] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.004 0.006
+2026-03-26 07:25:35,869 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:35] "POST /web/dataset/call_kw/dat_phong/read_group HTTP/1.1" 200 - 2 0.003 0.007
+2026-03-26 07:25:35,869 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:35] "POST /web/dataset/call_kw/dat_phong/read_group HTTP/1.1" 200 - 3 0.002 0.007
+2026-03-26 07:25:35,872 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:35] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.006 0.009
+2026-03-26 07:25:52,944 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:52] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:25:57,645 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:57] "POST /web/action/load HTTP/1.1" 200 - 15 0.010 0.008
+2026-03-26 07:25:57,956 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:57] "POST /web/dataset/call_kw/lich_su_muon_tra/load_views HTTP/1.1" 200 - 22 0.016 0.009
+2026-03-26 07:25:58,269 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:25:58] "POST /web/dataset/search_read HTTP/1.1" 200 - 7 0.007 0.005
+2026-03-26 07:26:01,345 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:01] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.003
+2026-03-26 07:26:01,679 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:01] "POST /web/action/load HTTP/1.1" 200 - 10 0.009 0.009
+2026-03-26 07:26:01,685 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:01] "POST /web/action/load HTTP/1.1" 200 - 14 0.014 0.010
+2026-03-26 07:26:01,685 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:01] "POST /web/action/load HTTP/1.1" 200 - 14 0.014 0.013
+2026-03-26 07:26:01,688 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:01] "POST /web/action/load HTTP/1.1" 200 - 14 0.015 0.011
+2026-03-26 07:26:01,987 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:01] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.005 0.007
+2026-03-26 07:26:01,999 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:01] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.007 0.007
+2026-03-26 07:26:01,999 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:01] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.006 0.007
+2026-03-26 07:26:02,000 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:02] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.006 0.011
+2026-03-26 07:26:02,278 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:02] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.001 0.003
+2026-03-26 07:26:02,289 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:02] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:26:02,292 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:02] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.002 0.005
+2026-03-26 07:26:02,293 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:02] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:26:04,931 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:04] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.008 51.418
+2026-03-26 07:26:43,445 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:43] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.005 0.013
+2026-03-26 07:26:57,744 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:26:57] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 52.515
+2026-03-26 07:27:32,616 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:27:32] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:27:50,900 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:27:50] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.008 52.838
+2026-03-26 07:28:23,104 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:28:23] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.006
+2026-03-26 07:28:42,470 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:28:42] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 51.244
+2026-03-26 07:29:13,447 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:29:13] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:29:35,750 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:29:35] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 52.983
+2026-03-26 07:30:02,714 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:30:02] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.009
+2026-03-26 07:30:30,033 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:30:30] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.993
+2026-03-26 07:30:52,402 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:30:52] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:31:20,850 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:31:20] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 50.512
+2026-03-26 07:31:43,298 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:31:43] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:32:15,582 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:32:15] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 54.395
+2026-03-26 07:32:34,350 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:32:34] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.004
+2026-03-26 07:33:09,419 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:33:09] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 53.535
+2026-03-26 07:33:24,170 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:33:24] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:34:01,504 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:34:01] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 51.776
+2026-03-26 07:34:15,953 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:34:15] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:34:55,541 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:34:55] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.733
+2026-03-26 07:35:05,864 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:35:05] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:35:49,352 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:35:49] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.510
+2026-03-26 07:35:57,492 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:35:57] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:36:41,488 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:36:41] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 51.837
+2026-03-26 07:36:49,261 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:36:49] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:37:35,391 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:37:35] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 53.597
+2026-03-26 07:37:39,123 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:37:39] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:38:29,263 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Phòng họp: Nhắc trả phòng`. 
+2026-03-26 07:38:29,267 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Job `Phòng họp: Nhắc trả phòng` done. 
+2026-03-26 07:38:29,279 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Phòng họp: Nhắc nhở trước giờ họp`. 
+2026-03-26 07:38:29,281 89210 ERROR Business-Internship odoo.addons.base.models.ir_cron: Call from cron Phòng họp: Nhắc nhở trước giờ họp for server action #236 failed in Job #12 
+Traceback (most recent call last):
+  File "/home/dmin/Business-Internship/odoo/tools/safe_eval.py", line 385, in safe_eval
+    return unsafe_eval(c, globals_dict, locals_dict)
+  File "", line 1, in <module>
+  File "/home/dmin/Business-Internship/addons/quan_li_phong_hop_hoi_truong/models/dat_phong.py", line 521, in cron_nhac_nho_hop
+    warning_time = now + datetime.timedelta(minutes=15)
+AttributeError: type object 'datetime.datetime' has no attribute 'timedelta'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_cron.py", line 390, in _callback
+    self.env['ir.actions.server'].browse(server_action_id).run()
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_actions.py", line 649, in run
+    res = runner(run_self, eval_context=eval_context)
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_actions.py", line 518, in _run_action_code_multi
+    safe_eval(self.code.strip(), eval_context, mode="exec", nocopy=True)  # nocopy allows to return 'action'
+  File "/home/dmin/Business-Internship/odoo/tools/safe_eval.py", line 401, in safe_eval
+    raise ValueError('%s: "%s" while evaluating\n%r' % (ustr(type(e)), ustr(e), expr))
+ValueError: <class 'AttributeError'>: "type object 'datetime.datetime' has no attribute 'timedelta'" while evaluating
+'model.cron_nhac_nho_hop()'
+2026-03-26 07:38:29,303 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:38:29] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.612
+2026-03-26 07:38:30,845 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:38:30] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:39:21,040 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:39:21] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:39:23,225 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:39:23] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.005 53.632
+2026-03-26 07:40:12,450 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:40:12] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:40:15,346 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:40:15] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 51.813
+2026-03-26 07:41:05,207 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:05] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:41:10,245 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:10] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 54.593
+2026-03-26 07:41:47,874 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:47] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:41:48,196 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:48] "POST /web/action/load HTTP/1.1" 200 - 14 0.012 0.012
+2026-03-26 07:41:48,199 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:48] "POST /web/action/load HTTP/1.1" 200 - 10 0.011 0.015
+2026-03-26 07:41:48,200 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:48] "POST /web/action/load HTTP/1.1" 200 - 14 0.016 0.011
+2026-03-26 07:41:48,200 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:48] "POST /web/action/load HTTP/1.1" 200 - 14 0.014 0.011
+2026-03-26 07:41:48,509 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:48] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.009 0.009
+2026-03-26 07:41:48,510 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:48] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.008 0.010
+2026-03-26 07:41:48,512 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:48] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.007 0.011
+2026-03-26 07:41:48,514 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:48] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.009 0.010
+2026-03-26 07:41:48,812 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:48] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.002 0.008
+2026-03-26 07:41:48,813 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:48] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.003 0.008
+2026-03-26 07:41:48,817 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:48] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.004 0.008
+2026-03-26 07:41:48,818 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:48] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.004 0.010
+2026-03-26 07:41:50,346 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:50] "POST /web/action/load HTTP/1.1" 200 - 13 0.009 0.008
+2026-03-26 07:41:50,701 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:50] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 52 0.038 0.022
+2026-03-26 07:41:51,012 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:51] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.003 0.010
+2026-03-26 07:41:51,013 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:51] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 2 0.002 0.011
+2026-03-26 07:41:51,020 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:51] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.004 0.011
+2026-03-26 07:41:51,021 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:51] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.008 0.010
+2026-03-26 07:41:51,021 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:51] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.009 0.010
+2026-03-26 07:41:51,340 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:51] "GET /web/image?model=tai_san&field=hinh_anh&id=7&unique=26032026034745 HTTP/1.1" 200 - 5 0.005 0.014
+2026-03-26 07:41:51,343 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:51] "GET /web/image?model=tai_san&field=hinh_anh&id=3&unique=26032026034150 HTTP/1.1" 200 - 4 0.005 0.016
+2026-03-26 07:41:51,344 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:51] "GET /web/image?model=tai_san&field=hinh_anh&id=8&unique=26032026034958 HTTP/1.1" 200 - 5 0.009 0.015
+2026-03-26 07:41:51,346 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:51] "GET /web/image?model=tai_san&field=hinh_anh&id=5&unique=26032026040730 HTTP/1.1" 200 - 4 0.006 0.015
+2026-03-26 07:41:51,346 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:51] "GET /web/image?model=tai_san&field=hinh_anh&id=4&unique=26032026035149 HTTP/1.1" 200 - 4 0.007 0.016
+2026-03-26 07:41:51,642 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:51] "GET /web/image?model=tai_san&field=hinh_anh&id=6&unique=26032026035452 HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:41:51,643 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:51] "GET /web/image?model=tai_san&field=hinh_anh&id=1&unique=26032026034143 HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:41:54,581 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:41:54] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:42:04,465 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:42:04] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.924
+2026-03-26 07:42:06,334 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:42:06] "POST /web/action/load HTTP/1.1" 200 - 10 0.007 0.007
+2026-03-26 07:42:06,669 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:42:06] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 31 0.023 0.013
+2026-03-26 07:42:06,965 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:42:06] "POST /web/dataset/call_kw/phieu_ban_giao/web_read_group HTTP/1.1" 200 - 2 0.002 0.003
+2026-03-26 07:42:07,263 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:42:07] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.004 0.005
+2026-03-26 07:42:09,096 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:42:09] "POST /web/dataset/call_kw/phieu_ban_giao/onchange HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:42:44,531 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:42:44] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:42:49,375 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:42:49] "POST /web/action/load HTTP/1.1" 200 - 15 0.011 0.008
+2026-03-26 07:42:49,689 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:42:49] "POST /web/dataset/call_kw/vi_tri/load_views HTTP/1.1" 200 - 20 0.014 0.009
+2026-03-26 07:42:49,987 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:42:49] "POST /web/dataset/search_read HTTP/1.1" 200 - 6 0.004 0.004
+2026-03-26 07:42:50,282 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:42:50] "POST /web/dataset/call_kw/tai_san/read HTTP/1.1" 200 - 2 0.001 0.004
+2026-03-26 07:42:55,612 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:42:55] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 50.847
+2026-03-26 07:43:11,284 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:11] "POST /web/action/load HTTP/1.1" 200 - 14 0.010 0.007
+2026-03-26 07:43:11,618 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:11] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 33 0.023 0.014
+2026-03-26 07:43:11,919 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:11] "POST /web/dataset/call_kw/phieu_muon/web_read_group HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:43:12,225 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:12] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.004 0.006
+2026-03-26 07:43:12,226 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:12] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.004 0.006
+2026-03-26 07:43:14,373 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:14] "POST /web/dataset/call_kw/phieu_muon/read HTTP/1.1" 200 - 7 0.010 0.005
+2026-03-26 07:43:14,681 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:14] "POST /web/dataset/call_kw/chi_tiet_phieu_muon/read HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:43:30,049 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:30] "POST /web/dataset/call_button HTTP/1.1" 200 - 33 0.038 10.421
+2026-03-26 07:43:30,338 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:30] "POST /web/dataset/call_kw/phieu_muon/read HTTP/1.1" 200 - 5 0.003 0.005
+2026-03-26 07:43:30,624 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:30] "POST /web/dataset/call_kw/chi_tiet_phieu_muon/read HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:43:33,444 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:33] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.004
+2026-03-26 07:43:34,560 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:34] "POST /web/dataset/call_button HTTP/1.1" 200 - 4 0.002 0.010
+2026-03-26 07:43:34,862 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:34] "POST /web/dataset/call_kw/phieu_muon/read HTTP/1.1" 200 - 5 0.003 0.004
+2026-03-26 07:43:35,159 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:35] "POST /web/dataset/call_kw/chi_tiet_phieu_muon/read HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:43:42,846 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:42] "POST /web/dataset/call_kw/phieu_muon/web_read_group HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:43:43,151 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:43] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:43:43,152 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:43] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.006
+2026-03-26 07:43:46,362 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:46] "POST /web/dataset/call_kw/phieu_muon/read HTTP/1.1" 200 - 5 0.004 0.005
+2026-03-26 07:43:46,660 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:46] "POST /web/dataset/call_kw/chi_tiet_phieu_muon/read HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:43:49,917 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:49] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 54.008
+2026-03-26 07:43:51,924 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:51] "POST /web/dataset/call_kw/phieu_muon/web_read_group HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:43:52,227 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:52] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:43:52,228 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:52] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.004 0.004
+2026-03-26 07:43:53,850 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:53] "POST /web/dataset/call_kw/phieu_muon/onchange HTTP/1.1" 200 - 3 0.003 0.004
+2026-03-26 07:43:56,273 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:56] "POST /web/dataset/call_kw/phieu_muon/web_read_group HTTP/1.1" 200 - 2 0.001 0.003
+2026-03-26 07:43:56,574 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:56] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:43:56,575 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:56] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:43:57,884 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:57] "POST /web/dataset/call_kw/phieu_muon/read HTTP/1.1" 200 - 5 0.003 0.005
+2026-03-26 07:43:58,182 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:43:58] "POST /web/dataset/call_kw/chi_tiet_phieu_muon/read HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:44:00,536 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:00] "POST /web/dataset/call_button HTTP/1.1" 200 - 18 0.013 1.062
+2026-03-26 07:44:00,842 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:00] "POST /web/dataset/call_kw/phieu_muon/read HTTP/1.1" 200 - 5 0.003 0.005
+2026-03-26 07:44:01,143 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:01] "POST /web/dataset/call_kw/chi_tiet_phieu_muon/read HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:44:04,048 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:04] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 2 0.002 0.010
+2026-03-26 07:44:04,053 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:04] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.005 0.010
+2026-03-26 07:44:04,054 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:04] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.004 0.012
+2026-03-26 07:44:04,056 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:04] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.005 0.010
+2026-03-26 07:44:04,056 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:04] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.004 0.010
+2026-03-26 07:44:04,381 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:04] "GET /web/image?model=tai_san&field=hinh_anh&id=8&unique=26032026034958 HTTP/1.1" 200 - 4 0.005 0.012
+2026-03-26 07:44:04,383 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:04] "GET /web/image?model=tai_san&field=hinh_anh&id=7&unique=26032026034745 HTTP/1.1" 200 - 4 0.005 0.013
+2026-03-26 07:44:04,386 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:04] "GET /web/image?model=tai_san&field=hinh_anh&id=5&unique=26032026144319 HTTP/1.1" 200 - 4 0.004 0.016
+2026-03-26 07:44:04,387 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:04] "GET /web/image?model=tai_san&field=hinh_anh&id=1&unique=26032026034143 HTTP/1.1" 200 - 4 0.004 0.016
+2026-03-26 07:44:04,388 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:04] "GET /web/image?model=tai_san&field=hinh_anh&id=4&unique=26032026144359 HTTP/1.1" 200 - 4 0.005 0.014
+2026-03-26 07:44:04,680 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:04] "GET /web/image?model=tai_san&field=hinh_anh&id=6&unique=26032026035452 HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:44:04,680 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:04] "GET /web/image?model=tai_san&field=hinh_anh&id=3&unique=26032026034150 HTTP/1.1" 200 - 4 0.002 0.006
+2026-03-26 07:44:06,564 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:06] "POST /web/dataset/call_kw/phieu_muon/web_read_group HTTP/1.1" 200 - 2 0.001 0.003
+2026-03-26 07:44:06,864 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:06] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:44:06,864 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:06] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.006
+2026-03-26 07:44:24,879 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:24] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:44:37,838 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:37] "POST /web/dataset/call_kw/phieu_muon/read HTTP/1.1" 200 - 5 0.003 0.005
+2026-03-26 07:44:38,135 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:38] "POST /web/dataset/call_kw/chi_tiet_phieu_muon/read HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:44:43,910 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:43] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.693
+2026-03-26 07:44:53,906 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:53] "POST /web/dataset/call_button HTTP/1.1" 200 - 29 0.021 10.865
+2026-03-26 07:44:54,210 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:54] "POST /web/dataset/call_kw/phieu_muon/read HTTP/1.1" 200 - 5 0.003 0.005
+2026-03-26 07:44:54,504 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:54] "POST /web/dataset/call_kw/chi_tiet_phieu_muon/read HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:44:57,760 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:57] "POST /web/dataset/call_button HTTP/1.1" 200 - 14 0.007 1.078
+2026-03-26 07:44:58,068 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:58] "POST /web/dataset/call_kw/phieu_muon/read HTTP/1.1" 200 - 5 0.003 0.005
+2026-03-26 07:44:58,374 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:44:58] "POST /web/dataset/call_kw/chi_tiet_phieu_muon/read HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:45:16,023 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:45:16] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:45:20,830 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:45:20] "POST /web/dataset/call_kw/phieu_muon/web_read_group HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:45:21,129 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:45:21] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:45:26,482 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:45:26] "POST /web/dataset/call_kw/phieu_muon/onchange HTTP/1.1" 200 - 2 0.002 0.005
+2026-03-26 07:45:36,105 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:45:36] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 51.899
+2026-03-26 07:45:36,649 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:45:36] "POST /web/dataset/call_kw/phieu_muon/web_read_group HTTP/1.1" 200 - 2 0.001 0.004
+2026-03-26 07:45:36,760 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:45:36] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:46:05,009 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:05] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:46:15,215 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:15] "POST /web/dataset/call_kw/hr.employee/search_panel_select_range HTTP/1.1" 200 - 3 0.003 0.005
+2026-03-26 07:46:15,228 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:15] "POST /web/dataset/search_read HTTP/1.1" 200 - 9 0.006 0.013
+2026-03-26 07:46:16,270 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:16] "GET /web/image?model=hr.employee&id=21&field=avatar_128&unique=26032026023942 HTTP/1.1" 200 - 4 0.004 0.009
+2026-03-26 07:46:16,270 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:16] "GET /web/image?model=hr.employee&id=22&field=avatar_128&unique=26032026025023 HTTP/1.1" 200 - 4 0.006 0.008
+2026-03-26 07:46:16,274 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:16] "GET /web/image?model=hr.employee&id=24&field=avatar_128&unique=26032026025214 HTTP/1.1" 200 - 3 0.003 0.013
+2026-03-26 07:46:19,743 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:19] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.003
+2026-03-26 07:46:20,064 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:20] "POST /web/action/load HTTP/1.1" 200 - 11 0.013 0.009
+2026-03-26 07:46:20,068 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:20] "POST /web/action/load HTTP/1.1" 200 - 15 0.016 0.014
+2026-03-26 07:46:20,071 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:20] "POST /web/action/load HTTP/1.1" 200 - 15 0.017 0.015
+2026-03-26 07:46:20,071 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:20] "POST /web/action/load HTTP/1.1" 200 - 15 0.015 0.016
+2026-03-26 07:46:20,381 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:20] "POST /web/dataset/call_kw/bien_ban_den_bu/load_views HTTP/1.1" 200 - 6 0.007 0.010
+2026-03-26 07:46:20,382 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:20] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.008 0.011
+2026-03-26 07:46:20,388 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:20] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.009 0.011
+2026-03-26 07:46:20,388 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:20] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.009 0.013
+2026-03-26 07:46:20,689 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:20] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.002 0.008
+2026-03-26 07:46:20,690 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:20] "POST /web/dataset/call_kw/dat_phong/read_group HTTP/1.1" 200 - 2 0.001 0.009
+2026-03-26 07:46:20,692 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:20] "POST /web/dataset/call_kw/dat_phong/read_group HTTP/1.1" 200 - 3 0.004 0.007
+2026-03-26 07:46:20,695 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:20] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.004 0.009
+2026-03-26 07:46:31,133 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:31] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 54.728
+2026-03-26 07:46:56,955 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:46:56] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:47:18,357 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:18] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.003
+2026-03-26 07:47:18,671 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:18] "POST /web/action/load HTTP/1.1" 200 - 10 0.012 0.009
+2026-03-26 07:47:18,677 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:18] "POST /web/action/load HTTP/1.1" 200 - 14 0.014 0.014
+2026-03-26 07:47:18,678 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:18] "POST /web/action/load HTTP/1.1" 200 - 14 0.018 0.013
+2026-03-26 07:47:18,681 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:18] "POST /web/action/load HTTP/1.1" 200 - 14 0.017 0.011
+2026-03-26 07:47:18,975 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:18] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.007 0.007
+2026-03-26 07:47:18,983 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:18] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.007 0.011
+2026-03-26 07:47:18,985 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:18] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.007 0.010
+2026-03-26 07:47:18,985 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:18] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.008 0.011
+2026-03-26 07:47:19,268 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:19] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.002 0.003
+2026-03-26 07:47:19,278 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:19] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.002 0.006
+2026-03-26 07:47:19,279 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:19] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.002 0.005
+2026-03-26 07:47:19,280 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:19] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.003 0.005
+2026-03-26 07:47:24,656 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:24] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.224
+2026-03-26 07:47:44,331 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:47:44] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:48:17,217 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:48:17] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 52.254
+2026-03-26 07:48:35,623 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:48:35] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:49:06,186 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:06] "POST /web/action/load HTTP/1.1" 200 - 16 0.013 0.009
+2026-03-26 07:49:06,507 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:06] "POST /web/dataset/call_kw/dot_bao_duong/load_views HTTP/1.1" 200 - 24 0.016 0.011
+2026-03-26 07:49:06,812 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:06] "POST /web/dataset/call_kw/dot_bao_duong/web_read_group HTTP/1.1" 200 - 3 0.007 0.004
+2026-03-26 07:49:08,142 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:08] "POST /web/dataset/call_kw/dot_bao_duong/onchange HTTP/1.1" 200 - 3 0.003 0.004
+2026-03-26 07:49:10,973 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:10] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.462
+2026-03-26 07:49:19,151 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:19] "POST /web/action/load HTTP/1.1" 200 - 20 0.013 0.009
+2026-03-26 07:49:19,477 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:19] "POST /web/dataset/call_kw/phieu_bao_tri/load_views HTTP/1.1" 200 - 28 0.020 0.011
+2026-03-26 07:49:19,777 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:19] "POST /web/dataset/call_kw/phieu_bao_tri/web_read_group HTTP/1.1" 200 - 3 0.003 0.004
+2026-03-26 07:49:25,148 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:25] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:49:30,895 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:30] "POST /web/action/load HTTP/1.1" 200 - 21 0.014 0.009
+2026-03-26 07:49:31,217 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:31] "POST /web/dataset/call_kw/phieu_dieu_chuyen/load_views HTTP/1.1" 200 - 28 0.019 0.011
+2026-03-26 07:49:31,519 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:31] "POST /web/dataset/call_kw/phieu_dieu_chuyen/web_read_group HTTP/1.1" 200 - 3 0.007 0.004
+2026-03-26 07:49:32,457 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:32] "POST /web/dataset/call_kw/phieu_dieu_chuyen/onchange HTTP/1.1" 200 - 3 0.003 0.004
+2026-03-26 07:49:34,055 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:34] "POST /web/dataset/call_kw/tai_san/name_search HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:49:36,513 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:36] "POST /web/dataset/call_kw/vi_tri/name_search HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:49:40,949 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:40] "POST /web/dataset/call_kw/phieu_ban_giao/web_read_group HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:49:41,249 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:41] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.003 0.005
+2026-03-26 07:49:43,023 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:49:43,344 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/action/load HTTP/1.1" 200 - 10 0.010 0.011
+2026-03-26 07:49:43,350 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/action/load HTTP/1.1" 200 - 14 0.017 0.013
+2026-03-26 07:49:43,352 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/action/load HTTP/1.1" 200 - 14 0.016 0.014
+2026-03-26 07:49:43,355 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/action/load HTTP/1.1" 200 - 14 0.022 0.010
+2026-03-26 07:49:43,656 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.006 0.010
+2026-03-26 07:49:43,659 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.007 0.011
+2026-03-26 07:49:43,661 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.008 0.011
+2026-03-26 07:49:43,667 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.007 0.008
+2026-03-26 07:49:43,959 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.002 0.006
+2026-03-26 07:49:43,962 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.002 0.007
+2026-03-26 07:49:43,963 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.002 0.006
+2026-03-26 07:49:43,964 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:43] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.002 0.006
+2026-03-26 07:49:46,598 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:46] "POST /web/dataset/call_kw/phieu_muon/web_read_group HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:49:46,899 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:46] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.006
+2026-03-26 07:49:48,609 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:48] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.002 0.004
+2026-03-26 07:49:50,408 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:50] "POST /web/dataset/call_kw/phieu_muon/web_read_group HTTP/1.1" 200 - 2 0.001 0.003
+2026-03-26 07:49:50,720 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:50] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:49:53,581 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:49:53] "POST /web/dataset/search_read HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:50:04,829 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:04] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.558
+2026-03-26 07:50:15,753 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:15] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:50:54,520 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:54] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.003
+2026-03-26 07:50:54,824 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:54] "POST /web/action/load HTTP/1.1" 200 - 10 0.009 0.009
+2026-03-26 07:50:54,828 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:54] "POST /web/action/load HTTP/1.1" 200 - 14 0.014 0.009
+2026-03-26 07:50:54,832 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:54] "POST /web/action/load HTTP/1.1" 200 - 14 0.016 0.012
+2026-03-26 07:50:54,832 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:54] "POST /web/action/load HTTP/1.1" 200 - 14 0.014 0.010
+2026-03-26 07:50:55,117 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:55] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.006 0.007
+2026-03-26 07:50:55,123 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:55] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.007 0.011
+2026-03-26 07:50:55,127 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:55] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.009 0.009
+2026-03-26 07:50:55,127 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:55] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.007 0.010
+2026-03-26 07:50:55,400 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:55] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:50:55,405 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:55] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:50:55,410 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:55] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.002 0.005
+2026-03-26 07:50:55,411 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:55] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:50:58,275 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:50:58] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.142
+2026-03-26 07:51:07,784 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:51:07] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:51:18,268 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:51:18] "POST /web/dataset/call_kw/dot_bao_duong/web_read_group HTTP/1.1" 200 - 2 0.001 0.003
+2026-03-26 07:51:19,600 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:51:19] "POST /web/dataset/call_kw/dot_bao_duong/onchange HTTP/1.1" 200 - 2 0.001 0.004
+2026-03-26 07:51:27,523 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:51:27] "POST /web/dataset/call_kw/phieu_bao_tri/web_read_group HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:51:29,723 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:51:29] "POST /web/dataset/call_kw/phieu_ban_giao/web_read_group HTTP/1.1" 200 - 2 0.002 0.003
+2026-03-26 07:51:30,008 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:51:30] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.003 0.005
+2026-03-26 07:51:32,964 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:51:32] "POST /web/dataset/call_kw/phieu_bao_tri/web_read_group HTTP/1.1" 200 - 2 0.001 0.003
+2026-03-26 07:51:33,777 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:51:33] "POST /web/dataset/call_kw/phieu_bao_tri/onchange HTTP/1.1" 200 - 3 0.003 0.004
+2026-03-26 07:51:51,254 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:51:51] "POST /web/dataset/call_kw/tai_san/name_search HTTP/1.1" 200 - 3 0.002 0.005
+2026-03-26 07:51:53,186 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:51:53] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.005 54.620
+2026-03-26 07:51:53,724 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:51:53] "POST /web/dataset/call_kw/tai_san/name_search HTTP/1.1" 200 - 3 0.002 0.003
+2026-03-26 07:51:55,552 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:51:55] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:52:48,044 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:52:48] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 07:52:49,745 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:52:49] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 56.267
+2026-03-26 07:53:28,129 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Phòng họp: Nhắc nhở trước giờ họp`. 
+2026-03-26 07:53:28,132 89210 ERROR Business-Internship odoo.addons.base.models.ir_cron: Call from cron Phòng họp: Nhắc nhở trước giờ họp for server action #236 failed in Job #12 
+Traceback (most recent call last):
+  File "/home/dmin/Business-Internship/odoo/tools/safe_eval.py", line 385, in safe_eval
+    return unsafe_eval(c, globals_dict, locals_dict)
+  File "", line 1, in <module>
+  File "/home/dmin/Business-Internship/addons/quan_li_phong_hop_hoi_truong/models/dat_phong.py", line 521, in cron_nhac_nho_hop
+    warning_time = now + datetime.timedelta(minutes=15)
+AttributeError: type object 'datetime.datetime' has no attribute 'timedelta'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_cron.py", line 390, in _callback
+    self.env['ir.actions.server'].browse(server_action_id).run()
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_actions.py", line 649, in run
+    res = runner(run_self, eval_context=eval_context)
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_actions.py", line 518, in _run_action_code_multi
+    safe_eval(self.code.strip(), eval_context, mode="exec", nocopy=True)  # nocopy allows to return 'action'
+  File "/home/dmin/Business-Internship/odoo/tools/safe_eval.py", line 401, in safe_eval
+    raise ValueError('%s: "%s" while evaluating\n%r' % (ustr(type(e)), ustr(e), expr))
+ValueError: <class 'AttributeError'>: "type object 'datetime.datetime' has no attribute 'timedelta'" while evaluating
+'model.cron_nhac_nho_hop()'
+2026-03-26 07:53:36,677 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:53:36] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:53:42,862 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:53:42] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.007 52.817
+2026-03-26 07:54:01,754 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:01] "POST /web/dataset/call_kw/phieu_bao_tri/web_read_group HTTP/1.1" 200 - 2 0.002 0.005
+2026-03-26 07:54:04,665 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:04] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.004
+2026-03-26 07:54:04,972 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:04] "POST /web/action/load HTTP/1.1" 200 - 10 0.012 0.011
+2026-03-26 07:54:04,975 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:04] "POST /web/action/load HTTP/1.1" 200 - 14 0.016 0.011
+2026-03-26 07:54:04,979 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:04] "POST /web/action/load HTTP/1.1" 200 - 14 0.015 0.014
+2026-03-26 07:54:04,980 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:04] "POST /web/action/load HTTP/1.1" 200 - 14 0.020 0.012
+2026-03-26 07:54:05,272 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:05] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.008 0.008
+2026-03-26 07:54:05,273 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:05] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.009 0.008
+2026-03-26 07:54:05,280 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:05] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.008 0.010
+2026-03-26 07:54:05,282 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:05] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.008 0.009
+2026-03-26 07:54:05,568 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:05] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.002 0.008
+2026-03-26 07:54:05,568 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:05] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.003 0.006
+2026-03-26 07:54:05,571 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:05] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.002 0.007
+2026-03-26 07:54:05,572 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:05] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.002 0.006
+2026-03-26 07:54:28,517 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:28] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:54:38,579 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:38] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 55.426
+2026-03-26 07:54:44,250 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:44] "POST /web/action/load HTTP/1.1" 200 - 13 0.009 0.008
+2026-03-26 07:54:44,543 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:44] "POST /web/dataset/call_kw/tai_san.ai.wizard/load_views HTTP/1.1" 200 - 10 0.008 0.005
+2026-03-26 07:54:44,826 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:44] "POST /web/dataset/call_kw/tai_san.ai.wizard/onchange HTTP/1.1" 200 - 3 0.002 0.004
+2026-03-26 07:54:57,774 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:57] "POST /web/dataset/call_kw/tai_san.ai.wizard/create HTTP/1.1" 200 - 6 0.011 0.007
+2026-03-26 07:54:58,080 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:54:58] "POST /web/dataset/call_kw/tai_san.ai.wizard/read HTTP/1.1" 200 - 3 0.003 0.004
+2026-03-26 07:55:00,835 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:55:00] "POST /web/dataset/call_button HTTP/1.1" 200 - 11 0.008 2.447
+2026-03-26 07:55:01,134 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:55:01] "POST /web/dataset/call_kw/tai_san.ai.wizard/load_views HTTP/1.1" 200 - 6 0.004 0.006
+2026-03-26 07:55:01,433 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:55:01] "POST /web/dataset/call_kw/tai_san.ai.wizard/read HTTP/1.1" 200 - 2 0.002 0.003
+2026-03-26 07:55:16,914 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:55:16] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:55:33,054 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:55:33] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 54.186
+2026-03-26 07:56:08,745 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:56:08] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:56:25,911 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:56:25] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 52.567
+2026-03-26 07:56:58,202 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:56:58] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:57:21,423 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:57:21] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 55.220
+2026-03-26 07:57:50,371 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:57:50] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 07:58:16,693 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:58:16] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 54.986
+2026-03-26 07:58:39,945 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:58:39] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.005
+2026-03-26 07:59:09,521 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:59:09] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 52.527
+2026-03-26 07:59:31,982 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 07:59:31] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 08:00:05,807 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:00:05] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 55.993
+2026-03-26 08:00:24,156 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:00:24] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 08:00:36,925 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Mail: Email Queue Manager`. 
+2026-03-26 08:00:36,929 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Job `Mail: Email Queue Manager` done. 
+2026-03-26 08:01:00,259 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:01:00] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 54.157
+2026-03-26 08:01:03,358 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Partner Autocomplete : Sync with remote DB`. 
+2026-03-26 08:01:03,361 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Job `Partner Autocomplete : Sync with remote DB` done. 
+2026-03-26 08:01:03,375 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Snailmail: process letters queue`. 
+2026-03-26 08:01:03,378 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Job `Snailmail: process letters queue` done. 
+2026-03-26 08:01:03,387 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `SMS: SMS Queue Manager`. 
+2026-03-26 08:01:03,391 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Job `SMS: SMS Queue Manager` done. 
+2026-03-26 08:01:13,928 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:01:13] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.002 0.004
+2026-03-26 08:01:52,749 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:01:52] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 52.191
+2026-03-26 08:02:06,922 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:02:06] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 08:02:48,946 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:02:48] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 55.893
+2026-03-26 08:02:56,314 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:02:56] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 08:03:43,137 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:03:43] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.902
+2026-03-26 08:03:47,743 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:03:47] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 08:04:35,444 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:04:35] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 51.993
+2026-03-26 08:04:39,395 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:04:39] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 08:05:29,454 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:05:29] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.711
+2026-03-26 08:05:29,465 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:05:29] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.004
+2026-03-26 08:06:21,374 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:06:21] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.004
+2026-03-26 08:06:23,773 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:06:23] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 54.014
+2026-03-26 08:07:10,895 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:07:10] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.005
+2026-03-26 08:07:15,925 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:07:15] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 51.842
+2026-03-26 08:08:02,653 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:08:02] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.005 0.007
+2026-03-26 08:08:10,105 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:08:10] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 53.036
+2026-03-26 08:08:14,308 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Phòng họp: Nhắc trả phòng`. 
+2026-03-26 08:08:14,313 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Job `Phòng họp: Nhắc trả phòng` done. 
+2026-03-26 08:08:14,420 89210 INFO Business-Internship odoo.addons.base.models.ir_cron: Starting job `Phòng họp: Nhắc nhở trước giờ họp`. 
+2026-03-26 08:08:14,423 89210 ERROR Business-Internship odoo.addons.base.models.ir_cron: Call from cron Phòng họp: Nhắc nhở trước giờ họp for server action #236 failed in Job #12 
+Traceback (most recent call last):
+  File "/home/dmin/Business-Internship/odoo/tools/safe_eval.py", line 385, in safe_eval
+    return unsafe_eval(c, globals_dict, locals_dict)
+  File "", line 1, in <module>
+  File "/home/dmin/Business-Internship/addons/quan_li_phong_hop_hoi_truong/models/dat_phong.py", line 521, in cron_nhac_nho_hop
+    warning_time = now + datetime.timedelta(minutes=15)
+AttributeError: type object 'datetime.datetime' has no attribute 'timedelta'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_cron.py", line 390, in _callback
+    self.env['ir.actions.server'].browse(server_action_id).run()
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_actions.py", line 649, in run
+    res = runner(run_self, eval_context=eval_context)
+  File "/home/dmin/Business-Internship/odoo/addons/base/models/ir_actions.py", line 518, in _run_action_code_multi
+    safe_eval(self.code.strip(), eval_context, mode="exec", nocopy=True)  # nocopy allows to return 'action'
+  File "/home/dmin/Business-Internship/odoo/tools/safe_eval.py", line 401, in safe_eval
+    raise ValueError('%s: "%s" while evaluating\n%r' % (ustr(type(e)), ustr(e), expr))
+ValueError: <class 'AttributeError'>: "type object 'datetime.datetime' has no attribute 'timedelta'" while evaluating
+'model.cron_nhac_nho_hop()'
+2026-03-26 08:08:31,120 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:08:31] "POST /web/dataset/call_kw/hr.employee/search_panel_select_range HTTP/1.1" 200 - 3 0.005 0.008
+2026-03-26 08:08:31,424 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:08:31] "POST /web/dataset/search_read HTTP/1.1" 200 - 9 0.009 0.018
+2026-03-26 08:08:31,771 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:08:31] "GET /web/image?model=hr.employee&id=21&field=avatar_128&unique=26032026023942 HTTP/1.1" 200 - 4 0.007 0.014
+2026-03-26 08:08:31,771 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:08:31] "GET /web/image?model=hr.employee&id=22&field=avatar_128&unique=26032026025023 HTTP/1.1" 200 - 4 0.008 0.015
+2026-03-26 08:08:31,780 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:08:31] "GET /web/image?model=hr.employee&id=24&field=avatar_128&unique=26032026025214 HTTP/1.1" 200 - 3 0.006 0.021
+2026-03-26 08:08:52,744 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:08:52] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.005 0.007
+2026-03-26 08:09:04,239 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:04] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.003 0.005
+2026-03-26 08:09:04,254 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:04] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.009 53.847
+2026-03-26 08:09:04,587 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:04] "POST /web/action/load HTTP/1.1" 200 - 10 0.024 0.019
+2026-03-26 08:09:04,595 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:04] "POST /web/action/load HTTP/1.1" 200 - 14 0.030 0.024
+2026-03-26 08:09:04,596 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:04] "POST /web/action/load HTTP/1.1" 200 - 14 0.033 0.025
+2026-03-26 08:09:04,603 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:04] "POST /web/action/load HTTP/1.1" 200 - 14 0.037 0.019
+2026-03-26 08:09:04,916 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:04] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.010 0.015
+2026-03-26 08:09:04,928 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:04] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.011 0.018
+2026-03-26 08:09:04,928 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:04] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.019 0.015
+2026-03-26 08:09:04,932 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:04] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.013 0.016
+2026-03-26 08:09:05,234 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:05] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.003 0.011
+2026-03-26 08:09:05,240 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:05] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.004 0.009
+2026-03-26 08:09:05,242 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:05] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.004 0.009
+2026-03-26 08:09:05,245 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:05] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.005 0.009
+2026-03-26 08:09:43,030 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:43] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.005 0.007
+2026-03-26 08:09:58,409 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:09:58] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.022 53.838
+2026-03-26 08:10:12,087 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:12] "POST /web/dataset/call_kw/phieu_ban_giao/web_read_group HTTP/1.1" 200 - 2 0.002 0.005
+2026-03-26 08:10:12,395 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:12] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.006 0.007
+2026-03-26 08:10:18,196 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:18] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.006
+2026-03-26 08:10:18,534 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:18] "POST /web/action/load HTTP/1.1" 200 - 10 0.015 0.017
+2026-03-26 08:10:18,545 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:18] "POST /web/action/load HTTP/1.1" 200 - 14 0.027 0.018
+2026-03-26 08:10:18,552 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:18] "POST /web/action/load HTTP/1.1" 200 - 14 0.029 0.025
+2026-03-26 08:10:18,553 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:18] "POST /web/action/load HTTP/1.1" 200 - 14 0.027 0.021
+2026-03-26 08:10:18,860 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:18] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.013 0.011
+2026-03-26 08:10:18,869 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:18] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.011 0.014
+2026-03-26 08:10:18,874 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:18] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.013 0.016
+2026-03-26 08:10:18,875 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:18] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.011 0.017
+2026-03-26 08:10:19,147 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:19] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 2 0.003 0.006
+2026-03-26 08:10:19,168 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:19] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.006 0.010
+2026-03-26 08:10:19,177 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:19] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.004 0.013
+2026-03-26 08:10:19,180 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:19] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.005 0.010
+2026-03-26 08:10:19,185 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:19] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.008 0.010
+2026-03-26 08:10:19,524 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:19] "GET /web/image?model=tai_san&field=hinh_anh&id=8&unique=26032026034958 HTTP/1.1" 200 - 4 0.008 0.018
+2026-03-26 08:10:19,530 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:19] "GET /web/image?model=tai_san&field=hinh_anh&id=5&unique=26032026144456 HTTP/1.1" 200 - 4 0.007 0.021
+2026-03-26 08:10:19,532 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:19] "GET /web/image?model=tai_san&field=hinh_anh&id=1&unique=26032026034143 HTTP/1.1" 200 - 4 0.008 0.021
+2026-03-26 08:10:19,534 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:19] "GET /web/image?model=tai_san&field=hinh_anh&id=3&unique=26032026034150 HTTP/1.1" 200 - 4 0.009 0.020
+2026-03-26 08:10:19,534 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:19] "GET /web/image?model=tai_san&field=hinh_anh&id=7&unique=26032026034745 HTTP/1.1" 200 - 4 0.010 0.026
+2026-03-26 08:10:19,835 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:19] "GET /web/image?model=tai_san&field=hinh_anh&id=4&unique=26032026144359 HTTP/1.1" 200 - 4 0.005 0.009
+2026-03-26 08:10:19,837 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:19] "GET /web/image?model=tai_san&field=hinh_anh&id=6&unique=26032026035452 HTTP/1.1" 200 - 4 0.005 0.011
+2026-03-26 08:10:22,067 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:22] "POST /web/dataset/call_kw/tai_san/read HTTP/1.1" 200 - 18 0.025 0.010
+2026-03-26 08:10:22,381 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:22] "GET /web/image?model=tai_san&id=6&field=hinh_anh&unique=26032026035452 HTTP/1.1" 200 - 4 0.003 0.006
+2026-03-26 08:10:25,039 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:25] "POST /web/dataset/call_kw/hr.employee/name_search HTTP/1.1" 200 - 3 0.003 0.006
+2026-03-26 08:10:28,506 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:28] "POST /web/dataset/call_kw/hr.employee/search_panel_select_range HTTP/1.1" 200 - 3 0.007 0.900
+2026-03-26 08:10:28,531 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:28] "POST /web/dataset/search_read HTTP/1.1" 200 - 9 0.010 0.018
+2026-03-26 08:10:30,969 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:30] "GET /web/image?model=hr.employee&id=22&field=avatar_128&unique=26032026025023 HTTP/1.1" 200 - 4 0.007 0.012
+2026-03-26 08:10:30,970 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:30] "GET /web/image?model=hr.employee&id=21&field=avatar_128&unique=26032026023942 HTTP/1.1" 200 - 4 0.006 0.012
+2026-03-26 08:10:30,978 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:30] "GET /web/image?model=hr.employee&id=24&field=avatar_128&unique=26032026025214 HTTP/1.1" 200 - 3 0.003 0.021
+2026-03-26 08:10:32,421 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:32] "POST /web/dataset/call_kw/mail.followers/load_views HTTP/1.1" 200 - 13 0.024 0.017
+2026-03-26 08:10:32,427 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:32] "POST /web/dataset/call_kw/mail.message/load_views HTTP/1.1" 200 - 12 0.029 0.014
+2026-03-26 08:10:32,440 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:32] "POST /web/dataset/call_kw/mail.activity/load_views HTTP/1.1" 200 - 27 0.038 0.020
+2026-03-26 08:10:32,835 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:32] "POST /web/dataset/call_kw/hr.employee/read HTTP/1.1" 200 - 45 0.060 0.039
+2026-03-26 08:10:33,166 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:33] "POST /web/dataset/call_kw/tai_san/read HTTP/1.1" 200 - 4 0.006 0.021
+2026-03-26 08:10:33,167 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:33] "POST /web/dataset/call_kw/lich_su_cong_tac/read HTTP/1.1" 200 - 4 0.012 0.018
+2026-03-26 08:10:33,169 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:33] "POST /web/dataset/call_kw/dat_phong/read HTTP/1.1" 200 - 3 0.007 0.019
+2026-03-26 08:10:33,171 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:33] "POST /web/dataset/call_kw/mail.followers/read HTTP/1.1" 200 - 3 0.008 0.017
+2026-03-26 08:10:33,178 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:33] "POST /web/dataset/call_kw/mail.message/read HTTP/1.1" 200 - 5 0.014 0.015
+2026-03-26 08:10:33,488 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:33] "POST /web/dataset/call_kw/res.partner/name_get HTTP/1.1" 200 - 4 0.005 0.008
+2026-03-26 08:10:33,744 89210 INFO ? werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:33] "GET /web/static/src/legacy/xml/ribbon.xml?debug=1774512631557 HTTP/1.1" 200 - - - -
+2026-03-26 08:10:33,821 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:33] "POST /hr/get_org_chart HTTP/1.1" 200 - 12 0.025 0.011
+2026-03-26 08:10:33,830 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:33] "GET /web/image?model=hr.employee&id=21&field=image_1920&unique=26032026023942 HTTP/1.1" 200 - 4 0.004 0.018
+2026-03-26 08:10:34,161 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "POST /web/dataset/call_kw/hr.employee/read HTTP/1.1" 200 - 3 0.005 0.021
+2026-03-26 08:10:34,164 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "POST /mail/get_suggested_recipients HTTP/1.1" 200 - 2 0.006 0.019
+2026-03-26 08:10:34,171 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "POST /mail/thread/data HTTP/1.1" 200 - 4 0.009 0.018
+2026-03-26 08:10:34,190 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "POST /mail/read_followers HTTP/1.1" 200 - 14 0.031 0.021
+2026-03-26 08:10:34,212 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "POST /mail/thread/messages HTTP/1.1" 200 - 24 0.054 0.025
+2026-03-26 08:10:34,479 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "POST /web/dataset/call_kw/hr.employee/read HTTP/1.1" 200 - 3 0.007 0.013
+2026-03-26 08:10:34,485 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "POST /mail/get_suggested_recipients HTTP/1.1" 200 - 2 0.003 0.012
+2026-03-26 08:10:34,494 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "POST /mail/thread/data HTTP/1.1" 200 - 3 0.004 0.006
+2026-03-26 08:10:34,495 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "POST /mail/read_followers HTTP/1.1" 200 - 11 0.020 0.014
+2026-03-26 08:10:34,507 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "POST /web/dataset/call_kw/mail.activity/activity_format HTTP/1.1" 200 - 1 0.001 0.005
+2026-03-26 08:10:34,793 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "POST /web/dataset/call_kw/mail.message/mark_all_as_read HTTP/1.1" 200 - 5 0.008 0.007
+2026-03-26 08:10:34,797 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "POST /web/dataset/call_kw/mail.activity/activity_format HTTP/1.1" 200 - 1 0.002 0.007
+2026-03-26 08:10:34,815 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:34] "GET /web/image/res.partner/3/avatar_128 HTTP/1.1" 200 - 7 0.013 0.024
+2026-03-26 08:10:35,004 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:35] "GET /web/image/hr.employee.public/21/avatar_1024/ HTTP/1.1" 200 - 10 0.015 0.190
+2026-03-26 08:10:35,054 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:35] "GET /web/image/hr.employee.public/22/avatar_1024/ HTTP/1.1" 200 - 10 0.049 0.203
+2026-03-26 08:10:35,150 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:35] "POST /hr/get_org_chart HTTP/1.1" 200 - 6 0.005 0.006
+2026-03-26 08:10:35,176 89210 INFO Business-Internship odoo.http: <function odoo.addons.web_editor.controllers.main.public_render_template> called ignoring args <kwargs={'context': {'lang': 'vi_VN', 'tz': 'Asia/Bangkok', 'uid': 2}}> 
+2026-03-26 08:10:35,239 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:35] "POST /web_editor/public_render_template HTTP/1.1" 200 - 19 0.025 0.042
+2026-03-26 08:10:35,253 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:35] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.005 0.006
+2026-03-26 08:10:35,565 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:35] "GET /web/assets/debug/web_editor.assets_wysiwyg.css HTTP/1.1" 200 - 3 0.005 0.018
+2026-03-26 08:10:35,566 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:35] "GET /web/assets/debug/web_editor.assets_wysiwyg.js HTTP/1.1" 200 - 3 0.004 0.017
+2026-03-26 08:10:35,931 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:35] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.001 0.004
+2026-03-26 08:10:36,230 89210 INFO ? werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:36] "GET /web_editor/static/src/xml/editor.xml?debug=1774512634145 HTTP/1.1" 200 - - - -
+2026-03-26 08:10:36,566 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:36] "POST /web/dataset/call_kw/hr.employee/read HTTP/1.1" 200 - 3 0.006 0.016
+2026-03-26 08:10:36,575 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:36] "POST /mail/get_suggested_recipients HTTP/1.1" 200 - 2 0.004 0.022
+2026-03-26 08:10:36,580 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:36] "POST /mail/thread/messages HTTP/1.1" 200 - 4 0.010 0.018
+2026-03-26 08:10:36,582 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:36] "POST /mail/thread/data HTTP/1.1" 200 - 3 0.005 0.019
+2026-03-26 08:10:36,587 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:36] "POST /mail/read_followers HTTP/1.1" 200 - 11 0.024 0.018
+2026-03-26 08:10:36,867 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:36] "POST /web/dataset/call_kw/mail.activity/activity_format HTTP/1.1" 200 - 1 0.001 0.004
+2026-03-26 08:10:39,502 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:39] "POST /web/dataset/call_kw/hr.employee/write HTTP/1.1" 200 - 32 0.053 0.033
+2026-03-26 08:10:39,839 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:39] "POST /web/dataset/call_kw/hr.employee/read HTTP/1.1" 200 - 34 0.027 0.019
+2026-03-26 08:10:40,158 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:40] "POST /web/dataset/call_kw/lich_su_cong_tac/read HTTP/1.1" 200 - 4 0.007 0.011
+2026-03-26 08:10:40,165 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:40] "POST /web/dataset/call_kw/tai_san/read HTTP/1.1" 200 - 4 0.005 0.018
+2026-03-26 08:10:40,166 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:40] "POST /web/dataset/call_kw/dat_phong/read HTTP/1.1" 200 - 3 0.005 0.017
+2026-03-26 08:10:40,170 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:40] "POST /web/dataset/call_kw/mail.followers/read HTTP/1.1" 200 - 3 0.006 0.017
+2026-03-26 08:10:40,173 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:40] "POST /web/dataset/call_kw/mail.message/read HTTP/1.1" 200 - 5 0.007 0.014
+2026-03-26 08:10:40,487 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:40] "POST /web/dataset/call_kw/res.partner/name_get HTTP/1.1" 200 - 4 0.008 0.005
+2026-03-26 08:10:40,822 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:40] "POST /hr/get_org_chart HTTP/1.1" 200 - 6 0.007 0.009
+2026-03-26 08:10:40,823 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:40] "GET /web/image?model=hr.employee&id=21&field=avatar_128&unique=26032026151039 HTTP/1.1" 200 - 4 0.005 0.010
+2026-03-26 08:10:41,141 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:41] "POST /web/dataset/call_kw/hr.employee/read HTTP/1.1" 200 - 3 0.006 0.013
+2026-03-26 08:10:41,146 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:41] "POST /mail/get_suggested_recipients HTTP/1.1" 200 - 2 0.004 0.016
+2026-03-26 08:10:41,152 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:41] "POST /mail/thread/data HTTP/1.1" 200 - 3 0.005 0.015
+2026-03-26 08:10:41,160 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:41] "POST /mail/read_followers HTTP/1.1" 200 - 11 0.019 0.018
+2026-03-26 08:10:41,180 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:41] "POST /mail/thread/messages HTTP/1.1" 200 - 21 0.029 0.022
+2026-03-26 08:10:41,447 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:41] "POST /web/dataset/call_kw/mail.activity/activity_format HTTP/1.1" 200 - 1 0.001 0.005
+2026-03-26 08:10:47,318 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:47] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.005
+2026-03-26 08:10:47,653 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:47] "POST /web/action/load HTTP/1.1" 200 - 10 0.020 0.016
+2026-03-26 08:10:47,658 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:47] "POST /web/action/load HTTP/1.1" 200 - 14 0.026 0.017
+2026-03-26 08:10:47,666 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:47] "POST /web/action/load HTTP/1.1" 200 - 14 0.030 0.020
+2026-03-26 08:10:47,667 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:47] "POST /web/action/load HTTP/1.1" 200 - 14 0.027 0.018
+2026-03-26 08:10:47,982 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:47] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.014 0.015
+2026-03-26 08:10:47,985 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:47] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.014 0.017
+2026-03-26 08:10:47,995 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:47] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.015 0.019
+2026-03-26 08:10:47,996 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:47] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.017 0.017
+2026-03-26 08:10:48,297 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:48] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.003 0.010
+2026-03-26 08:10:48,311 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:48] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.012 0.017
+2026-03-26 08:10:48,315 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:48] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.007 0.011
+2026-03-26 08:10:48,319 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:48] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.004 0.013
+2026-03-26 08:10:51,484 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:51] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 9 0.009 0.011
+2026-03-26 08:10:51,744 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:51] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.011 53.023
+2026-03-26 08:10:51,797 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:51] "POST /web/dataset/call_kw/phieu_ban_giao/read HTTP/1.1" 200 - 8 0.009 0.008
+2026-03-26 08:10:52,098 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:52] "POST /web/dataset/call_kw/chi_tiet_ban_giao/read HTTP/1.1" 200 - 3 0.003 0.005
+2026-03-26 08:10:57,018 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:57] "POST /web/dataset/call_button HTTP/1.1" 200 - 19 0.018 0.011
+2026-03-26 08:10:57,326 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:57] "POST /web/dataset/call_kw/phieu_ban_giao/read HTTP/1.1" 200 - 6 0.006 0.009
+2026-03-26 08:10:57,626 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:10:57] "POST /web/dataset/call_kw/chi_tiet_ban_giao/read HTTP/1.1" 200 - 3 0.003 0.005
+2026-03-26 08:11:01,924 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:01] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 2 0.004 0.015
+2026-03-26 08:11:01,932 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:01] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.005 0.019
+2026-03-26 08:11:01,933 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:01] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.008 0.015
+2026-03-26 08:11:01,937 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:01] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.005 0.018
+2026-03-26 08:11:01,940 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:01] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.006 0.015
+2026-03-26 08:11:02,259 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:02] "GET /web/image?model=tai_san&field=hinh_anh&id=5&unique=26032026151056 HTTP/1.1" 200 - 4 0.006 0.008
+2026-03-26 08:11:02,260 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:02] "GET /web/image?model=tai_san&field=hinh_anh&id=6&unique=26032026151056 HTTP/1.1" 200 - 4 0.005 0.008
+2026-03-26 08:11:03,120 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:03] "POST /web/dataset/call_kw/tai_san/read HTTP/1.1" 200 - 11 0.009 0.008
+2026-03-26 08:11:03,430 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:03] "GET /web/image?model=tai_san&id=6&field=hinh_anh&unique=26032026151056 HTTP/1.1" 200 - 4 0.004 0.006
+2026-03-26 08:11:23,345 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:23] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.005 0.007
+2026-03-26 08:11:39,098 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:39] "POST /web/dataset/call_kw/hr.employee/search_panel_select_range HTTP/1.1" 200 - 3 0.004 0.009
+2026-03-26 08:11:39,132 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:39] "POST /web/dataset/search_read HTTP/1.1" 200 - 9 0.016 0.029
+2026-03-26 08:11:40,856 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:40] "POST /web/action/load HTTP/1.1" 200 - 13 0.013 0.010
+2026-03-26 08:11:41,173 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:41] "POST /web/dataset/call_kw/nhan_vien.ai.wizard/load_views HTTP/1.1" 200 - 10 0.011 0.008
+2026-03-26 08:11:41,481 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:41] "POST /web/dataset/call_kw/nhan_vien.ai.wizard/onchange HTTP/1.1" 200 - 3 0.005 0.005
+2026-03-26 08:11:45,584 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:45] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.009 53.540
+2026-03-26 08:11:47,525 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:47] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.005
+2026-03-26 08:11:47,865 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:47] "POST /web/action/load HTTP/1.1" 200 - 11 0.018 0.019
+2026-03-26 08:11:47,872 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:47] "POST /web/action/load HTTP/1.1" 200 - 15 0.030 0.021
+2026-03-26 08:11:47,875 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:47] "POST /web/action/load HTTP/1.1" 200 - 15 0.034 0.019
+2026-03-26 08:11:47,878 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:47] "POST /web/action/load HTTP/1.1" 200 - 15 0.035 0.019
+2026-03-26 08:11:48,172 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:48] "POST /web/dataset/call_kw/bien_ban_den_bu/load_views HTTP/1.1" 200 - 6 0.008 0.009
+2026-03-26 08:11:48,184 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:48] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.009 0.011
+2026-03-26 08:11:48,201 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:48] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.009 0.013
+2026-03-26 08:11:48,204 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:48] "POST /web/dataset/call_kw/dat_phong/load_views HTTP/1.1" 200 - 6 0.011 0.012
+2026-03-26 08:11:48,489 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:48] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.004 0.007
+2026-03-26 08:11:48,501 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:48] "POST /web/dataset/call_kw/dat_phong/read_group HTTP/1.1" 200 - 2 0.012 0.008
+2026-03-26 08:11:48,528 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:48] "POST /web/dataset/call_kw/dat_phong/read_group HTTP/1.1" 200 - 3 0.016 0.013
+2026-03-26 08:11:48,532 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:48] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.012 0.016
+2026-03-26 08:11:54,487 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:54] "POST /web/dataset/call_kw/dat_phong/web_read_group HTTP/1.1" 200 - 2 0.002 0.005
+2026-03-26 08:11:54,803 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:54] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.009 0.013
+2026-03-26 08:11:54,804 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:54] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.009 0.010
+2026-03-26 08:11:54,806 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:54] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.009 0.010
+2026-03-26 08:11:55,134 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:55] "GET /web/image?model=hr.employee&field=image_128&id=22 HTTP/1.1" 200 - 4 0.007 0.011
+2026-03-26 08:11:55,136 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:55] "GET /web/image?model=hr.employee&field=image_128&id=21 HTTP/1.1" 200 - 4 0.005 0.011
+2026-03-26 08:11:55,148 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:55] "GET /web/image?model=hr.employee&field=image_128&id=24 HTTP/1.1" 200 - 3 0.006 0.024
+2026-03-26 08:11:56,333 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:56] "POST /web/dataset/call_kw/dat_phong/onchange HTTP/1.1" 200 - 3 0.003 0.006
+2026-03-26 08:11:56,646 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:56] "POST /web/dataset/call_kw/dich_vu_di_kem/name_search HTTP/1.1" 200 - 5 0.010 0.006
+2026-03-26 08:11:57,667 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:57] "POST /web/dataset/call_kw/quan_ly_phong_hop/name_search HTTP/1.1" 200 - 4 0.054 0.007
+2026-03-26 08:11:59,193 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:59] "POST /web/dataset/call_kw/dat_phong/onchange HTTP/1.1" 200 - 4 0.003 0.006
+2026-03-26 08:11:59,544 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:11:59] "POST /web/dataset/call_kw/hr.employee/name_search HTTP/1.1" 200 - 3 0.004 0.006
+2026-03-26 08:12:01,360 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:01] "POST /web/dataset/call_kw/dat_phong/onchange HTTP/1.1" 200 - 2 0.003 0.007
+2026-03-26 08:12:12,484 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:12] "POST /web/dataset/call_kw/dat_phong/onchange HTTP/1.1" 200 - 1 0.001 0.005
+2026-03-26 08:12:13,667 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:13] "POST /web/dataset/call_kw/dat_phong/onchange HTTP/1.1" 200 - 1 0.001 0.005
+2026-03-26 08:12:15,603 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:15] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.005 0.008
+2026-03-26 08:12:15,623 89210 WARNING Business-Internship odoo.http: ⛔ Xung đột Lịch Phòng Họp!
+Phòng 'Phòng 301' đã được đặt bởi 'Huy Hoàng' trong cùng khung giờ. Chức vụ của bạn không đủ Quyền Ưu Tiên để đè lịch. Vui lòng chọn giờ khác! 
+2026-03-26 08:12:15,628 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:15] "POST /web/dataset/call_kw/dat_phong/create HTTP/1.1" 200 - 12 0.020 0.016
+2026-03-26 08:12:30,060 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:30] "POST /web/action/load HTTP/1.1" 200 - 13 0.013 0.011
+2026-03-26 08:12:30,375 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:30] "POST /web/dataset/call_kw/dat_phong.ai.wizard/load_views HTTP/1.1" 200 - 10 0.011 0.008
+2026-03-26 08:12:30,677 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:30] "POST /web/dataset/call_kw/dat_phong.ai.wizard/onchange HTTP/1.1" 200 - 3 0.004 0.005
+2026-03-26 08:12:32,984 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:32] "POST /web/dataset/call_kw/dat_phong/web_read_group HTTP/1.1" 200 - 2 0.002 0.005
+2026-03-26 08:12:33,304 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:33] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.006 0.012
+2026-03-26 08:12:33,307 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:33] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.008 0.011
+2026-03-26 08:12:33,309 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:33] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.007 0.009
+2026-03-26 08:12:35,584 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:35] "POST /web/dataset/call_kw/dat_phong.ai.wizard/onchange HTTP/1.1" 200 - 2 0.003 0.005
+2026-03-26 08:12:39,483 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:12:39] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.008 53.600
+2026-03-26 08:13:03,388 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:03] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.006
+2026-03-26 08:13:32,880 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:32] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.008 53.089
+2026-03-26 08:13:44,983 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:44] "POST /web/dataset/call_kw/board.board/onchange HTTP/1.1" 200 - 2 0.002 0.005
+2026-03-26 08:13:45,322 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:45] "POST /web/action/load HTTP/1.1" 200 - 10 0.016 0.019
+2026-03-26 08:13:45,327 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:45] "POST /web/action/load HTTP/1.1" 200 - 14 0.029 0.015
+2026-03-26 08:13:45,336 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:45] "POST /web/action/load HTTP/1.1" 200 - 14 0.027 0.023
+2026-03-26 08:13:45,337 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:45] "POST /web/action/load HTTP/1.1" 200 - 14 0.026 0.019
+2026-03-26 08:13:45,644 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:45] "POST /web/dataset/call_kw/phieu_ban_giao/load_views HTTP/1.1" 200 - 7 0.013 0.013
+2026-03-26 08:13:45,645 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:45] "POST /web/dataset/call_kw/phieu_muon/load_views HTTP/1.1" 200 - 7 0.014 0.011
+2026-03-26 08:13:45,657 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:45] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.013 0.015
+2026-03-26 08:13:45,658 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:45] "POST /web/dataset/call_kw/tai_san/load_views HTTP/1.1" 200 - 7 0.012 0.013
+2026-03-26 08:13:45,965 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:45] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.004 0.011
+2026-03-26 08:13:45,966 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:45] "POST /web/dataset/search_read HTTP/1.1" 200 - 2 0.004 0.010
+2026-03-26 08:13:45,972 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:45] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 2 0.004 0.011
+2026-03-26 08:13:45,976 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:45] "POST /web/dataset/call_kw/tai_san/read_group HTTP/1.1" 200 - 3 0.004 0.009
+2026-03-26 08:13:47,834 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:47] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 2 0.007 0.009
+2026-03-26 08:13:47,839 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:47] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.005 0.015
+2026-03-26 08:13:47,844 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:47] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.007 0.013
+2026-03-26 08:13:47,849 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:47] "POST /web/dataset/call_kw/tai_san/search_panel_select_multi_range HTTP/1.1" 200 - 3 0.007 0.015
+2026-03-26 08:13:47,850 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:47] "POST /web/dataset/search_read HTTP/1.1" 200 - 5 0.007 0.014
+2026-03-26 08:13:49,671 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:49] "POST /web/dataset/search_read HTTP/1.1" 200 - 7 0.006 0.008
+2026-03-26 08:13:55,580 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:13:55] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.006
+2026-03-26 08:14:26,249 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:14:26] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.008 53.066
+2026-03-26 08:14:43,261 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:14:43] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.006
+2026-03-26 08:14:56,070 89210 INFO Business-Internship odoo.service.server: Initiating server reload 
+2026-03-26 08:15:18,681 89210 ERROR ? odoo.addons.bus.models.bus: Bus.loop error, sleep and retry 
+Traceback (most recent call last):
+  File "/home/dmin/Business-Internship/addons/bus/models/bus.py", line 227, in loop
+    conn.poll()
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dmin/Business-Internship/addons/bus/models/bus.py", line 250, in run
+    self.loop()
+  File "/home/dmin/Business-Internship/addons/bus/models/bus.py", line 219, in loop
+    with odoo.sql_db.db_connect('postgres').cursor() as cr:
+  File "/home/dmin/Business-Internship/odoo/sql_db.py", line 162, in __exit__
+    self.close()
+  File "<decorator-gen-6>", line 2, in close
+  File "/home/dmin/Business-Internship/odoo/sql_db.py", line 90, in check
+    return f(self, *args, **kwargs)
+  File "/home/dmin/Business-Internship/odoo/sql_db.py", line 380, in close
+    return self._close(False)
+  File "/home/dmin/Business-Internship/odoo/sql_db.py", line 406, in _close
+    self.rollback()
+  File "<decorator-gen-10>", line 2, in rollback
+  File "/home/dmin/Business-Internship/odoo/sql_db.py", line 90, in check
+    return f(self, *args, **kwargs)
+  File "/home/dmin/Business-Internship/odoo/sql_db.py", line 485, in rollback
+    result = self._cnx.rollback()
+psycopg2.InterfaceError: connection already closed
+2026-03-26 08:15:20,864 89210 INFO Business-Internship odoo.sql_db: Connection to the database failed 
+2026-03-26 08:15:20,865 89210 INFO Business-Internship werkzeug: 127.0.0.1 - - [26/Mar/2026 08:15:20] "POST /longpolling/poll HTTP/1.1" 200 - 8 0.007 54.319
