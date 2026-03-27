@@ -81,7 +81,40 @@
         <record id="action_phieu_muon" model="ir.actions.act_window">
             <field name="name">Phiếu mượn</field>
             <field name="res_model">phieu_muon</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <record id="view_phieu_muon_kanban" model="ir.ui.view">
+            <field name="name">phieu.muon.kanban</field>
+            <field name="model">phieu_muon</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="state" class="o_kanban_small_column" sample="1">
+                    <field name="ma_phieu_muon"/>
+                    <field name="nhan_vien_id"/>
+                    <field name="ngay_muon_du_kien"/>
+                    <field name="state"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_record_title">
+                                    <strong><field name="ma_phieu_muon"/></strong>
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <span>Người mượn: <field name="nhan_vien_id"/></span>
+                                </div>
+                                <div class="o_kanban_record_bottom mt-2">
+                                    <div class="oe_kanban_bottom_left">
+                                        <i class="fa fa-calendar"/> <field name="ngay_muon_du_kien" widget="date"/>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <field name="state" widget="label_selection" options="{'classes': {'draft': 'info', 'approved': 'primary', 'done': 'success', 'cancelled': 'danger'}}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
         </record>
 
         <record id="seq_phieu_muon" model="ir.sequence">

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 1. Actions cho các khối trên Dashboard -->
+    <record id="action_dashboard_tai_san_trang_thai" model="ir.actions.act_window">
+        <field name="name">Cơ cấu Trạng thái Tài sản</field>
+        <field name="res_model">tai_san</field>
+        <field name="view_mode">graph</field>
+        <field name="domain">[]</field>
+        <field name="context">{'graph_mode': 'pie', 'graph_groupbys': ['trang_thai']}</field>
+    </record>
+
+    <record id="action_dashboard_tai_san_phong_ban" model="ir.actions.act_window">
+        <field name="name">Tài sản theo Phân loại</field>
+        <field name="res_model">tai_san</field>
+        <field name="view_mode">graph</field>
+        <field name="domain">[]</field>
+        <field name="context">{'graph_mode': 'bar', 'graph_groupbys': ['loai_tai_san_id']}</field>
+    </record>
+
+    <record id="action_dashboard_phieu_muon_cho" model="ir.actions.act_window">
+        <field name="name">Phiếu mượn cần quan tâm</field>
+        <field name="res_model">phieu_muon</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('state', 'in', ['draft', 'approved'])]</field>
+    </record>
+
+    <record id="action_dashboard_phieu_thu_hoi" model="ir.actions.act_window">
+        <field name="name">Thu hồi Khẩn (Bắn từ Nhân Sự)</field>
+        <field name="res_model">phieu_ban_giao</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('loai_phieu', '=', 'thu_hoi'), ('trang_thai', '=', 'nhap')]</field>
+    </record>
+
+    <!-- 2. Giao diện Board -->
+    <record id="board_quan_ly_tai_san_form" model="ir.ui.view">
+        <field name="name">board.quan.ly.tai.san.form</field>
+        <field name="model">board.board</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Bảng Điều Khiển Tổng Hợp">
+                <board style="2-1">
+                    <column>
+                        <action name="%(action_dashboard_tai_san_trang_thai)d" string="Tổng quan Kho"/>
+                        <action name="%(action_dashboard_phieu_muon_cho)d" string="Phiếu Mượn Đang Active"/>
+                    </column>
+                    <column>
+                        <action name="%(action_dashboard_phieu_thu_hoi)d" string="Cảnh báo Thu Hồi Tài Sản"/>
+                        <action name="%(action_dashboard_tai_san_phong_ban)d" string="Số lượng theo Phân loại"/>
+                    </column>
+                </board>
+            </form>
+        </field>
+    </record>
+
+    <!-- 3. Action để mở Dashboard -->
+    <record id="action_quan_ly_tai_san_dashboard" model="ir.actions.act_window">
+        <field name="name">Bảng điều khiển (Khu Vực Admin)</field>
+        <field name="res_model">board.board</field>
+        <field name="view_mode">form</field>
+        <field name="usage">menu</field>
+        <field name="view_id" ref="board_quan_ly_tai_san_form"/>
+    </record>
+
+</odoo>

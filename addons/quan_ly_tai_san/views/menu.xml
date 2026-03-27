@@ -3,7 +3,15 @@
     <data>
         <!-- Menu Chính -->
         <menuitem id="menu_root" name="Quản lý tài sản (QLTS)" sequence="0"/>
-        <menuitem id="menu_thong_ke" name="Tổng quan" parent="menu_root" sequence="4" action="action_thong_ke"/>
+
+        <menuitem id="menu_tai_san_ai"
+                  name="✨ Trợ lý Tài Sản"
+                  parent="menu_root"
+                  action="action_wizard_tai_san_ai"
+                  sequence="99"/>
+
+        <!-- Bảng Tổng Hợp -->
+        <menuitem id="menu_tai_san_dashboard" name="Bảng tổng hợp" parent="menu_root" sequence="5" action="action_quan_ly_tai_san_dashboard"/>
 
         <!-- Quản lý Tài Sản -->
         <menuitem id="menu_tai_san" name="Quản lý tài sản" parent="menu_root" sequence="10" action="action_tai_san"/>
@@ -20,29 +28,31 @@
         <!-- Quản lý Phiếu & Lịch Sử -->
         <menuitem id="menu_quan_ly_phieu_lich_su" name="Quản lý phiếu và Lịch sử" parent="menu_root" sequence="30"/>
 
+        <menuitem id="menu_phieu_ban_giao" name="Phiếu bàn giao/thu hồi" parent="menu_quan_ly_phieu_lich_su" sequence="5"
+                  action="action_phieu_ban_giao"/>
         <menuitem id="menu_phieu_muon" name="Phiếu mượn" parent="menu_quan_ly_phieu_lich_su" sequence="10"
                   action="action_phieu_muon"/>
+        <menuitem id="menu_dot_bao_duong" name="Đợt bảo dưỡng" parent="menu_quan_ly_phieu_lich_su" sequence="15"
+                  action="action_dot_bao_duong"/>
         <menuitem id="menu_phieu_bao_tri" name="Phiếu bảo trì" parent="menu_quan_ly_phieu_lich_su" sequence="20"
                   action="action_phieu_bao_tri"/>
         <menuitem id="menu_phieu_dieu_chuyen" name="Phiếu điều chuyển" parent="menu_quan_ly_phieu_lich_su" sequence="30"
                   action="action_phieu_dieu_chuyen"/>
-        <menuitem id="menu_lich_su_di_chuyen" name="Lịch sử điều chuyển" parent="menu_quan_ly_phieu_lich_su"
-                  sequence="40" action="action_lich_su_di_chuyen"/>
-        <menuitem id="menu_lich_su_su_dung" name="Lịch sử sử dụng" parent="menu_quan_ly_phieu_lich_su" sequence="50"
+        <menuitem id="menu_lich_su_di_chuyen" name="Lịch sử điều chuyển" parent="menu_quan_ly_phieu_lich_su" sequence="40" action="action_lich_su_di_chuyen"/>
+        <menuitem id="menu_bien_ban_den_bu_base" name="Biên bản đền bù" parent="menu_quan_ly_phieu_lich_su" sequence="45" action="action_bien_ban_den_bu_base"/>
+        <menuitem id="menu_lich_su_su_dung" name="Lịch sử sử dụng" parent="menu_quan_ly_phieu_lich_su" sequence="50" action="action_lich_su_su_dung"/>
                   action="action_lich_su_su_dung"/>
         <menuitem id="menu_lich_su_bao_tri" name="Lịch sử bảo trì" parent="menu_quan_ly_phieu_lich_su" sequence="60"
                   action="action_lich_su_bao_tri"/>
-        <menuitem id="menu_khau_hao" name="Khấu hao" parent="menu_quan_ly_phieu_lich_su" sequence="70"
-                  action="action_khau_hao"/>
         <menuitem id="menu_thanh_ly" name="Phiếu thanh lý" parent="menu_quan_ly_phieu_lich_su" sequence="80"
                   action="action_thanh_ly"/>
 
         <!-- Quản Lý Kiểm Kê -->
-        <menuitem id="menu_phieu_kiem_ke_root" name="Quản Lý Kiểm Kê" parent="menu_root" sequence="40"/>
-
-        <menuitem id="menu_phieu_kiem_ke" name="Phiếu Kiểm Kê" parent="menu_phieu_kiem_ke_root" sequence="10"
+        <menuitem id="menu_quan_ly_kiem_ke" name="Quản Lý Kiểm Kê" parent="menu_root" sequence="40" active="False"/>
+        
+        <menuitem id="menu_phieu_kiem_ke" name="Phiếu kiểm kê" parent="menu_quan_ly_kiem_ke" sequence="10"
                   action="action_phieu_kiem_ke"/>
-        <menuitem id="menu_lich_su_kiem_ke" name="Lịch Sử Kiểm Kê" parent="menu_phieu_kiem_ke_root" sequence="20"
+        <menuitem id="menu_lich_su_kiem_ke" name="Lịch sử kiểm kê" parent="menu_quan_ly_kiem_ke" sequence="20"
                   action="action_lich_su_kiem_ke"/>
 
         <!-- Thống kê tài sản -->

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_phong_ban_tree" model="ir.ui.view">
+            <field name="name">phong.ban.tree</field>
+            <field name="model">phong_ban</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_phong_ban"/>
+                    <field name="ten_phong_ban"/>
+                    <field name="don_vi_id"/>
+                    <field name="truong_phong_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_phong_ban_form" model="ir.ui.view">
+            <field name="name">phong.ban.form</field>
+            <field name="model">phong_ban</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="ma_phong_ban"/>
+                                <field name="ten_phong_ban"/>
+                            </group>
+                            <group>
+                                <field name="don_vi_id"/>
+                                <field name="truong_phong_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Danh sách nhân sự thuộc phòng">
+                                <field name="nhan_vien_ids" readonly="1" >
+                                     <tree>
+                                         <field name="ma_dinh_danh" />
+                                         <field name="ho_va_ten" />
+                                     </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_phong_ban" model="ir.actions.act_window">
+            <field name="name">Phòng ban</field>
+            <field name="res_model">phong_ban</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

@@ -15,14 +15,23 @@ class LichSuBaoTri(models.Model):
         default="New"
     )
 
-    ngay_bao_tri = fields.Date("Thời gian bảo trì", required=True)
+    ngay_bao_tri = fields.Date("Thời gian thực hiện", required=True)
     ngay_tra = fields.Date("Thời gian trả", required=True)
     chi_phi = fields.Integer("Chi phí", required=True, default=0)
+    nguoi_phu_trach_id = fields.Many2one(
+        comodel_name="hr.employee",
+        string="Người phụ trách"
+    )
     ghi_chu = fields.Char("Ghi chú")
     tai_san_id = fields.Many2one(
         comodel_name="tai_san",
         string="Tài sản",
         required=True,
+        ondelete="cascade"
+    )
+    dot_bao_duong_id = fields.Many2one(
+        comodel_name="dot_bao_duong",
+        string="Thuộc đợt bảo dưỡng",
         ondelete="cascade"
     )
 

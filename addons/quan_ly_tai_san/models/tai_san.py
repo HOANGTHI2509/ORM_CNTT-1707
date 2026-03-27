@@ -51,42 +51,57 @@ class TaiSan(models.Model):
         help="Số tiền đã bỏ ra để mua tài sản"
     )
 
+    so_gio_su_dung = fields.Float(
+        string="Tổng giờ đã sử dụng", 
+        default=0.0, 
+        readonly=True, 
+        help="Số giờ sử dụng cộng dồn từ các đợt mượn phòng"
+    )
+
     gia_tri_hien_tai = fields.Float(
         "Giá trị hiện tại", digits=(16, 2), compute='_compute_gia_tri_hien_tai', store=True,
         help="Giá trị tài sản hiện tại sau khi khấu hao"
     )
 
+    ngay_bao_tri_tiep_theo = fields.Date(
+        "Ngày bảo trì tiếp theo", compute='_compute_ngay_bao_tri', store=True,
+        help="Ngày dự kiến cần bảo trì tiếp theo dựa trên chu kỳ bảo trì của loại tài sản"
+    )
+
+    is_qua_han_bao_tri = fields.Boolean(
+        "Quá hạn bảo trì", compute='_compute_ngay_bao_tri', store=True,
+    )
+
     TRANG_THAI = [
-        ("LuuTru", "Lưu trữ"),
+        ("LuuTru", "Lưu trữ (Kho)"),
+        ("SanSang", "Sẵn sàng (Tại phòng)"),
         ("Muon", "Mượn"),
-        ("BaoTri", "Bảo trì"),
+        ("BaoTri", "Đang BD/Sửa chữa"),
         ("Hong", "Hỏng"),
         ("DaThanhLy", "Đã thanh lý"),
-    ]
-
-    TRANG_THAI_KIEM_KE = [
-        ('binh_thuong', 'Bình thường'),
-        ('hong_hoc', 'Hỏng hóc'),
-        ('mat', 'Mất'),
-        ('sua_chua', 'Đang sửa chữa')
     ]
 
     trang_thai = fields.Selection(
         TRANG_THAI, string="Trạng thái", default="LuuTru",
         help="Trạng thái hiện tại của tài sản:\n"
-             "- Lưu trữ: Đang trong kho\n"
-             "- Mượn: Đang có người sử dụng\n"
-             "- Bảo trì: Đang được sửa chữa\n"
+             "- Lưu trữ: Đang rảnh rỗi trong kho\n"
+             "- Sẵn sàng: Đã được phân bổ vào các phòng\n"
+             "- Mượn: Đang có người mượn\n"
+             "- Bảo dưỡng/Sửa chữa: Đang được bảo dưỡng hoặc sửa chữa\n"
              "- Hỏng: Không thể sử dụng"
-    )
-    trang_thai_kiem_ke = fields.Selection(
-        TRANG_THAI_KIEM_KE, string="Trạng thái Kiểm Kê", default="binh_thuong",
     )
 
     loai_tai_san_id = fields.Many2one(
         comodel_name='loai_tai_san', string="Loại tài sản", required=True,
         help="Loại tài sản, ví dụ: Thiết bị điện tử, Phương tiện di chuyển..."
     )
+
+    trang_thai_kiem_ke = fields.Selection([
+        ('binh_thuong', 'Bình thường'),
+        ('hong_hoc', 'Hỏng hóc'),
+        ('mat', 'Mất'),
+        ('sua_chua', 'Đang sửa chữa')
+    ], string="Tình trạng thẩm định", readonly=True, help="Kết quả ghi nhận từ kỳ kiểm kê gần nhất")
 
     vi_tri_hien_tai_id = fields.Many2one(
         comodel_name='vi_tri', string="Vị trí hiện tại", store=True,
@@ -110,10 +125,10 @@ class TaiSan(models.Model):
         help="Các lần tài sản được bảo trì hoặc sửa chữa"
     )
 
-    khau_hao_ids = fields.One2many(
-        comodel_name='khau_hao', inverse_name='tai_san_id',
-        string="Khấu hao", store=True,
-        help="Thông tin về khấu hao tài sản theo thời gian"
+    lich_su_kiem_ke_ids = fields.One2many(
+        comodel_name='lich_su_kiem_ke', inverse_name='tai_san_id',
+        string="Lịch sử kiểm kê", readonly=True,
+        help="Các lần tài sản được đánh giá/thẩm định trạng thái"
     )
 
     lich_su_di_chuyen_ids = fields.One2many(
@@ -122,19 +137,7 @@ class TaiSan(models.Model):
         help="Các lần tài sản được di chuyển giữa các vị trí"
     )
 
-    phieu_kiem_ke_ids = fields.Many2many(
-        comodel_name='phieu_kiem_ke',
-        string="Phiếu kiểm kê",
-        relation='tai_san_phieu_kiem_ke_rel',
-        column1='tai_san_id',
-        column2='phieu_kiem_ke_id'
-    )
 
-    lich_su_kiem_ke_ids = fields.One2many(
-        comodel_name='lich_su_kiem_ke', inverse_name='tai_san_id',
-        string="Lịch sử kiểm kê", readonly=True,
-        help="Các lần kiểm kê"
-    )
 
     thanh_ly_id = fields.Many2one(
         comodel_name='thanh_ly',
@@ -143,8 +146,8 @@ class TaiSan(models.Model):
         help="Phiếu thanh lý liên quan đến tài sản này (mỗi tài sản chỉ có tối đa một phiếu)"
     )
 
-    quan_ly_id = fields.Many2one(comodel_name="nhan_vien", string="Người quản lý", store=True)
-    nguoi_dang_dung_id = fields.Many2one(comodel_name="nhan_vien", string="Người đang sử dụng", store=True)
+    quan_ly_id = fields.Many2one(comodel_name="hr.employee", string="Người quản lý", store=True)
+    nguoi_dang_dung_id = fields.Many2one(comodel_name="hr.employee", string="Người đang sử dụng", store=True)
 
     # Các trường computed cho dashboard
     tong_so_luong = fields.Integer(
@@ -189,6 +192,34 @@ class TaiSan(models.Model):
             else:
                 record.gia_tri_hien_tai = 0.0
 
+    @api.depends('lich_su_bao_tri_ids.ngay_bao_tri', 'ngay_mua', 'loai_tai_san_id.chu_ky_bao_tri_thang')
+    def _compute_ngay_bao_tri(self):
+        today = fields.Date.today()
+        for record in self:
+            chu_ky = record.loai_tai_san_id.chu_ky_bao_tri_thang or 0
+            if chu_ky == 0:
+                record.ngay_bao_tri_tiep_theo = False
+                record.is_qua_han_bao_tri = False
+                continue
+
+            last_date = False
+            if record.lich_su_bao_tri_ids:
+                bao_tri_dates = record.lich_su_bao_tri_ids.mapped('ngay_bao_tri')
+                valid_dates = [d for d in bao_tri_dates if d]
+                if valid_dates:
+                    last_date = max(valid_dates)
+            
+            if not last_date and record.ngay_mua:
+                last_date = record.ngay_mua.date() if isinstance(record.ngay_mua, datetime.datetime) else record.ngay_mua
+            
+            if last_date:
+                next_date = last_date + relativedelta(months=chu_ky)
+                record.ngay_bao_tri_tiep_theo = next_date
+                record.is_qua_han_bao_tri = next_date < today
+            else:
+                record.ngay_bao_tri_tiep_theo = False
+                record.is_qua_han_bao_tri = False
+
     @api.depends('trang_thai', 'gia_tri_hien_tai')
     def _compute_dashboard_stats(self):
         all_assets = self.search([])
@@ -219,7 +250,7 @@ class TaiSan(models.Model):
                 'target': 'new',
                 'context': {
                     'default_tai_san_id': record.id,
-                    'default_vi_tri_id': record.vi_tri_hien_tai_id.id,
+                    'default_vi_tri_chuyen_id': record.vi_tri_hien_tai_id.id,
                 },
             }
 

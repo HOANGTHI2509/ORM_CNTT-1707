@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_phieu_ban_giao_tree" model="ir.ui.view">
+            <field name="name">phieu.ban.giao.tree</field>
+            <field name="model">phieu_ban_giao</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_phieu"/>
+                    <field name="nguoi_giao_id"/>
+                    <field name="nguoi_nhan_id"/>
+                    <field name="ngay_ban_giao"/>
+                    <field name="loai_phieu"/>
+                    <field name="trang_thai"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_phieu_ban_giao_form" model="ir.ui.view">
+            <field name="name">phieu.ban.giao.form</field>
+            <field name="model">phieu_ban_giao</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="%(quan_ly_tai_san.action_wizard_tai_san_ai)d" type="action" string="🪄 Trợ lý AI Cấp Phát" class="btn-primary" style="background-color: #d97706; border-color: #d97706; font-weight: bold; text-transform: uppercase;"/>
+                        <button name="%(quan_ly_tai_san.action_report_ban_giao_tai_san)d" type="action" string="In Biên Bản" icon="fa-print" class="oe_highlight" attrs="{'invisible': [('trang_thai', '==', 'nhap')]}"/>
+                        <button name="action_hoan_thanh" type="object" string="Xác nhận" class="oe_highlight" attrs="{'invisible': [('trang_thai', '!=', 'nhap')]}"/>
+                        <button name="action_huy" type="object" string="Hủy" attrs="{'invisible': [('trang_thai', '!=', 'nhap')]}"/>
+                        <field name="trang_thai" widget="statusbar" statusbar_visible="nhap,hoan_thanh,huy"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ma_phieu" placeholder="Mã phiếu phân bổ..."/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="loai_phieu" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}"/>
+                                <field name="ngay_ban_giao" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}"/>
+                            </group>
+                            <group>
+                                <field name="nguoi_giao_id" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}"/>
+                                <field name="nguoi_nhan_id" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Danh sách tài sản">
+                                <field name="chi_tiet_ids" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}">
+                                    <tree editable="bottom">
+                                        <field name="tai_san_id"/>
+                                        <field name="tinh_trang"/>
+                                        <field name="ghi_chu"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_phieu_ban_giao" model="ir.actions.act_window">
+            <field name="name">Phiếu bàn giao / thu hồi</field>
+            <field name="res_model">phieu_ban_giao</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <record id="view_phieu_ban_giao_kanban" model="ir.ui.view">
+            <field name="name">phieu.ban.giao.kanban</field>
+            <field name="model">phieu_ban_giao</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="trang_thai" class="o_kanban_small_column" sample="1">
+                    <field name="ma_phieu"/>
+                    <field name="nguoi_giao_id"/>
+                    <field name="nguoi_nhan_id"/>
+                    <field name="ngay_ban_giao"/>
+                    <field name="trang_thai"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_record_title">
+                                    <strong><field name="ma_phieu"/></strong>
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <span>Giao: <field name="nguoi_giao_id"/></span><br/>
+                                    <span>Nhận: <field name="nguoi_nhan_id"/></span>
+                                </div>
+                                <div class="o_kanban_record_bottom mt-2">
+                                    <div class="oe_kanban_bottom_left">
+                                        <i class="fa fa-calendar"/> <field name="ngay_ban_giao" widget="date"/>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <field name="trang_thai" widget="label_selection" options="{'classes': {'nhap': 'info', 'hoan_thanh': 'success', 'huy': 'danger'}}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>

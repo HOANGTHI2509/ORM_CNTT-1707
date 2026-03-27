@@ -127,7 +127,43 @@
         <record id="action_phieu_dieu_chuyen" model="ir.actions.act_window">
             <field name="name">Phiếu Điều Chuyển</field>
             <field name="res_model">phieu_dieu_chuyen</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <record id="view_phieu_dieu_chuyen_kanban" model="ir.ui.view">
+            <field name="name">phieu.dieu.chuyen.kanban</field>
+            <field name="model">phieu_dieu_chuyen</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="trang_thai" class="o_kanban_small_column" sample="1">
+                    <field name="ten_phieu"/>
+                    <field name="tai_san"/>
+                    <field name="vi_tri_hien_tai"/>
+                    <field name="vi_tri_moi"/>
+                    <field name="ngay_dieu_chuyen"/>
+                    <field name="trang_thai"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_record_title">
+                                    <strong><field name="ten_phieu"/></strong>
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <span>Tài sản: <field name="tai_san"/></span><br/>
+                                    <span>Từ: <field name="vi_tri_hien_tai"/> <i class="fa fa-arrow-right"/> <field name="vi_tri_moi"/></span>
+                                </div>
+                                <div class="o_kanban_record_bottom mt-2">
+                                    <div class="oe_kanban_bottom_left">
+                                        <i class="fa fa-calendar"/> <field name="ngay_dieu_chuyen" widget="date"/>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <field name="trang_thai" widget="label_selection" options="{'classes': {'nhap': 'info', 'duyet': 'primary', 'hoan_thanh': 'success'}}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
         </record>
     </data>
 </odoo>

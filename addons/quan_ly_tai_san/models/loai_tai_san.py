@@ -7,12 +7,23 @@ class LoaiTaiSan(models.Model):
     _rec_name = "ten_loai_tai_san"
     _order = 'ma_loai_tai_san'
     _sql_constraints = [
-        ('ma_loai_tai_san_unique', 'unique(ma_loai_tai_san)', 'Mã loại tài sản phải là duy nhất!')
+        ('ma_loai_tai_san_unique', 'unique(ma_loai_tai_san)', 'Mã loại tài sản phải là duy nhất!'),
+        ('ten_loai_tai_san_unique', 'unique(ten_loai_tai_san)', 'Tên Loại Tài sản này đã tồn tại trong hệ thống!')
     ]
 
     ma_loai_tai_san = fields.Char("Mã Loại Tài sản")
     ten_loai_tai_san = fields.Char("Tên Loại Tài sản", required=True)
     mo_ta = fields.Text("Mô tả")
+    chu_ky_bao_tri_thang = fields.Integer(
+        "Chu kỳ bảo trì (tháng)", 
+        default=6, 
+        help="Khoảng thời gian (tính bằng tháng) cần bảo trì định kỳ cho loại tài sản này. Để 0 nếu không cần bảo trì."
+    )
+    gio_gioi_han_bao_tri = fields.Float(
+        string="Giới hạn sử dụng (Giờ)", 
+        default=500.0, 
+        help="Số giờ hoạt động tối đa trước khi tự động kích hoạt bảo trì."
+    )
     tai_san_ids = fields.One2many(
         comodel_name='tai_san',
         inverse_name='loai_tai_san_id', string="Tài sản", required=True)

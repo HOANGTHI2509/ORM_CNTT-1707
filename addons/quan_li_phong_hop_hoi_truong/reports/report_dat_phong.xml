@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_phieu_muon_phong" model="ir.actions.report">
+        <field name="name">In Phiếu Mượn Phòng</field>
+        <field name="model">dat_phong</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">quan_li_phong_hop_hoi_truong.report_phieu_muon_phong</field>
+        <field name="report_file">quan_li_phong_hop_hoi_truong.report_phieu_muon_phong</field>
+        <field name="binding_model_id" ref="model_dat_phong"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_phieu_muon_phong">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="text-center mb-5 mt-4">
+                            <h2>PHIẾU MƯỢN PHÒNG HỌP</h2>
+                            <strong>Trạng thái: </strong> 
+                            <span t-if="o.trang_thai == 'đã_duyệt'">Đã duyệt</span>
+                            <span t-if="o.trang_thai == 'đang_sử_dụng'">Đang sử dụng</span>
+                            <span t-if="o.trang_thai == 'đã_trả'">Đã trả</span>
+                            <span t-if="o.trang_thai == 'chờ_duyệt' or o.trang_thai == 'cho_duyet_cap_2'">Chờ duyệt</span>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-8">
+                                <strong>Người mượn: </strong> <span t-field="o.nguoi_muon_id.ho_va_ten"/><br/>
+                                <strong>Phòng đăng ký: </strong> <span t-field="o.phong_id.name"/><br/>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <strong>Thời gian dự kiến:</strong><br/>
+                                Bắt đầu: <span t-field="o.thoi_gian_muon_du_kien"/><br/>
+                                Kết thúc: <span t-field="o.thoi_gian_tra_du_kien"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Thời gian thực tế:</strong><br/>
+                                Bắt đầu: <span t-field="o.thoi_gian_muon_thuc_te"/><br/>
+                                Kết thúc: <span t-field="o.thoi_gian_tra_thuc_te"/>
+                            </div>
+                        </div>
+
+                        <t t-if="o.tai_san_ids">
+                            <h4 class="mt-4">Tài sản mượn kèm</h4>
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Mã tài sản</th>
+                                        <th>Tên tài sản</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.tai_san_ids" t-as="ts">
+                                        <tr>
+                                            <td><span t-field="ts.ma_tai_san"/></td>
+                                            <td><span t-field="ts.ten_tai_san"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+
+                        <t t-if="o.dich_vu_ids">
+                            <h4 class="mt-4">Dịch vụ đi kèm</h4>
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Tên dịch vụ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.dich_vu_ids" t-as="dv">
+                                        <tr>
+                                            <td><span t-field="dv.name"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+
+                        <div class="row mt-5 pt-5">
+                            <div class="col-6 text-center">
+                                <strong>NGƯỜI XÉT DUYỆT</strong>
+                                <br/><br/><br/><br/>
+                                <span>(Ký và ghi rõ họ tên)</span>
+                            </div>
+                            <div class="col-6 text-center">
+                                <strong>NGƯỜI ĐĂNG KÝ</strong>
+                                <br/><br/><br/><br/>
+                                <span t-field="o.nguoi_muon_id.ho_va_ten"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -8,32 +8,42 @@ class LichSuMuonTra(models.Model):
 
     ngay_su_dung = fields.Date(string="📅 Ngày", required=True, default=fields.Date.today)
     phong_id = fields.Many2one("quan_ly_phong_hop", string="🏢 Phòng", required=True)    
+    dat_phong_id = fields.Many2one('dat_phong', string='Phiếu Đặt Phòng', ondelete='cascade')
+    ma_phieu = fields.Char(related='dat_phong_id.ma_phieu', string="Mã Phiếu", store=True)
+    nguoi_muon_id = fields.Many2one('hr.employee', related='dat_phong_id.nguoi_muon_id', string="Người mượn", store=True)
+    tai_san_ids = fields.Many2many("tai_san", compute="_compute_tai_san_dich_vu", string="Tài sản mượn kèm")
+    dich_vu_ids = fields.Many2many("dich_vu_di_kem", compute="_compute_tai_san_dich_vu", string="Dịch vụ đi kèm")
     tong_thoi_gian_su_dung = fields.Char(string="⏳ Tổng thời gian sử dụng", compute="_compute_tong_thoi_gian", store=True)
 
+    @api.depends("dat_phong_id", "dat_phong_id.tai_san_ids", "dat_phong_id.dich_vu_ids")
+    def _compute_tai_san_dich_vu(self):
+        for record in self:
+            if record.dat_phong_id:
+                record.tai_san_ids = record.dat_phong_id.tai_san_ids
+                record.dich_vu_ids = record.dat_phong_id.dich_vu_ids
+            else:
+                record.tai_san_ids = False
+                record.dich_vu_ids = False
 
 
-    @api.depends("phong_id", "ngay_su_dung")
+
+    @api.depends("dat_phong_id", "ngay_su_dung")
     def _compute_tong_thoi_gian(self):
         """ Tính tổng thời gian sử dụng phòng theo giờ:phút:giây """
         for record in self:
-            total_seconds = 0
-            bookings = self.env['dat_phong'].search([
-                ('phong_id', '=', record.phong_id.id),
-                ('trang_thai', '=', 'đã_trả')
-            ])
-            for usage in bookings:
-                if usage.thoi_gian_muon_thuc_te and usage.thoi_gian_tra_thuc_te:
-                    muon_date = usage.thoi_gian_muon_thuc_te.date()
-                    tra_date = usage.thoi_gian_tra_thuc_te.date()
-
-                    if muon_date == record.ngay_su_dung or tra_date == record.ngay_su_dung:
-                        delta = usage.thoi_gian_tra_thuc_te - usage.thoi_gian_muon_thuc_te
-                        total_seconds += delta.total_seconds()
+            if not record.dat_phong_id:
+                record.tong_thoi_gian_su_dung = "00:00:00"
+                continue
             
-            # Chuyển đổi từ giây thành giờ:phút:giây
-            hours, remainder = divmod(total_seconds, 3600)
-            minutes, seconds = divmod(remainder, 60)
-            record.tong_thoi_gian_su_dung = f"{int(hours):02d}:{int(minutes):02d}:{int(seconds):02d}"
+            usage = record.dat_phong_id
+            if usage.thoi_gian_muon_thuc_te and usage.thoi_gian_tra_thuc_te:
+                delta = usage.thoi_gian_tra_thuc_te - usage.thoi_gian_muon_thuc_te
+                total_seconds = delta.total_seconds()
+                hours, remainder = divmod(total_seconds, 3600)
+                minutes, seconds = divmod(remainder, 60)
+                record.tong_thoi_gian_su_dung = f"{int(hours):02d}:{int(minutes):02d}:{int(seconds):02d}"
+            else:
+                record.tong_thoi_gian_su_dung = "00:00:00"
 
     @api.model
     def update_lich_su_muon_tra(self):
@@ -49,12 +59,13 @@ class LichSuMuonTra(models.Model):
             ngay_tra = record.thoi_gian_tra_thuc_te.date()
 
             for date in (ngay_muon + timedelta(days=n) for n in range((ngay_tra - ngay_muon).days + 1)):
-                key = (date, record.phong_id.id)
+                key = (date, record.phong_id.id, record.id)
                 
                 if key not in data_to_create:
                     data_to_create[key] = {
                         "ngay_su_dung": date,
                         "phong_id": record.phong_id.id,
+                        "dat_phong_id": record.id,
                     }
         
         # Xóa lịch sử cũ và cập nhật mới

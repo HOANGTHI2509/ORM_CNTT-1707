@@ -17,25 +17,23 @@
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.1',
+    'version': '0.2',
     'license': 'LGPL-3',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'hr'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'wizard/nhan_vien_ai_view.xml',
         'views/chuc_vu.xml',
         'views/don_vi.xml',
         'views/nhan_vien.xml',
+        'views/phong_ban_view.xml',
+        'views/hop_dong_lao_dong_view.xml',
         'views/lich_su_cong_tac.xml',
-        'views/chung_chi_bang_cap.xml',
-        'views/danh_sach_chung_chi_bang_cap.xml',
-        'views/cham_cong.xml',
-        'views/tinh_luong.xml',
         'views/menu.xml',
-        'data/demo_nhan_su.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

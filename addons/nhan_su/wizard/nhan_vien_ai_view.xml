@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_nhan_vien_ai_wizard" model="ir.ui.view">
+        <field name="name">nhan_vien.ai.wizard.form</field>
+        <field name="model">nhan_vien.ai.wizard</field>
+        <field name="arch" type="xml">
+            <form string="✨ Trợ Lý Ảo Tuyển Dụng">
+                <div class="alert alert-info" role="alert" style="margin-bottom: 20px;">
+                    <h3 style="color: #00A09D; margin-bottom: 5px;"><span class="fa fa-user-plus mr8"/><b> Bóc tách Hồ sơ tự động!</b></h3>
+                    <i>VD: Đăng ký cho bạn Đinh Bá Dũng, sinh 01/05/1999 vào làm Lập trình viên. Quê Nghệ An, sđt 0988112233.</i>
+                </div>
+                <group>
+                    <field name="ai_request" nolabel="1" 
+                           placeholder="Dán tin nhắn Zalo/Email ứng viên vào đây hoặc hỏi thăm dữ liệu (VD: Kế toán phòng nào?)..."
+                           style="width: 100%; border: 2px dashed #00A09D; padding: 10px; border-radius: 10px; min-height: 100px;"/>
+                </group>
+                <div attrs="{'invisible': [('ai_response', '=', False)]}" style="background-color: #e0f2f1; border-left: 5px solid #00A09D; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <h4 style="color: #00695c; margin-bottom: 5px;">🤖 Giám đốc Nhân Sự Ảo Trả Lời:</h4>
+                    <field name="ai_response" nolabel="1" style="font-size: 14px; color: #1f2937;"/>
+                </div>
+                <footer>
+                    <button name="action_generate" type="object" string="🪄 Phân tích &amp; Tạo Hồ Sơ" class="btn-primary" style="background-color: #00A09D; border-color: #00A09D;"/>
+                    <button string="Hủy bỏ" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_nhan_vien_ai" model="ir.actions.act_window">
+        <field name="name">✨ Nhờ AI Tạo Nhân Viên</field>
+        <field name="res_model">nhan_vien.ai.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

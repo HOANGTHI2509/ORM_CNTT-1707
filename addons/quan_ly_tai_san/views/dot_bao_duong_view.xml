@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_dot_bao_duong_tree" model="ir.ui.view">
+            <field name="name">dot.bao.duong.tree</field>
+            <field name="model">dot_bao_duong</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_dot"/>
+                    <field name="ten_dot_bao_duong"/>
+                    <field name="ngay_bat_dau"/>
+                    <field name="nha_cung_cap_id"/>
+                    <field name="chi_phi_tong"/>
+                    <field name="trang_thai"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_dot_bao_duong_form" model="ir.ui.view">
+            <field name="name">dot.bao.duong.form</field>
+            <field name="model">dot_bao_duong</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_thuc_hien" type="object" string="Thực hiện" class="oe_highlight" attrs="{'invisible': [('trang_thai', '!=', 'moi')]}"/>
+                        <button name="action_hoan_thanh" type="object" string="Hoàn thành" class="oe_highlight" attrs="{'invisible': [('trang_thai', '!=', 'dang_thuc_hien')]}"/>
+                        <field name="trang_thai" widget="statusbar" statusbar_visible="moi,dang_thuc_hien,hoan_thanh"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ma_dot" placeholder="Mã đợt..."/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="ten_dot_bao_duong" attrs="{'readonly': [('trang_thai', '!=', 'moi')]}"/>
+                                <field name="nha_cung_cap_id" attrs="{'readonly': [('trang_thai', '!=', 'moi')]}"/>
+                            </group>
+                            <group>
+                                <field name="ngay_bat_dau" attrs="{'readonly': [('trang_thai', '!=', 'moi')]}"/>
+                                <field name="ngay_ket_thuc" attrs="{'readonly': [('trang_thai', '!=', 'moi')]}"/>
+                                <field name="chi_phi_tong"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Danh sách tài sản cần bảo dưỡng">
+                                <field name="lich_su_bao_tri_ids" attrs="{'readonly': [('trang_thai', '=', 'hoan_thanh')]}">
+                                    <tree editable="bottom">
+                                        <field name="tai_san_id"/>
+                                        <field name="ngay_bao_tri"/>
+                                        <field name="ngay_tra"/>
+                                        <field name="chi_phi"/>
+                                        <field name="ghi_chu"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_dot_bao_duong" model="ir.actions.act_window">
+            <field name="name">Đợt bảo dưỡng</field>
+            <field name="res_model">dot_bao_duong</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <record id="view_dot_bao_duong_kanban" model="ir.ui.view">
+            <field name="name">dot.bao.duong.kanban</field>
+            <field name="model">dot_bao_duong</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="trang_thai" class="o_kanban_small_column" sample="1">
+                    <field name="ma_dot"/>
+                    <field name="ten_dot_bao_duong"/>
+                    <field name="nha_cung_cap_id"/>
+                    <field name="ngay_bat_dau"/>
+                    <field name="trang_thai"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_record_title">
+                                    <strong><field name="ma_dot"/> - <field name="ten_dot_bao_duong"/></strong>
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <span>NCC: <field name="nha_cung_cap_id"/></span>
+                                </div>
+                                <div class="o_kanban_record_bottom mt-2">
+                                    <div class="oe_kanban_bottom_left">
+                                        <i class="fa fa-calendar"/> <field name="ngay_bat_dau" widget="date"/>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <field name="trang_thai" widget="label_selection" options="{'classes': {'moi': 'info', 'dang_thuc_hien': 'warning', 'hoan_thanh': 'success'}}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>

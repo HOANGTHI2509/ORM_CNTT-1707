@@ -2,12 +2,54 @@
 from odoo import models, fields
 
 class NhanVien(models.Model):
-    _inherit = 'nhan_vien'
+    _inherit = 'hr.employee'
 
-    tai_san_ids = fields.One2many(
-        comodel_name='tai_san',
-        inverse_name='nguoi_dang_dung_id',
-        string="Tài sản đang giữ",
-        domain=[('trang_thai', '=', 'Muon')],
-        readonly=True
+    phieu_ban_giao_ids = fields.One2many(
+        comodel_name='phieu_ban_giao',
+        inverse_name='nguoi_nhan_id',
+        string="Lịch sử nhận/trả tài sản",
     )
+    
+    tai_san_dang_quan_ly_ids = fields.Many2many(
+        comodel_name='tai_san',
+        compute='_compute_tai_san_dang_quan_ly',
+        string="Tài sản đang sử dụng / quản lý",
+    )
+
+    def _compute_tai_san_dang_quan_ly(self):
+        for record in self:
+            record.tai_san_dang_quan_ly_ids = self.env['tai_san'].search([
+                '|', 
+                ('quan_ly_id', '=', record.id), 
+                ('nguoi_dang_dung_id', '=', record.id)
+            ])
+
+    def write(self, vals):
+        res = super(NhanVien, self).write(vals)
+        if 'trang_thai_lam_viec' in vals and vals['trang_thai_lam_viec'] == 'nghi_viec':
+            for record in self:
+                assets = self.env['tai_san'].search([
+                    '&',
+                    '|', ('nguoi_dang_dung_id', '=', record.id), ('quan_ly_id', '=', record.id),
+                    ('trang_thai', '!=', 'DaThanhLy')
+                ])
+                if assets:
+                    lines = [(0, 0, {
+                        'tai_san_id': asset.id,
+                        'tinh_trang': asset.trang_thai_kiem_ke or 'binh_thuong',
+                        'ghi_chu': 'Hệ thống tự động tạo do nhân viên nghỉ việc'
+                    }) for asset in assets]
+                    
+                    admin = self.env['hr.employee'].search([], limit=1)
+                    nguoi_nhan_id = admin.id if admin else record.id
+                    if hasattr(self.env.user, 'employee_id') and self.env.user.employee_id:
+                        nguoi_nhan_id = self.env.user.employee_id.id
+                        
+                    self.env['phieu_ban_giao'].create({
+                        'loai_phieu': 'thu_hoi',
+                        'nguoi_giao_id': record.id,
+                        'nguoi_nhan_id': nguoi_nhan_id,
+                        'chi_tiet_ids': lines,
+                        'trang_thai': 'nhap',
+                    })
+        return res

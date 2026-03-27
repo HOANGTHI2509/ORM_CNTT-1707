@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View Kế thừa -->
+        <record id="view_bien_ban_den_bu_form_inherit" model="ir.ui.view">
+            <field name="name">bien.ban.den.bu.form.inherit.phong.hop</field>
+            <field name="model">bien_ban_den_bu</field>
+            <field name="inherit_id" ref="quan_ly_tai_san.view_bien_ban_den_bu_form_base"/>
+            <field name="arch" type="xml">
+                <!-- Chèn cờ available_tai_san_ids dạng tàng hình -->
+                <xpath expr="//field[@name='tai_san_id']" position="before">
+                    <field name="available_tai_san_ids" invisible="1"/>
+                </xpath>
+                
+                <!-- Gắn domain filter cho tài sản nếu đang là Đặt phòng -->
+                <xpath expr="//field[@name='tai_san_id']" position="attributes">
+                    <attribute name="domain">[('id', 'in', available_tai_san_ids)]</attribute>
+                </xpath>
+
+                <!-- Thêm trường Đặt phòng để biết context (Tiêm vào sau trường người lập) -->
+                <xpath expr="//field[@name='nguoi_lap_bien_ban_id']" position="after">
+                    <field name="dat_phong_id" attrs="{'readonly': [('trang_thai', '!=', 'nhap')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Tree View Kế thừa -->
+        <record id="view_bien_ban_den_bu_tree_inherit" model="ir.ui.view">
+            <field name="name">bien.ban.den.bu.tree.inherit.phong.hop</field>
+            <field name="model">bien_ban_den_bu</field>
+            <field name="inherit_id" ref="quan_ly_tai_san.view_bien_ban_den_bu_tree_base"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='nhan_vien_id']" position="after">
+                    <field name="dat_phong_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Vẫn giữ lại Action này để làm Menu truy cập nhúng riêng cho phân hệ phòng họp (nếu có) -->
+        <record id="action_bien_ban_den_bu" model="ir.actions.act_window">
+            <field name="name">Biên Bản Phạt/Đền Bù</field>
+            <field name="res_model">bien_ban_den_bu</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Tạo Biên Bản Đền Bù đầu tiên
+                </p>
+                <p>
+                    Biên bản sẽ đóng băng tài sản và làm căn cứ phạt nhân viên vi phạm Nội quy.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

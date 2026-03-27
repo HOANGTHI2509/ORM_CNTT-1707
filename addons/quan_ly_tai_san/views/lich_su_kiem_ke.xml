@@ -9,6 +9,7 @@
                     <field name="ma_lich_su_kiem_ke"/>
                     <field name="ngay_kiem_ke"/>
                     <field name="phieu_kiem_ke_id"/>
+                    <field name="nguoi_kiem_ke_id" widget="badge"/>
                     <field name="tai_san_id"/>
                     <field name="trang_thai_truoc"/>
                     <field name="trang_thai_sau"/>
@@ -27,6 +28,7 @@
                             <group>
                                 <field name="ma_lich_su_kiem_ke"/>
                                 <field name="ngay_kiem_ke"/>
+                                <field name="nguoi_kiem_ke_id"/>
                                 <field name="phieu_kiem_ke_id"/>
                                 <field name="tai_san_id"/>
                             </group>

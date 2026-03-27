@@ -51,3 +51,13 @@ package.json
 /src/
 /venv/
 /venv_15_01/
+
+# --- Custom Dev Environment & Logs ---
+postgres_data/
+*.log
+qlph_history.txt
+reflog.txt
+cleanup_*.py
+check_imports.py
+fix_old_view.py
+BAO_CAO_NANG_CAP.md
