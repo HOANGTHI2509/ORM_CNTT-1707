@@ -1,95 +1,71 @@
 <h2 align="center">
-    <a href="https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin">
-    🎓 Faculty of Information Technology (DaiNam University)
-    </a>
-</h2>
-<h2 align="center">
-    PLATFORM ERP
+    OFFICE RESOURCE MANAGER
 </h2>
 <div align="center">
-    <p align="center">
-        <img src="docs/logo/aiotlab_logo.png" alt="AIoTLab Logo" width="170"/>
-        <img src="docs/logo/fitdnu_logo.png" alt="AIoTLab Logo" width="180"/>
-        <img src="docs/logo/dnu_logo.png" alt="DaiNam University Logo" width="200"/>
-    </p>
 
-[![AIoTLab](https://img.shields.io/badge/AIoTLab-green?style=for-the-badge)](https://www.facebook.com/DNUAIoTLab)
-[![Faculty of Information Technology](https://img.shields.io/badge/Faculty%20of%20Information%20Technology-blue?style=for-the-badge)](https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin)
-[![DaiNam University](https://img.shields.io/badge/DaiNam%20University-orange?style=for-the-badge)](https://dainam.edu.vn)
+[![Odoo](https://img.shields.io/badge/Odoo-16.0-714B67?style=for-the-badge&logo=odoo&logoColor=white)](https://www.odoo.com/)
+[![Python](https://img.shields.io/badge/Python-3.10-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
 </div>
+
+> **Học Phần:** Hội nhập và quản trị phần mềm doanh nghiệp - Đề Tài 6
 
 ## 📖 1. Giới thiệu
-Platform ERP được áp dụng vào học phần Thực tập doanh nghiệp dựa trên mã nguồn mở Odoo. 
+**Office Resource Manager** là hệ thống quản lý tài nguyên doanh nghiệp được xây dựng trên nền tảng Odoo. Hệ thống tập trung vào việc số hóa quy trình quản lý hành chính nội bộ.
 
-## 🔧 2. Các công nghệ được sử dụng
-<div align="center">
+### ✨ Những điểm mới & Cải tiến so với dự án gốc (Khóa trước - K15)
+Trong quá trình thực tập và phát triển "Đề 6: Quản lý tài sản và phòng họp", dự án đã được bổ sung và phát triển hướng tới tự động hóa quy trình với các điểm nổi bật sau:
 
-### Hệ điều hành
-[![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](https://ubuntu.com/)
-### Công nghệ chính
-[![Odoo](https://img.shields.io/badge/Odoo-714B67?style=for-the-badge&logo=odoo&logoColor=white)](https://www.odoo.com/)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![XML](https://img.shields.io/badge/XML-FF6600?style=for-the-badge&logo=codeforces&logoColor=white)](https://www.w3.org/XML/)
-### Cơ sở dữ liệu
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-</div>
+**1. Phân hệ Quản lý Phòng họp (Room Booking):**
+- **Trải nghiệm UI/UX Kanban:** Bổ sung giao diện Kanban dạng thẻ trực quan phân loại tự động trạng thái phòng mượn (Chờ duyệt, Đã duyệt, Đang sử dụng, Đã trả, Đã hủy).
+- **Tính năng Dịch vụ đi kèm (`dich_vu_di_kem`):** Bổ sung mô hình hoàn toàn mới liên kết với đơn đặt phòng cho phép thêm các dịch vụ phát sinh (trà, nước, máy chiếu, v.v...).
+- **Tích hợp Bot Telegram Webhooks:** Hệ thống tự động đẩy thông báo toàn diện qua Telegram khi có đơn đặt, bao gồm thời gian đặt, tên người dùng đăng kí và chi tiết dịch vụ đi kèm.
+- **Tối ưu lịch đặt phòng:** Đặt chế độ xem bằng Lịch (Calendar View) làm cấu hình mặc định, đổi thuật ngữ từ `Đăng ký mượn phòng` thành `Đơn đặt phòng` cho chuyên nghiệp.
 
-## 🚀 3. Các project đã thực hiện dựa trên Platform
+**2. Phân hệ Quản lý Tài sản (Asset Management):**
+- **Ràng buộc Toàn vẹn Dữ liệu (Unique SQL Constraints):** Bổ sung các cấu hình ràng buộc cơ sở dữ liệu để chống trùng lặp dữ liệu đối với 'Loại tài sản' và 'Nhà cung cấp', hỗ trợ xử lý và quản lý tối ưu kho.
+- **Liên kết Hệ thống Nhân sự:** Kế thừa thông tin Nhân viên (`hr.employee` và `nhan_vien_inherit`) bổ sung thuộc tính người thụ hưởng tạo dây chuyền luân chuyển dữ liệu mạch lạc từ yêu cầu đến nhận tài sản.
 
-Một số project sinh viên đã thực hiện:
-- #### [Khoá 15](./docs/projects/K15/README.md)
-- #### [Khoá 16](./docs/projects/K16/README.md)
-- #### [Khoá 17](./docs/projects/K17/README.md)
+**3. Công nghệ mới:** 
+- **Tích hợp AI:** Xây dựng mô hình tương tác tích hợp Gemini AI và Telegram Webhooks, tự động hóa quy trình phản hồi thông minh (được phát triển theo báo cáo).
 
-## ⚙️ 4. Cài đặt và Khởi chạy
+### Các module chính:
+1.  **Quản lý Nhân sự (`nhan_su`)**: Hồ sơ nhân viên, quản lý thông tin cá nhân.
+2.  **Quản lý Tài sản (`quan_ly_tai_san`)**: Theo dõi tài sản, khấu hao, bảo trì, cấp phát tài sản cho nhân viên.
+3.  **Quản lý Phòng họp (`quan_li_phong_hop_hoi_truong`)**: Đặt phòng họp, duyệt yêu cầu, tránh trùng lịch.
 
-### 4.1. Cài đặt công cụ, môi trường và các thư viện cần thiết
+## 🚀 2. Hướng dẫn Cài đặt & Sử dụng
 
-#### 4.1.1. Tải project
-Mã nguồn dự án nằm trên môi trường Linux (WSL). Truy cập vào Terminal hoặc PowerShell trên Windows và gõ lệnh:
+### 2.1. Clone dự án
+Tải mã nguồn về máy:
 ```bash
-wsl
-```
-Sau đó, clone project và di chuyển vào thư mục dự án:
-```bash
-git clone https://github.com/FIT-DNU/Business-Internship.git
-cd /home/dmin/Business-Internship
+git clone https://github.com/HOANGTHI2509/office-resource-manager.git
+cd office-resource-manager
 ```
 
-#### 4.1.2. Cài đặt các thư viện hệ thống cần thiết
-Người sử dụng thực thi lệnh sau đề cài đặt các thư viện cần thiết:
-```bash
-sudo apt-get install libxml2-dev libxslt-dev libldap2-dev libsasl2-dev libssl-dev python3.10-distutils python3.10-dev build-essential libssl-dev libffi-dev zlib1g-dev python3.10-venv libpq-dev
-```
+### 2.2. Cài đặt môi trường
+Yêu cầu: `Python 3.10`, `PostgreSQL`, `Docker` (tùy chọn).
 
-#### 4.1.3. Khởi tạo môi trường ảo Python
-Odoo yêu cầu các thư viện đặc tả phải nằm trong một môi trường chia cách (virtual environment) để không bị xung đột.
-- Khởi tạo môi trường ảo:
-```bash
-python3.10 -m venv ./venv
-```
-- Thay đổi trình thông dịch sang môi trường ảo (Tại mỗi phiên làm việc mới bạn **phải** chạy lệnh này):
-```bash
-source venv/bin/activate
-```
-*(Thành công khi ở đầu dòng code trong terminal xuất hiện chữ `(venv)`).*
-- Chạy requirements.txt để cài đặt các thư viện được yêu cầu:
-```bash
-pip3 install -r requirements.txt
-```
+1.  **Cài đặt thư viện hệ thống (Ubuntu/WSL):**
+    ```bash
+    sudo apt-get install libxml2-dev libxslt-dev libldap2-dev libsasl2-dev libssl-dev python3.10-dev build-essential libpq-dev
+    ```
 
-### 4.2. Setup database (PostgreSQL)
-Cơ sở dữ liệu của dự án chạy trong Docker. Nếu không bật Docker Desktop, Odoo sẽ báo lỗi `Connection refused`.
-- Mở **Docker Desktop** trên Windows và chờ cho tới khi trạng thái hiển thị *Engine Running*.
-- Khởi tạo database trên docker bằng việc thực thi file `docker-compose.yml` (đứng ở thư mục gốc của project):
+2.  **Tạo môi trường ảo & cài dependencies:**
+    ```bash
+    python3.10 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    ```
+
+### 2.3. Cấu hình Database
+Sử dụng Docker để chạy PostgreSQL nhanh chóng:
 ```bash
 sudo docker-compose up -d
 ```
 
-### 4.3. Setup tham số chạy cho hệ thống
-Tạo tệp **odoo.conf** (có thể sao chép từ file **odoo.conf.template**) có nội dung như sau:
+### 2.4. Cấu hình Odoo
+Tạo file `odoo.conf` (hoặc copy từ template):
 ```ini
 [options]
 addons_path = addons
@@ -100,38 +76,16 @@ db_port = 5431
 xmlrpc_port = 8069
 ```
 
-### 4.4. Chạy hệ thống Odoo và Cập nhật code
-
-#### 4.4.1. Lệnh khởi chạy Odoo
-Đảm bảo bạn vẫn đang ở trong môi trường ảo `(venv)`. Chạy Odoo và tự động gán luôn database `Business-Internship` của dự án:
+### 2.5. Chạy hệ thống
 ```bash
-python3 odoo-bin -c odoo.conf -d Business-Internship
+python3 odoo-bin.py -c odoo.conf -u nhan_su,quan_ly_tai_san,quan_li_phong_hop_hoi_truong
 ```
+Truy cập: `http://localhost:8069`
+Tài khoản mặc định (nếu dùng demo data): `admin` / `admin`
 
-> **🔴 LƯU Ý RẤT QUAN TRỌNG VỀ TÊN DATABASE:**
-> Hành động `-d Business-Internship` sẽ gặp vấn đề nếu database thực sự của bạn đang mang tên khác (ví dụ: odoo, db_nhansu...). Hãy đổi chữ `Business-Internship` thành đúng tên Database cũ bạn hay làm.
-> *Cách xem tất cả Database bạn đang sở hữu: Chạy lệnh `python3 odoo-bin -c odoo.conf` (không có `-d`), mở trình duyệt tới `http://localhost:8069/web/database/selector` để kiểm tra.*
+## 🤝 Nguồn phát triển dữ liệu & Đóng góp
+Dự án được phát triển dựa trên nền tảng Business Internship của Khoa CNTT - Đại học Đại Nam.
 
-#### 4.4.2. Lệnh cập nhật module (Update Code)
-Khi bạn sửa code XML giao diện hoặc Model Python, cần thêm cờ `-u` để Odoo áp dụng:
-- Cập nhật toàn bộ các module (Dùng khi sửa nhiều nơi hoặc khởi tạo lại):
-```bash
-python3 odoo-bin -c odoo.conf -d Business-Internship -u all
-```
-- Cập nhật một module cụ thể (Nhanh hơn, ví dụ module tên `nhan_su` hoặc `my_custom_module`):
-```bash
-python3 odoo-bin -c odoo.conf -d Business-Internship -u nhan_su
-```
-
-*(Lưu ý: Nếu bạn sử dụng Docker ngầm hoàn toàn hoặc SystemC, bạn có thể truy cập bằng lệnh: `docker exec -it <tên_container> /bin/bash` và gõ lệnh odoo tương ứng `-c /etc/odoo/odoo.conf -d Business-Internship`)*
-
-Truy cập theo đường dẫn **[http://localhost:8069/](http://localhost:8069/)** để đăng nhập vào hệ thống.
-
-## 📚 5. Nguồn phát triển dữ liệu
 Tài liệu hướng dẫn cài đặt và khởi chạy dự án Odoo được tham khảo, tổng hợp và phát triển dựa trên đóng góp từ 2 nhóm thực tập:
 - **Nhóm TTDN-15-05-N8**
 - **Nhóm TTDN-15-05-N1**
-
-## 📝 6. License
-
-© 2024 AIoTLab, Faculty of Information Technology, DaiNam University. All rights reserved.
